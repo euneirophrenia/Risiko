@@ -1,7 +1,7 @@
 import bpy
 
 # get the path where the blend file is located
-path = bpy.path.abspath("G:\\Projects\\PROGETTO_UNI\\3D_Objects\\")
+path = bpy.path.abspath("G:\\Projects\\PROGETTO_UNI\\3D_Objects\\Overlapped\\")
 
 # deselect all objects
 bpy.ops.object.select_all(action='DESELECT')    
