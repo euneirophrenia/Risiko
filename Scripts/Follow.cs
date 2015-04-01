@@ -41,9 +41,13 @@ public class Follow : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			this.gameObject.GetComponent<Transform>().position=this.original;
+			this.Reset();	
 		}
-	
+	}
+
+	public void Reset()
+	{
+		this.gameObject.GetComponent<Transform>().position=this.original;
 	}
 
 }
