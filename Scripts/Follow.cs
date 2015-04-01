@@ -25,19 +25,19 @@ public class Follow : MonoBehaviour
 		}
 		if (Input.GetKey("up"))
 		{
-			this.gameObject.GetComponent<Transform>().position+=Vector3.forward;
+			this.gameObject.GetComponent<Transform>().position-=Vector3.forward;
 		}
 		if (Input.GetKey("down"))
 		{
-			this.gameObject.GetComponent<Transform>().position+=Vector3.back;
+			this.gameObject.GetComponent<Transform>().position-=Vector3.back;
 		}
 		if (Input.GetKey("left"))
 		{
-			this.gameObject.GetComponent<Transform>().position+=Vector3.left;
+			this.gameObject.GetComponent<Transform>().position-=Vector3.left;
 		}
 		if (Input.GetKey("right"))
 		{
-			this.gameObject.GetComponent<Transform>().position+=Vector3.right;
+			this.gameObject.GetComponent<Transform>().position-=Vector3.right;
 		}
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
