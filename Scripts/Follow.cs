@@ -26,19 +26,19 @@ public class Follow : MonoBehaviour
 		{
 			this.gameObject.GetComponent<Transform>().position+=delta;
 		}
-		if (Input.GetAxis("Vertical")>0 && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) )
+		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
 		{
 			this.gameObject.GetComponent<Transform>().position-=moveSpeedAmplifier*Vector3.forward;
 		}
-		if (Input.GetAxis ("Vertical") < 0 && (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) )
+		if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
 		{
 			this.gameObject.GetComponent<Transform>().position-=moveSpeedAmplifier*Vector3.back;
 		}
-		if (Input.GetAxis ("Horizontal")<0 && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)))
+		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 		{
 			this.gameObject.GetComponent<Transform>().position-=moveSpeedAmplifier*Vector3.left;
 		}
-		if (Input.GetAxis("Horizontal")>0 && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)))
+		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 		{
 			this.gameObject.GetComponent<Transform>().position-=moveSpeedAmplifier*Vector3.right;
 		}
