@@ -7,6 +7,7 @@ public class Manager : MonoBehaviour
     private bool app;
     public Transform attack;
     public Transform defense;
+	public float speedUp=2;
     private Transform [] attackList;
     private Transform [] defenseList;
     //private int [] attackResult;
@@ -15,12 +16,11 @@ public class Manager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        finito = true;
         app = false;
 
         this.attackList = new Transform[3];
         this.defenseList = new Transform[3];
-
+		Time.timeScale=speedUp;
         for (int i = 0; i < 3; i++)
         {
             this.attackList[i] = Instantiate(attack);
@@ -35,7 +35,6 @@ public class Manager : MonoBehaviour
 	void Update()
     {
         finito = true;
-
         for (int i = 0; i < 3; i++)
         {
             finito &= this.attackList[i].gameObject.GetComponent<DiceRoll>().Done;
@@ -50,6 +49,7 @@ public class Manager : MonoBehaviour
                 Debug.Log(this.defenseList[i].gameObject.GetComponent<DiceRoll>().Value);
             }
             app = true;
+			Time.timeScale=1;
         }
     }
     
