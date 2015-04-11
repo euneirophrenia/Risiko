@@ -14,7 +14,7 @@ public class ScaleToView : MonoBehaviour
 		main=Camera.main;
 		Vector3 bottomleft, topleft, topright;
 
-		float z=main.transform.position.y / Mathf.Cos (main.transform.rotation.x); 
+		float z=main.transform.position.y / Mathf.Cos (Mathf.Deg2Rad*main.transform.rotation.x); 
 
 		bottomleft=main.ViewportToWorldPoint(new Vector3(0,0, z ));
 		topleft=main.ViewportToWorldPoint(new Vector3(1,0, z ));
@@ -33,7 +33,7 @@ public class ScaleToView : MonoBehaviour
 
 		float xsize,ysize;
 
-		float z=main.transform.position.y / Mathf.Cos (main.transform.rotation.x); 
+		float z=main.transform.position.y / Mathf.Cos (Mathf.Deg2Rad*main.transform.rotation.x); 
 
 		Vector3 bottomleft, topleft, topright, cameracenter;
 		bottomleft=main.ViewportToWorldPoint(new Vector3(0,0, z));
