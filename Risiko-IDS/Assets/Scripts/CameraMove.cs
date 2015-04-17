@@ -8,6 +8,8 @@ public class CameraMove : MonoBehaviour
 
 	public float zoomSpeed = 2.5f;
 	public float moveSpeedAmplifier=1;
+	public float minY=10; //meglio metterci la y del plane nell'environment o qualcosa in più.
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -18,11 +20,11 @@ public class CameraMove : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if (Input.GetAxis("Mouse ScrollWheel") > 0)
+		if (Input.GetAxis("Mouse ScrollWheel") > 0 && this.transform.position.y>minY+delta.y)
 		{
 			this.gameObject.GetComponent<Transform>().position-=delta;
 		}
-		if (Input.GetAxis ("Mouse ScrollWheel") < 0)
+		if (Input.GetAxis ("Mouse ScrollWheel") < 0 && this.transform.position.y<original.y-delta.y)
 		{
 			this.gameObject.GetComponent<Transform>().position+=delta;
 		}
