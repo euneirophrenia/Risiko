@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TerritorioController : MonoBehaviour 
+public class StatoController : MonoBehaviour 
 {
 	public GUISkin GameSkin;
 	private string objectname ;

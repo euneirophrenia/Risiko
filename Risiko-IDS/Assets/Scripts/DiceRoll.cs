@@ -26,7 +26,7 @@ public class DiceRoll : MonoBehaviour
         {
             done = true;    
             //Debug.Log(System.Int32.Parse(hit.collider.name));
-            this.Value = System.Int32.Parse(hit.collider.name);
+            this.number = System.Int32.Parse(hit.collider.name);
         }
     }
 
@@ -36,11 +36,6 @@ public class DiceRoll : MonoBehaviour
         {
             return this.number;
         }   
-
-        set
-        {
-            this.number = value;
-        } 
 
     }
 
