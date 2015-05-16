@@ -1,0 +1,19 @@
+GUI.Window(1, new Rect(100, 100, 100, 100), DoMyWindow, "ciao");
+
+void DoMyWindow(int windowID)
+    {
+        GUI.Button(new Rect(5, 20, 100, 20), "Hello World");
+        GUI.Button(new Rect(5, 40, 100, 20), "Hello World2");
+    }
+
+
+
+
+
+-----COMPITI-----
+
+DIVI: GoalReachedManager, SecretGoal e figli, DiceManager (evento)
+
+MARZA: unire scena menu e scena basemap, SelectManager, InitialPhaseManager
+
+VITTO: gui, popup scelta move/attack, MoveManager, AttackManager

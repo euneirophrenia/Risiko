@@ -11,10 +11,11 @@ public class StatoController : MonoBehaviour
     public GameObject tank;
     private Color tankColor;
     private string stringToDisplay;
+  
 
 	private Color startColor;
 	private bool _displayObjectName;
-
+    private GameObject tk;
 
     //Funzioni UNITY
 	void Start()
@@ -25,7 +26,7 @@ public class StatoController : MonoBehaviour
 
         //gestione colore tank
 
-        GameObject tk = Instantiate(tank);
+        tk = Instantiate(tank);
         Material myNewMaterial = new Material(Shader.Find("Diffuse"));
         this.tankColor = Color.gray;
         myNewMaterial.color = Color.gray;
@@ -52,6 +53,10 @@ public class StatoController : MonoBehaviour
 		_displayObjectName = false;
 	}
 
+    void OnMouseDown()
+    {
+
+    }
 
     //Funzioni standard
 
@@ -82,9 +87,10 @@ public class StatoController : MonoBehaviour
         {
             stringToDisplay = "Name: " + stateName + "\nTank number: " + tankNumber;
             GUI.Box(new Rect(Event.current.mousePosition.x - 170, Event.current.mousePosition.y, 170, 40), stringToDisplay, "BoxGUI");
+            
         }  
     }
-
+    
     public void AddTank()
     {
         this.tankNumber++;
@@ -112,5 +118,6 @@ public class StatoController : MonoBehaviour
     public void setTankColor(Color color)
     {
         this.tankColor = color;
+        tk.GetComponent<Renderer>().material.color = color;
     }
 }

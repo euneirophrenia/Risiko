@@ -69,7 +69,7 @@ public class BorderManager : MonoBehaviour
 			_borders.Add(new Confine(tokens[0], tokens[1]));
 		}
 		sr.Close ();
-
+        
 		//Debug.Log (areNeighbours("North_America_03", "South_America_04"));
 	}
 
