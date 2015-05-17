@@ -6,22 +6,24 @@ public class ScaleToView : MonoBehaviour
 {
 	private Camera main;
 	private float basex, basey;
+	private Vector2 safety = new Vector2(1.5f, 1.2f); //coefficienti per sopperire ad effetti prospettici e di restringimento schermo in 16:9. 
+	//Ho cercato di trovare una via analitica per calcolarli, ma non è per nulla per nulla facile.
+
+	private Vector3 bottomleft, topleft, topright, cameracenter;
 
 	// Use this for initialization
 	void Start () 
 	{
 
 		main=Camera.main;
-		Vector3 bottomleft, topleft, topright;
-
-		float z=main.transform.position.y / Mathf.Cos (Mathf.Deg2Rad*main.transform.rotation.x); 
+		float z=(main.transform.position - this.transform.position).magnitude; 
 
 		bottomleft=main.ViewportToWorldPoint(new Vector3(0,0, z ));
 		topleft=main.ViewportToWorldPoint(new Vector3(1,0, z ));
 		topright=main.ViewportToWorldPoint(new Vector3(1,1, z));
 
-		basex=Vector3.Distance(topleft,topright) / this.transform.localScale.x;
-		basey=Vector3.Distance(bottomleft, topleft) / this.transform.localScale.z;
+		basex=safety.x*Vector3.Distance(topleft,topright) / this.transform.localScale.x;
+		basey=safety.y*Vector3.Distance(bottomleft, topleft) / this.transform.localScale.z;
 
 	}
 	
@@ -33,9 +35,8 @@ public class ScaleToView : MonoBehaviour
 
 		float xsize,ysize;
 
-		float z=main.transform.position.y / Mathf.Cos (Mathf.Deg2Rad*main.transform.rotation.x); 
-
-		Vector3 bottomleft, topleft, topright, cameracenter;
+		float z=(main.transform.position - this.transform.position).magnitude; 
+	
 		bottomleft=main.ViewportToWorldPoint(new Vector3(0,0, z));
 		topleft=main.ViewportToWorldPoint(new Vector3(1,0, z));
 		topright=main.ViewportToWorldPoint(new Vector3(1,1, z));

@@ -1,80 +1,101 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class DiceManager : MonoBehaviour 
+public class DiceManager
 {
-    private bool finito;
-    private bool app;
-    public Transform attack;
-    public Transform defense;
-	public float speedUp=2;
-    private Transform [] attackList;
-    private Transform [] defenseList;
+    private Transform _attack;
+    private Transform _defense;
+	private float _speedUp;
+    private Transform [] _attackList;
+    private Transform [] _defenseList;
 
-	public GameObject envPrefab;
-	private GameObject env;
+	private int[] _attackRes, _defenceRes;
 
-    //private int [] attackResult;
-    //private int [] defenseResult;
+	private GameObject _envPrefab;
+	private GameObject _env;
 
-	// Use this for initialization
-	void Start ()
-    {
-        app = false;
+	private int _iAttack, _iDefence, total;
 
-        this.attackList = new Transform[3];
-        this.defenseList = new Transform[3];
-
-		//settings during launch
-		Time.timeScale=speedUp;
-		Camera.main.GetComponent<CameraMove>().enabled=false;
-		env = Instantiate<GameObject>(envPrefab);
-
-        for (int i = 0; i < 3; i++)
-        {
-            this.attackList[i] = Instantiate(attack);
-            this.defenseList[i] = Instantiate(defense);
-            
-        }
-
-        
- 
-	}
+	public delegate void GetResult(int[] attackRes, int[] defenceRes);
+	public event GetResult ResultReady;
 	
-	void Update()
+	
+	public DiceManager(Transform attack, Transform defence, GameObject environment, float speedup=2)
     {
-        finito = true;
-		if (!app)
-		{
-	        for (int i = 0; i < 3; i++)
-	        {
-	            finito &= this.attackList[i].gameObject.GetComponent<DiceRoll>().Done;
-	            finito &= this.defenseList[i].gameObject.GetComponent<DiceRoll>().Done;
-	        }
-		}
+		this._attack=attack;
+		this._defense=defence;
+		this._envPrefab=environment;
+		this._speedUp=speedup;
+	}
 
-        if (finito && !app)
-        {
-            for (int i = 0; i < 3; i++)
-            {
-               Debug.Log (this.attackList[i].gameObject.GetComponent<DiceRoll>().Value );
-               Debug.Log (this.defenseList[i].gameObject.GetComponent<DiceRoll>().Value);
-            }
-            app = true;
-			Reset ();
-        }
+	private void GetAttackDice(DiceRoll dice)
+	{
+		this._attackRes[_iAttack]=dice.Value;
+		_iAttack++;	
+		if (_iAttack + _iDefence == total)
+			Ready();
+	}
+	private void GetDefenceDice(DiceRoll dice)
+	{
+		this._defenceRes[_iDefence]=dice.Value;
+		_iDefence++;
+		if (_iAttack + _iDefence == total)
+			Ready();
+	}
+
+	private void Ready()
+	{
+		System.Array.Sort<int>(_attackRes, (n,m) => m.CompareTo(n));
+		System.Array.Sort<int>(_defenceRes, (n,m) => m.CompareTo(n));
+		this.ResultReady(this._attackRes, this._defenceRes);
+		Reset ();
+
+	}
+
+	public void Roll(int attack, int defence)
+	{
+		if (attack<=0 || defence <=0 )
+			return;
+
+		this._attackList = new Transform[attack];
+		this._defenseList = new Transform[defence];
+		_iAttack=0;
+		_iDefence=0;
+		total=attack+defence;
+
+		this._attackRes = new int[attack];
+		this._defenceRes = new int[defence];
+
+		/* settaggi per il lancio */
+		Time.timeScale=_speedUp;
+		Camera.main.GetComponent<CameraMove>().enabled=false;
+		_env = GameObject.Instantiate<GameObject>(_envPrefab);
+
+
+		for (int i = 0; i < attack; i++)
+		{
+			this._attackList[i] = GameObject.Instantiate(_attack);
+			this._attackList[i].GetComponent<DiceRoll>().ResultReady+=this.GetAttackDice;
+		}
+		for (int i=0; i< defence; i++)
+		{
+			this._defenseList[i] = GameObject.Instantiate(_defense);
+			this._defenseList[i].GetComponent<DiceRoll>().ResultReady+=this.GetDefenceDice;
+		}      	
     }
 
-	void Reset()
+	private void Reset()
 	{
-		//volendo qua c'è libertà completa nel comportamento..
+		/* ripristino delle configurazioni normali */
 		Time.timeScale=1;
-		for (int i =0; i< 3; i++)
-		{
-			Destroy(this.attackList[i].gameObject);
-			Destroy (this.defenseList[i].gameObject);
-		}
-		Destroy(env);
+		for (int i =0; i<this._attackList.Length; i++)
+			GameObject.Destroy(this._attackList[i].gameObject);
+		
+		for (int i=0; i<this._defenseList.Length; i++)
+			GameObject.Destroy (this._defenseList[i].gameObject);
+
+		GameObject.Destroy(_env);
 		Camera.main.GetComponent<CameraMove>().enabled=true;
 	}
     

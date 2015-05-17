@@ -3,18 +3,20 @@ using System.Collections;
 
 public class DiceRoll : MonoBehaviour 
 {
-    private bool done;
-    private Vector3 zero = new Vector3(0, 0, 0);
-    private int number;
+    private bool _done;
+    private Vector3 _zero = new Vector3(0, 0, 0);
+    private int _number;
+
+	public delegate void Done(DiceRoll dice);
+	public event Done ResultReady;
 
     void Start()
     {
-        done = false;
+        _done = false;
 
         this.gameObject.GetComponent<Transform>().position = new Vector3(Random.Range(-50, 50), Random.Range(20, 50), Random.Range(10, 20));
         this.gameObject.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(0, 30), Random.Range(0, 30), Random.Range(0, 30)));
         this.gameObject.GetComponent<Rigidbody>().AddRelativeForce(0, 0, Random.Range(0, 5), ForceMode.Impulse);
-
     }
 
 	void OnCollisionStay()
@@ -22,11 +24,12 @@ public class DiceRoll : MonoBehaviour
         RaycastHit hit;
         Ray ray1 = new Ray(this.gameObject.transform.position, Vector3.up);
 
-        if (this.gameObject.GetComponent<Rigidbody>().velocity == zero && !done && Physics.Raycast(ray1, out hit))
+        if (this.gameObject.GetComponent<Rigidbody>().velocity == _zero && !_done && Physics.Raycast(ray1, out hit))
         {
-            done = true;    
             //Debug.Log(System.Int32.Parse(hit.collider.name));
-            this.number = System.Int32.Parse(hit.collider.name);
+            this._number = System.Int32.Parse(hit.collider.name);
+			_done=true;
+			ResultReady(this);
         }
     }
 
@@ -34,17 +37,8 @@ public class DiceRoll : MonoBehaviour
     {
         get
         {
-            return this.number;
+            return this._number;
         }   
-
-    }
-
-    public bool Done
-    {
-        get
-        {
-            return this.done;
-        }
     }
 
 }

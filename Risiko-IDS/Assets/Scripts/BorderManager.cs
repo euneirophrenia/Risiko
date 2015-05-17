@@ -1,11 +1,11 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine;
 
 
-public class BorderManager : MonoBehaviour 
+public class BorderManager 
 {
 	//necessaria perché unity ha una storia di non supporto alle tuple, niente di speciale in realtà.
 	#region Confine 
@@ -57,11 +57,10 @@ public class BorderManager : MonoBehaviour
 
 
 	private static readonly List<Confine> _borders = new List<Confine>();
-	public string configurationFilePath="./Assets/Scripts/confini.txt";
 
-	void Start () 
+	public BorderManager (string configFilePath="./Assets/Scripts/confini.txt")
 	{
-		StreamReader sr = new StreamReader(configurationFilePath);
+		StreamReader sr = new StreamReader(configFilePath);
 		string line;
 		while ((line=sr.ReadLine())!=null)
 		{
@@ -69,13 +68,13 @@ public class BorderManager : MonoBehaviour
 			_borders.Add(new Confine(tokens[0], tokens[1]));
 		}
 		sr.Close ();
-        
+
 		//Debug.Log (areNeighbours("North_America_03", "South_America_04"));
 	}
 
-	public static bool areNeighbours (string a, string b) 
+	public bool areNeighbours (string a, string b) 
 	{
-		if (a.Equals(b)) // che fare se chiedono se uno stato confina con lui stesso? 
+		if (a.Equals(b)) // che fare se chiedono se uno stato confina con lui stesso? nel file non ho messo nessun confine del tipo A,A
 			return true;
 
 		Confine x = new Confine(a,b);
@@ -87,7 +86,7 @@ public class BorderManager : MonoBehaviour
 
 
 
-	public static bool areNeighbours(GameObject a, GameObject b)
+	public bool areNeighbours(GameObject a, GameObject b)
 	{
 		string s1=a.name;
 		string s2=b.name;
@@ -95,7 +94,7 @@ public class BorderManager : MonoBehaviour
 		return areNeighbours(s1,s2);
 	}
 
-	public static bool areNeighbours(StatoController c1, StatoController c2)
+	public bool areNeighbours(StatoController c1, StatoController c2)
 	{
 		string s1 = c1.gameObject.name;
 		string s2= c2.gameObject.name;
