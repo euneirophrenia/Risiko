@@ -7,12 +7,15 @@ public class MenuManager : MonoBehaviour
 {
     public Menu currentMenu;
     public AudioSource audio;
-    public GameObject cross;
+    public GameObject crossMenu;
+    public GameObject crossPauseMenu;
+    public GameObject MainScene;
+    public GameObject directionalLight;
 
     private bool isMuted = false;
     private bool isPaused = false;
     private float timeScale;
-    private readonly int maxplayers = 5;
+    private readonly int maxplayers = 5;            //da recuperare dal MainManager
     private int playerNumber = 0;
     private string[] playernames = new string[5];
 	
@@ -29,6 +32,8 @@ public class MenuManager : MonoBehaviour
         if (menu == null)
         {
             this.isPaused = false;
+            Time.timeScale = this.timeScale;
+            GameObject.Find("MainScene/Menu/PausePlane").SetActive(false);              //PLANE 
         }
 
         if (menu != null)
@@ -44,13 +49,19 @@ public class MenuManager : MonoBehaviour
         {
             this.audio.Pause();
             this.isMuted = true;
-            cross.SetActive(true);
+            
+           
+            crossPauseMenu.SetActive(true);
+            crossMenu.SetActive(true);
         }
         else
         {
             this.audio.UnPause();
             this.isMuted = false;
-            this.cross.SetActive(false);
+
+            
+             crossPauseMenu.SetActive(false);
+             crossMenu.SetActive(false);
         }
     }
 
@@ -65,13 +76,13 @@ public class MenuManager : MonoBehaviour
 
         for (int i = 1; i < maxplayers+1;  i++)
         {
-            string s = "Menu/SelectMenu/Panel/Buttons/Input" + i;
+            string s = "InitialMenu/Menu/SelectMenu/Panel/Buttons/Input" + i;
             GameObject.Find(s).SetActive(false);
         }
 
         for (int i = 1; i < number + 1; i++)
         {
-            string s = "Menu/SelectMenu/Panel/Buttons/Input" + i;
+            string s = "InitialMenu/Menu/SelectMenu/Panel/Buttons/Input" + i;
             GameObject.Find(s).SetActive(true);
         }
     }
@@ -88,36 +99,34 @@ public class MenuManager : MonoBehaviour
     }
     public void Update()
     {
-        if(Application.loadedLevelName.Contains("BaseMap"))
-        {
-            if (Input.GetKeyUp(KeyCode.Escape))
+        
+       if (Input.GetKeyUp(KeyCode.Escape) && MainScene.activeInHierarchy)
+       {
+            if (!this.isPaused)
             {
-                if (!this.isPaused)
-                {
-                    this.ShowMenu(GameObject.Find("Menu/MainMenu").GetComponent<Menu>());
-                    this.timeScale = Time.timeScale;
-                    Time.timeScale = 0;
-                    this.isPaused = true;                                  
-                }
-                else
-                {
-                    this.ShowMenu(null);
-                    Time.timeScale = this.timeScale;
-                    //this.isPaused = false;
+                this.ShowMenu(GameObject.Find("MainScene/Menu/MainMenu").GetComponent<Menu>());
+                GameObject.Find("MainScene/Menu/PausePlane").SetActive(true);                   //PLANE 
+                this.timeScale = Time.timeScale;
+                Time.timeScale = 0;
+                this.isPaused = true;                                  
+            }
+            else
+            {
+                this.ShowMenu(null);
 
-                }
             }
         }
+        
     }
 
 
-	public void ChangeToScene(string sceneToChange)
+	public void Play()
 	{
         if (this.playerNumber != 0)
         {
             for (int i = 1; i < this.playerNumber + 1; i++)
             {
-                string s = "Menu/SelectMenu/Panel/Buttons/Input" + i;
+                string s = "InitialMenu/Menu/SelectMenu/Panel/Buttons/Input" + i;
                 InputField input = GameObject.Find(s).GetComponent<InputField>();
 
                 if (string.IsNullOrEmpty(input.text))
@@ -131,20 +140,21 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-        Debug.Log(playernames[0] + " " + playernames[1]);
+        //Debug.Log(playernames[0] + " " + playernames[1]);
 
-        GameObject data = GameObject.Find("GameData");
-        data.GetComponent<Text>().text = this.playerNumber+"\n";
 
-        for (int i = 0; i < this.playerNumber; i++)
-        {
-            data.GetComponent<Text>().text += this.playernames[i]+"\n";
-        }
-       
-        Object.DontDestroyOnLoad(data);
+       /*
+        * 
+        * Invocazione di InitialPhaseManager per la creazione dei giocatori ecc
+        * 
+        * 
+        */
 
-		Application.LoadLevel(sceneToChange);
-       
-        currentMenu = null;
+        MainScene.SetActive(true);
+
+                
+        GameObject.Find("InitialMenu").SetActive(false);
+        
+        currentMenu = null;                             
 	} 
 }
