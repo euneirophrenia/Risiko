@@ -15,7 +15,7 @@ public class MenuManager : MonoBehaviour
     private bool isMuted = false;
     private bool isPaused = false;
     private float timeScale;
-    private readonly int maxplayers = 5;            //da recuperare dal MainManager
+    private readonly int maxplayers = 5;            
     private int playerNumber = 0;
     private string[] playernames = new string[5];
 	
@@ -97,10 +97,11 @@ public class MenuManager : MonoBehaviour
         this.ShowMenu(null);
         Time.timeScale = this.timeScale;
     }
+
     public void Update()
     {
         
-       if (Input.GetKeyUp(KeyCode.Escape) && MainScene.activeInHierarchy)
+       if (Input.GetKeyUp(KeyCode.Escape) && MainScene.activeInHierarchy)           //Esegue solo se MainScene è attiva (InitMenu disattivata)
        {
             if (!this.isPaused)
             {
@@ -147,8 +148,9 @@ public class MenuManager : MonoBehaviour
         * 
         * Invocazione di InitialPhaseManager per la creazione dei giocatori ecc
         * 
-        * 
         */
+
+        //MainManager.GetInstance().Init(playernames);    
 
         MainScene.SetActive(true);
 

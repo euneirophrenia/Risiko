@@ -4,18 +4,21 @@ using System.Collections;
 public class StatoController : MonoBehaviour 
 {
 	public GUISkin GameSkin;
+    public GameObject tank;
 
     //variabili da visualizzare
 	private string stateName;
     private int tankNumber;
-    public GameObject tank;
-    private Color tankColor;
+    private GameObject tk;
     private string stringToDisplay;
-  
+    private Giocatore player = null;
 
 	private Color startColor;
 	private bool _displayObjectName;
-    private GameObject tk;
+
+    public delegate void Action(StatoController stato);
+    public event Action Clicked;
+    
 
     //Funzioni UNITY
 	void Start()
@@ -28,7 +31,6 @@ public class StatoController : MonoBehaviour
 
         tk = Instantiate(tank);
         Material myNewMaterial = new Material(Shader.Find("Diffuse"));
-        this.tankColor = Color.gray;
         myNewMaterial.color = Color.gray;
         tk.GetComponentInChildren<Renderer>().material = myNewMaterial;
         tk.GetComponent<Transform>().position = new Vector3(this.gameObject.GetComponent<Transform>().position.x, this.gameObject.GetComponent<Transform>().position.y + 2.5f, this.gameObject.GetComponent<Transform>().position.z);
@@ -41,24 +43,39 @@ public class StatoController : MonoBehaviour
 
 	void OnMouseEnter()
 	{
-		startColor = GetComponent<Renderer>().material.color;
-		Color col = new Color (1f - startColor.r, 1f - startColor.g, 1f - startColor.b);
-		GetComponent<Renderer> ().material.color = col;
-		_displayObjectName = true;
+        this.Toggle(true);
+        _displayObjectName = true;
 	}
 
 	void OnMouseExit()
 	{
-		GetComponent<Renderer>().material.color = startColor;
+        this.Toggle(false);
 		_displayObjectName = false;
 	}
 
     void OnMouseDown()
     {
+        if (Clicked != null)
+            Clicked(this);
 
+        _displayObjectName = false;
     }
 
     //Funzioni standard
+
+    public Giocatore Player
+    {
+        get
+        {
+            return this.player;
+        }
+
+        set
+        {
+            this.player = value;
+            this.setTankColor(this.player.Color);
+        }
+    }
 
     public string NomeStato
     {
@@ -90,6 +107,7 @@ public class StatoController : MonoBehaviour
             
         }  
     }
+
     
     public void AddTank()
     {
@@ -115,9 +133,27 @@ public class StatoController : MonoBehaviour
         return true;
     }
 
-    public void setTankColor(Color color)
+    private void setTankColor(Color color)
     {
-        this.tankColor = color;
         tk.GetComponent<Renderer>().material.color = color;
     }
+
+    /// <summary>
+    /// Metodo per selezionare visivamente lo stato 
+    /// </summary>
+    /// <param name="selected">true per selezionare, false per deselezionare</param>
+    public void Toggle(bool selected)       
+    {
+        if(selected)
+        {
+            startColor = GetComponent<Renderer>().material.color;
+            Color col = new Color(1f - startColor.r, 1f - startColor.g, 1f - startColor.b);
+            GetComponent<Renderer>().material.color = col;
+        }
+        else
+        {
+            GetComponent<Renderer>().material.color = startColor;
+        }
+    }
+
 }

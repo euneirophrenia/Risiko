@@ -4,23 +4,17 @@ using System.Collections.Generic;
 
 public class Giocatore 
 {
-    private string name;
-    private Color color;
-    private readonly List<StatoController> states;
-    private SecretGoal goal;
+    private readonly string name;
+    private readonly Color color;
+    private readonly SecretGoal goal;
+    private int armateDaAssegnare;
 
-    public Giocatore(string name, Color color, SecretGoal goal)
+    public Giocatore(string name, Color color, SecretGoal goal, int armateDaAssegnare)
     {
         this.name = name;
         this.color = color;
         this.goal = goal;
-        this.states = new List<StatoController>();
-    }
-
-    public Giocatore(string name, Color color, SecretGoal goal, List<StatoController> states)
-        : this(name, color, goal)
-    {
-        this.states = states;
+        this.armateDaAssegnare = armateDaAssegnare;
     }
 
     public string Name
@@ -47,11 +41,16 @@ public class Giocatore
         }
     }
 
-    public List<StatoController> States
+    public int ArmateDaAssegnare
     {
         get
         {
-            return this.states;
+            return this.armateDaAssegnare;
+        }
+
+        set
+        {
+            this.armateDaAssegnare = value;
         }
     }
 
