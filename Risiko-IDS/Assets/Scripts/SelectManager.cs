@@ -2,6 +2,7 @@ using System.Collections.Generic;
 public class SelectManager : IManager
 {
     private StatoController stateTemp;
+    private Giocatore currentPlayer;
 
     public delegate void statoSelect(StatoController stato1, StatoController stato2);       
     public event statoSelect EndSelection;                                      //evento a cui si registrano Attack/Move Manager 
@@ -9,6 +10,8 @@ public class SelectManager : IManager
     public SelectManager()
     {
         this.stateTemp = null;
+        PhaseManager phase = (PhaseManager) MainManager.GetManagerInstance("PhaseManager");
+        this.currentPlayer = phase.CurrentPlayer;
     }
 
     public void Register(string moveOrAttack)
@@ -25,7 +28,7 @@ public class SelectManager : IManager
             return;
 
         MainManager main = MainManager.GetInstance();
-        List<StatoController> states = main.States;
+        IEnumerable<StatoController> states = main.States;
 
         foreach (StatoController s in states)
         {
@@ -47,7 +50,7 @@ public class SelectManager : IManager
             return;
 
         MainManager main = MainManager.GetInstance();
-        List<StatoController> states = main.States;
+        IEnumerable<StatoController> states = main.States;
 
         foreach (StatoController s in states)
         {
@@ -73,7 +76,7 @@ public class SelectManager : IManager
     /// <param name="stato"></param>
     private void SelectionMove(StatoController stato)
     {
-        if (this.stateTemp == null)
+        if (this.stateTemp == null && stato.Player.Equals(this.currentPlayer))
         {
             this.stateTemp = stato;
             this.stateTemp.Toggle(true);
@@ -84,13 +87,15 @@ public class SelectManager : IManager
             
             if(border.areNeighbours(this.stateTemp, stato) && this.stateTemp.Player.Equals(stato.Player))
             {
+                stato.Toggle(true);
                 EndSelection(this.stateTemp, stato);
-	this.stateTemp = null;
+	            this.stateTemp = null;
             }
-            else
+            else if (stato.Player.Equals(currentPlayer))
             {
                 this.stateTemp.Toggle(false);
                 this.stateTemp = stato;
+                this.stateTemp.Toggle(true);
             }
         }
 
@@ -103,24 +108,26 @@ public class SelectManager : IManager
     /// <param name="stato"></param>
     private void SelectionAttack(StatoController stato)
     {
-        if (this.stateTemp == null)
+        if (this.stateTemp == null && stato.Player.Equals(this.currentPlayer))
         {
             this.stateTemp = stato;
             this.stateTemp.Toggle(true);
         }
         else
         {
-            BorderManager border = (BorderManager) MainManager.GetManagerInstance("BorderManager");
+            BorderManager border = (BorderManager)MainManager.GetManagerInstance("BorderManager");
 
             if (border.areNeighbours(this.stateTemp, stato) && !this.stateTemp.Player.Equals(stato.Player))
             {
+                stato.Toggle(true);
                 EndSelection(this.stateTemp, stato);
-	this.stateTemp = null;
+                this.stateTemp = null;
             }
-            else
+            else if (stato.Player.Equals(currentPlayer))
             {
                 this.stateTemp.Toggle(false);
                 this.stateTemp = stato;
+                this.stateTemp.Toggle(true);
             }
         }
     }

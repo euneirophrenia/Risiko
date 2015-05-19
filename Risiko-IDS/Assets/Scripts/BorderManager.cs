@@ -75,7 +75,7 @@ public class BorderManager
 	public bool areNeighbours (string a, string b) 
 	{
 		if (a.Equals(b)) // che fare se chiedono se uno stato confina con lui stesso? nel file non ho messo nessun confine del tipo A,A
-			return true;
+			return false;
 
 		Confine x = new Confine(a,b);
 		IEnumerable<Confine> res=	from c in _borders

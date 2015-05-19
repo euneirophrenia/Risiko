@@ -9,6 +9,7 @@ public class InitialPhaseManager : IManager
 
     private List<Giocatore> players = new List<Giocatore>();
     private List<int> temp = new List<int>();
+    private static readonly Color[] colors = { Color.red, Color.blue, Color.cyan, Color.green, Color.yellow };
 
     private int armatePerStato = 3;             //DA RIVEDERE
     private int armateIniziali;
@@ -25,7 +26,7 @@ public class InitialPhaseManager : IManager
 
         for(int i=0; i<playerNames.Length; i++)
         {
-            Color color =  new UnityEngine.Color(random.Next(500) < 255 ? 0 : 255, random.Next(500) < 255 ? 0 : 255 , random.Next(500) < 255 ? 0 : 255);
+            Color color = colors[i];
             GoalReachedManager goalReachedManager = (GoalReachedManager) MainManager.GetManagerInstance("GoalReachedManager");
 
             SecretGoal secret = goalReachedManager.GenerateGoal();
