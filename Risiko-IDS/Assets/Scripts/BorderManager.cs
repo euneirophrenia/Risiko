@@ -58,8 +58,9 @@ public class BorderManager
 
 	private static readonly List<Confine> _borders = new List<Confine>();
 
-	public BorderManager (string configFilePath="./Assets/Scripts/confini.txt")
+	public BorderManager ()
 	{
+		string configFilePath=Settings.BorderFile;
 		StreamReader sr = new StreamReader(configFilePath);
 		string line;
 		while ((line=sr.ReadLine())!=null)

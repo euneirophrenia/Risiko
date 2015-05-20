@@ -9,9 +9,9 @@ public class InitialPhaseManager : IManager
 
     private List<Giocatore> players = new List<Giocatore>();
     private List<int> temp = new List<int>();
-    private static readonly Color[] colors = { Color.red, Color.blue, Color.cyan, Color.green, Color.yellow };
+    private static readonly Color[] colors = Settings.PlayerColors;
 
-    private int armatePerStato = 3;             //DA RIVEDERE
+    private int armatePerStato = Settings.InitialTankBonusPerState;
     private int armateIniziali;
 
     public InitialPhaseManager()
