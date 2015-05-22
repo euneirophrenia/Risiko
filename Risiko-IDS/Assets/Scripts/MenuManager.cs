@@ -33,7 +33,7 @@ public class MenuManager : MonoBehaviour
         {
             this.isPaused = false;
             Time.timeScale = this.timeScale;
-            GameObject.Find("MainScene/Menu/PausePlane").SetActive(false);              //PLANE 
+           // GameObject.Find("MainScene/Menu/PausePlane").SetActive(false);              //PLANE 
         }
 
         if (menu != null)
@@ -105,8 +105,10 @@ public class MenuManager : MonoBehaviour
        {
             if (!this.isPaused)
             {
-                this.ShowMenu(GameObject.Find("MainScene/Menu/MainMenu").GetComponent<Menu>());
-                GameObject.Find("MainScene/Menu/PausePlane").SetActive(true);                   //PLANE 
+                //this.ShowMenu(GameObject.Find("MainScene/Menu/MainMenu").GetComponent<Menu>());
+                this.ShowMenu(GameObject.Find("MainScene/GUI/Menu/MainMenu").GetComponent<Menu>());
+
+                //GameObject.Find("MainScene/Menu/PausePlane").SetActive(true);                   //PLANE 
                 this.timeScale = Time.timeScale;
                 Time.timeScale = 0;
                 this.isPaused = true;                                  
