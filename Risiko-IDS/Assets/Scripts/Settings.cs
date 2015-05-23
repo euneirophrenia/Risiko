@@ -14,7 +14,8 @@ public static class Settings
 	private static readonly int _armateInizialiPerStato=3;
 	private static readonly string[] _phaseOrder= {"PreTurnoManager", "AttackManager", "MoveManager"};
 	private static readonly int[] _players= {2,4,5};
-	private static readonly Color[] _colors = { Color.red, Color.blue, Color.cyan, Color.green, Color.yellow };
+	private static readonly Color[] _colors = { Color.red, Color.blue, Color.cyan, Color.green, Color.yellow};
+	private static readonly int _minStati=24, _maxStati=27;
 
 	public static string BorderFile
 	{
@@ -53,6 +54,22 @@ public static class Settings
 		get
 		{
 			return _colors;
+		}
+	}
+
+	public static int MinGoalStatesNumber
+	{
+		get
+		{
+			return _minStati;
+		}
+	}
+
+	public static int MaxGoalStatesNumber
+	{
+		get
+		{
+			return _maxStati;
 		}
 	}
 	

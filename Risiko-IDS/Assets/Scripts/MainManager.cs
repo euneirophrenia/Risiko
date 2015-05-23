@@ -11,7 +11,10 @@ public class MainManager : MonoBehaviour
 	public GameObject world;
 
     private IEnumerable<Giocatore> players;
-    private static MainManager instance;            //DA TESTARE
+    private static MainManager instance; 			//DA TESTARE
+
+	private string[] _playerNames;
+
 
 	// Use this for initialization
 	void Start () 
@@ -57,6 +60,7 @@ public class MainManager : MonoBehaviour
 
     public void Init(string[] playerNames)
     {
+		this._playerNames=playerNames;
         InitialPhaseManager init = new InitialPhaseManager();
         this.players = init.Create(playerNames, new List<StatoController>(this.States)); 
     }
@@ -69,16 +73,46 @@ public class MainManager : MonoBehaviour
         }
     }
 
+	public IEnumerable<String> Continents
+	{
+		get
+		{
+			return this._world.Keys;
+		}
+	}
+
 	public IEnumerable<StatoController> GetStatesByPlayer(Giocatore g)
 	{
 		return from StatoController c in States where c.Player.Equals(g) select c;
 	}
+
+	public IEnumerable<StatoController> GetStatesByPlayer(string name)
+	{
+		return from StatoController c in States where c.Player.Name.Equals(name) select c;
+	}
+
 
 	public IEnumerable<StatoController> GetStatesyByContinent(string name)
 	{
 		if (!_world.ContainsKey(name))
 			throw new KeyNotFoundException("No such continent");
 		return _world[name];
+	}
+
+	public IEnumerable<Giocatore> Players
+	{
+		get
+		{
+			return this.players;
+		}
+	}
+
+	public IEnumerable<string> PlayerNames
+	{
+		get
+		{
+			return this._playerNames;
+		}
 	}
 
 
