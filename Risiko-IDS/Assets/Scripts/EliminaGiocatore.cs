@@ -32,13 +32,12 @@ public class EliminaGiocatore : SecretGoal
 		}
 		set
 		{
-			if (!_player.Name.Equals(_target))
-				_player=value;
-			else
+			if (value.Name.Equals(_target))
 			{
 				GoalReachedManager gm = (GoalReachedManager)MainManager.GetManagerInstance("GoalReachedManager");
 				gm.RebindPlayer(ref _target);
 			}
+			_player=value;
 		}
 	}	
 }
