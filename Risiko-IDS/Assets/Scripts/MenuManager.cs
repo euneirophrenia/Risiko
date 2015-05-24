@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEditor;
+using System.Collections.Generic;
 
 public class MenuManager : MonoBehaviour 
 {
@@ -14,13 +15,13 @@ public class MenuManager : MonoBehaviour
 
     private bool isMuted = false;
     private bool isPaused = false;
-    private float timeScale;
-    private readonly int maxplayers = 5;            
+    private float timeScale;         
     private int playerNumber = 0;
-    private string[] playernames = new string[5];
+    private string[] playernames;
 	
     public void Start()
     {
+        playernames = new string[Mathf.Max(Settings.PlayersNumber)];
         ShowMenu(currentMenu);
     }
 
@@ -74,7 +75,7 @@ public class MenuManager : MonoBehaviour
     {
         this.playerNumber = number;
 
-        for (int i = 1; i < maxplayers+1;  i++)
+        for (int i = 1; i < Mathf.Max(Settings.PlayersNumber) + 1; i++)
         {
             string s = "InitialMenu/Menu/SelectMenu/Panel/Buttons/Input" + i;
             GameObject.Find(s).SetActive(false);
@@ -122,7 +123,6 @@ public class MenuManager : MonoBehaviour
         
     }
 
-
 	public void Play()
 	{
         if (this.playerNumber != 0)
@@ -138,6 +138,12 @@ public class MenuManager : MonoBehaviour
                     return;
                 }
                    
+                if (new List<string>(playernames).Contains(input.text))
+                {
+                    EditorUtility.DisplayDialog("Error", "Player names cannot be duplicated", "Ok", null);
+                    playernames = new string[Mathf.Max(Settings.PlayersNumber)];
+                    return;
+                }
 
                 playernames[i - 1] = input.text.Trim();
             }
