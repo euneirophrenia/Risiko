@@ -92,7 +92,7 @@ public class MainManager : MonoBehaviour
 	}
 
 
-	public IEnumerable<StatoController> GetStatesyByContinent(string name)
+	public IEnumerable<StatoController> GetStatesByContinent(string name)
 	{
 		if (!_world.ContainsKey(name))
 			throw new KeyNotFoundException("No such continent");

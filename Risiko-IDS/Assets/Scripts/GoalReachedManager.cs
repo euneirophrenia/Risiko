@@ -42,13 +42,12 @@ public class GoalReachedManager : IManager
 	private readonly Type[] _tipi;
 	private readonly List<SecretGoal> _obiettivi;
 
-	private delegate T random<T>(bool uniqe, int min, int max);
+	private delegate T random<T>(int min, int max);
 
 	public delegate void GetWinner(IEnumerable<Giocatore> g);
 	public event GetWinner GoalReached;
 
 	private readonly Dictionary<string, random<object>> _randomGetter;
-	private readonly Dictionary<string, List<object>> _usedValues;
 
 	public GoalReachedManager()
 	{
@@ -59,7 +58,6 @@ public class GoalReachedManager : IManager
 
 		_obiettivi= new List<SecretGoal>();
 
-		_usedValues=new Dictionary<string, List<object>>();
 		_randomGetter=new Dictionary<string, random<object>>();
 
 		#region Inizializzazione della mappa Tipo-funzione
@@ -90,45 +88,24 @@ public class GoalReachedManager : IManager
 			return g;
 		}
 		ConstructorArgumentsInfo attr = (ConstructorArgumentsInfo) attrs[0];
-		object[] param={_randomGetter[attr.Tipo](attr.IsUnique, attr.Min, attr.Max)};
-
-	    g = (SecretGoal )Activator.CreateInstance(_tipi[_next], param);
+		object[] param={_randomGetter[attr.Tipo](attr.Min, attr.Max)};
+		do
+		{
+	    	g = (SecretGoal )Activator.CreateInstance(_tipi[_next], param);
+		}
+		while (attr.IsUnique && _obiettivi.Contains(g));
 		_obiettivi.Add(g);
 		return g;
     }
-
-	private bool FindArray<T>(T[] what, IEnumerable<object> where)
-	{
-		object[] control = new List<object>(where).ToArray();
-		if (control.Length<1 || !control[0].GetType().IsAssignableFrom(typeof(object[])))
-			return false;
-
-		bool found;
-		foreach (object[] x in where)
-		{
-			found=true;
-			foreach (object element in x)
-			{
-				found&=what.Contains(element);
-				if (!found)
-					break;
-			}
-			if (found)
-				return true;
-		}
-		return false;
-	}
 
 	public void RebindPlayer(ref string name)
 	{
 		string newname;
 		do
 		{
-			_usedValues["player"].Remove(name);
-			newname= this.randomPlayerName(true, 0, 0);
+			newname= this.randomPlayerName(0, 0);
 		}
 		while (newname.Equals(name));
-
 		name=newname;
 	}
 
@@ -150,68 +127,37 @@ public class GoalReachedManager : IManager
 
 
 	#region Random Getters
-	private object randomInt(bool uniq, int min, int max)
+	private object randomInt(int min, int max)
 	{
-		if (! _usedValues.ContainsKey("int"))
-			_usedValues["int"]=new List<object>();
-
-		int res;
-		do
-		{
-			res = UnityEngine.Random.Range(min, max);
-		}
-		while (uniq && _usedValues["int"].Contains(res));
-		_usedValues["int"].Add(res);
-
-		return res;
+		return UnityEngine.Random.Range(min, max);
 	}
 
-	private string[] randomContinents(bool uniq, int min, int max)
+	private string[] randomContinents(int min, int max)
 	{
 		string[] continents = MainManager.GetInstance().Continents.ToArray();
 
 		List<string> res = new List<String>();
 
-		if (! _usedValues.ContainsKey("continents"))
-			_usedValues["continents"]=new List<object>();
-
-		do
+		int n = UnityEngine.Random.Range(min, max);
+		for (int i=0; i<n;i++)
 		{
-			int n = UnityEngine.Random.Range(min, max);
-			for (int i=0; i<n;i++)
+			string c;
+			do
 			{
-				string c;
-				do
-				{
-					c=continents[UnityEngine.Random.Range(0, continents.Length)];
-				}
-				while (res.Contains(c));
-				res.Add(c);
+				c=continents[UnityEngine.Random.Range(0, continents.Length)];
 			}
-
+			while (res.Contains(c));
+			res.Add(c);
 		}
-		while (uniq && FindArray<string>(res.ToArray(), _usedValues["continents"]));
-		_usedValues["continents"].Add(res.ToArray());
-
 		return res.ToArray();
-
 	}
 
-	private string randomPlayerName(bool uniq, int min, int max)
+	private string randomPlayerName(int min, int max)
 	{
 //		string[] names = {"tizio", "caio", "pipponio"};
 		string[] names =MainManager.GetInstance().PlayerNames.ToArray();
 
-		if (!_usedValues.ContainsKey("player"))
-			_usedValues["player"]= new List<object>();
-
-		string res;
-		do
-		{
-			res = names[UnityEngine.Random.Range(0, names.Length)];
-		}
-		while (uniq && _usedValues["player"].Contains(res));
-		_usedValues["player"].Add (res);
+		string res = names[UnityEngine.Random.Range(0, names.Length)];
 
 		return res;
 	}

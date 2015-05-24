@@ -35,4 +35,16 @@ public class ConquistaN : SecretGoal
 			_player=value;
 		}
 	}
+
+	public override bool Equals(object other)
+	{
+		if (!(other is ConquistaN))
+			return false;
+		return ((ConquistaN) other)._n==this._n;
+	}
+
+	public override int GetHashCode ()
+	{
+		return this._n.GetHashCode();
+	}
 }

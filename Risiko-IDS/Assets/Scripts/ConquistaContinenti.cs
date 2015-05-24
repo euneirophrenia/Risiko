@@ -28,7 +28,7 @@ public class ConquistaContinenti : SecretGoal
 		MainManager m = MainManager.GetInstance();
 		foreach (string c in _targets)
 		{
-			foreach(StatoController s in m.GetStatesyByContinent(c))
+			foreach(StatoController s in m.GetStatesByContinent(c))
 			{
 				res&=s.Player.Equals(_player);
 				if (!res)
@@ -49,5 +49,28 @@ public class ConquistaContinenti : SecretGoal
 		{
 			_player=value;
 		}
+	}
+
+	public override bool Equals (object obj)
+	{
+		if (!(obj is ConquistaContinenti))
+			return false;
+		ConquistaContinenti other=((ConquistaContinenti) obj);
+		List<string> otherConts = new List<string>(other._targets);
+		bool res=this._targets.Length==otherConts.Count;
+		if (!res)
+			return false;
+		foreach (string c in this._targets)
+		{
+			res&=otherConts.Contains(c);
+			if (!res)
+				return false;
+		}
+		return true;
+	}
+
+	public override int GetHashCode ()
+	{
+		return this._targets.GetHashCode();
 	}
 }

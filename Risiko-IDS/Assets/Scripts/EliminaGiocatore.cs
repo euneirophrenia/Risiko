@@ -40,4 +40,16 @@ public class EliminaGiocatore : SecretGoal
 			_player=value;
 		}
 	}	
+
+	public override bool Equals (object obj)
+	{
+		if (!(obj is EliminaGiocatore))
+			return false;
+		return ((EliminaGiocatore) obj)._target.Equals(this._target);
+	}
+
+	public override int GetHashCode ()
+	{
+		return this._target.GetHashCode();
+	}
 }
