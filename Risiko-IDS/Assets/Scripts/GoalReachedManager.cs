@@ -97,6 +97,41 @@ public class GoalReachedManager : IManager
 		return g;
     }
 
+	private bool FindArray<T>(T[] what, IEnumerable<object> where)
+	{
+		object[] control = new List<object>(where).ToArray();
+		if (control.Length<1 || !control[0].GetType().IsAssignableFrom(typeof(object[])))
+			return false;
+
+		bool found;
+		foreach (object[] x in where)
+		{
+			found=true;
+			foreach (object element in x)
+			{
+				found&=what.Contains(element);
+				if (!found)
+					break;
+			}
+			if (found)
+				return true;
+		}
+		return false;
+	}
+
+	public void RebindPlayer(ref string name)
+	{
+		string newname;
+		do
+		{
+			_usedValues["player"].Remove(name);
+			newname= this.randomPlayerName(true, 0, 0);
+		}
+		while (newname.Equals(name));
+
+		name=newname;
+	}
+
 	public void Check()
 	{
 		bool gameover=false;
@@ -155,7 +190,7 @@ public class GoalReachedManager : IManager
 			}
 
 		}
-		while (uniq && _usedValues["continents"].Contains(res.ToArray()));
+		while (uniq && FindArray<string>(res.ToArray(), _usedValues["continents"]));
 		_usedValues["continents"].Add(res.ToArray());
 
 		return res.ToArray();

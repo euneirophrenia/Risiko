@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class EliminaGiocatore : SecretGoal
 {
-	private readonly string _target;
+	private string _target;
 	private Giocatore _player;
 	
 	[ConstructorArgumentsInfo("player", IsUnique=true)]
@@ -32,7 +32,13 @@ public class EliminaGiocatore : SecretGoal
 		}
 		set
 		{
-			_player=value;
+			if (!_player.Name.Equals(_target))
+				_player=value;
+			else
+			{
+				GoalReachedManager gm = (GoalReachedManager)MainManager.GetManagerInstance("GoalReachedManager");
+				gm.RebindPlayer(ref _target);
+			}
 		}
-	}
+	}	
 }
