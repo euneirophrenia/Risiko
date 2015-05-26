@@ -1,0 +1,12 @@
+- PhaseManager
+- AttackManager
+- MoveManager
+- Popups
+- PreturnoManager 
+- MainManager
+
+
+- Glossario
+- PowerPoint
+- Diagramma sequenza/stato
+- Sistemare UML e tabella casi d'uso
