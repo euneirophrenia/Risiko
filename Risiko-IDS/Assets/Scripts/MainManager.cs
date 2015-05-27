@@ -41,7 +41,7 @@ public class MainManager : MonoBehaviour
 
 		Type managerType = Type.GetType(manager);
 
-		if (! (managerType is IManager))
+		if (! (typeof(IManager).IsAssignableFrom(managerType)) || managerType.IsInterface)
 			throw new ArgumentException("Manager ignoto");
 
 		_factory[manager]= (IManager) Activator.CreateInstance(managerType); 
