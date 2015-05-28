@@ -48,7 +48,8 @@ public class DiceManager
 	{
 		System.Array.Sort<int>(_attackRes, (n,m) => m.CompareTo(n));
 		System.Array.Sort<int>(_defenceRes, (n,m) => m.CompareTo(n));
-		this.ResultReady(this._attackRes, this._defenceRes);
+        if (ResultReady != null)
+		    this.ResultReady(this._attackRes, this._defenceRes);
 		Reset ();
 
 	}

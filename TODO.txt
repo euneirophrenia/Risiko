@@ -1,8 +1,6 @@
 - PhaseManager
 - AttackManager
 - MoveManager
-- Popups
-- PreturnoManager 
 - MainManager
 
 

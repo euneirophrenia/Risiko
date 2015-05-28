@@ -96,7 +96,7 @@ public class SelectManager : IManager
         {
             BorderManager border = (BorderManager) MainManager.GetManagerInstance("BorderManager");
             
-            if(border.areNeighbours(this.stateTemp, stato) && this.stateTemp.Player.Equals(stato.Player))
+            if(border.areNeighbours(this.stateTemp, stato) && this.stateTemp.Player.Equals(stato.Player) && EndSelection != null)
             {
                 stato.Toggle(true);
                 EndSelection(this.stateTemp, stato);
@@ -128,7 +128,7 @@ public class SelectManager : IManager
         {
             BorderManager border = (BorderManager)MainManager.GetManagerInstance("BorderManager");
 
-            if (border.areNeighbours(this.stateTemp, stato) && !this.stateTemp.Player.Equals(stato.Player))
+            if (border.areNeighbours(this.stateTemp, stato) && !this.stateTemp.Player.Equals(stato.Player) && EndSelection != null)
             {
                 stato.Toggle(true);
                 EndSelection(this.stateTemp, stato);
