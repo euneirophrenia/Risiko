@@ -17,14 +17,9 @@ public class SelectManager : IManager
     public void Register(string moveOrAttack)
     {
         // in base a chi lo ha chiamato registra su tutti i "Clicked" degli StatoController uno dei due metodi sotto
-        StatoController.Action selectMethod = null;
+        StatoController.Action selectMethod = this.SelectMethod(moveOrAttack);
 
-        if (moveOrAttack.Equals("AttackManager"))
-            selectMethod = this.SelectionAttack;
-
-        else if (moveOrAttack.Equals("MoveManager"))
-            selectMethod = this.SelectionMove;
-        else
+        if (selectMethod == null)
             return;
 
         MainManager main = MainManager.GetInstance();
@@ -39,14 +34,9 @@ public class SelectManager : IManager
     public void UnRegister(string moveOrAttack)
     {
         // in base a chi lo ha chiamato DEregistra su tutti i "Clicked" degli StatoController uno dei due metodi sotto
-        StatoController.Action selectMethod = null;
+        StatoController.Action selectMethod = this.SelectMethod(moveOrAttack);
 
-        if (moveOrAttack.Equals("AttackManager"))
-            selectMethod = this.SelectionAttack;
-
-        else if (moveOrAttack.Equals("MoveManager"))
-            selectMethod = this.SelectionMove;
-        else
+        if (selectMethod == null)
             return;
 
         MainManager main = MainManager.GetInstance();
@@ -58,6 +48,27 @@ public class SelectManager : IManager
         }
     }
 
+    private StatoController.Action SelectMethod(string moveOrAttack)
+    {
+         
+        switch (moveOrAttack)
+        {
+            case "AttackManager":
+            {
+                return this.SelectionAttack;
+            }
+
+            case "MoveManager":
+            {
+                return this.SelectionMove;
+            }
+
+            default :
+            {
+                return null;
+            }
+        }
+    }
 
 
 

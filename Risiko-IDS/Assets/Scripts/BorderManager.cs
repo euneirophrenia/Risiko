@@ -33,7 +33,7 @@ public class BorderManager
 
 		public static bool operator == (Confine a, Confine b) //mi fa comodo una cifra! vedi linq sotto
 		{
-			return (a[0].Equals(b[0]) && a[1].Equals(b[1])) || (a[1].Equals(b[0]) && a[0].Equals(b[1]));
+			return (a[0] == b[0] && a[1] == b[1]) || (a[1] == b[0] && a[0] == b[1]);
 		}
 		public static bool operator != (Confine a, Confine b) //unity dava warning senza questo (ci sta)
 		{

@@ -6,12 +6,15 @@ public class StatoController : MonoBehaviour
 	public GUISkin GameSkin;
     public GameObject tank;
 
+    private GameObject animationObject;
+
     //variabili da visualizzare
 	private string stateName;
     private int tankNumber;
     private GameObject tk;
     private string stringToDisplay;
     private Giocatore player = null;
+   
 
 	private Color startColor;
 	private bool _displayObjectName;
@@ -57,8 +60,9 @@ public class StatoController : MonoBehaviour
     {
         if (Clicked != null)
             Clicked(this);
-
+ 
         _displayObjectName = false;
+
     }
 
     //Funzioni standard
@@ -135,7 +139,7 @@ public class StatoController : MonoBehaviour
 
     private void setTankColor(Color color)
     {
-        tk.GetComponent<Renderer>().material.color = color;
+        tk.GetComponentInChildren<Renderer>().material.color = color;
     }
 
     /// <summary>
@@ -154,6 +158,24 @@ public class StatoController : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = startColor;
         }
+    }
+
+    public void PlayAnimation(string animationName)
+    {
+        StartCoroutine(this.Spawn(animationName));
+    }
+
+    private IEnumerator Spawn(string animationName)
+    {
+        Transform trans = this.GetComponent<Transform>();
+        animationObject = Resources.Load<GameObject>(animationName);
+        GameObject ob = Instantiate(animationObject);
+        ob.GetComponent<Transform>().rotation = Camera.main.GetComponent<Transform>().rotation;
+        ob.GetComponent<Transform>().position = new Vector3(trans.position.x, trans.position.y + 10, trans.position.z);
+        ob.GetComponent<Animator>().Play(animationName);
+        yield return new WaitForSeconds(1);
+        Destroy(ob);
+
     }
 
 }

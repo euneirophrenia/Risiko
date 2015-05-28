@@ -151,14 +151,7 @@ public class MenuManager : MonoBehaviour
 
         //Debug.Log(playernames[0] + " " + playernames[1]);
 
-
-       /*
-        * 
-        * Invocazione di InitialPhaseManager per la creazione dei giocatori ecc
-        * 
-        */
-
-        //MainManager.GetInstance().Init(playernames);    
+        MainManager.GetInstance().Init(playernames);    
 
         MainScene.SetActive(true);
 

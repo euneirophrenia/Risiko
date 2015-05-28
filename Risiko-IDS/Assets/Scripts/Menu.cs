@@ -22,7 +22,7 @@ public class Menu : MonoBehaviour
         animator = GetComponent<Animator>();
         canvasGroup = GetComponent<CanvasGroup>();
 
-        var rect = GetComponent<RectTransform>();
+        RectTransform rect = GetComponent<RectTransform>();
         rect.offsetMax = rect.offsetMin = new Vector2(0, 0);
 	}
 	

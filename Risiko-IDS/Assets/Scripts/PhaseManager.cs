@@ -1,4 +1,4 @@
-public class PhaseManager
+public class PhaseManager : IManager
 {
     private Giocatore currentPlayer;
 

@@ -62,7 +62,8 @@ public class MainManager : MonoBehaviour
     {
 		this._playerNames=playerNames;
         InitialPhaseManager init = new InitialPhaseManager();
-        this.players = init.Create(playerNames, new List<StatoController>(this.States)); 
+        this.players = init.Create(playerNames, new List<StatoController>(this.States));
+        //DA CREARE PHASEMANAGER
     }
 
     public IEnumerable<StatoController> States
@@ -88,7 +89,7 @@ public class MainManager : MonoBehaviour
 
 	public IEnumerable<StatoController> GetStatesByPlayer(string name)
 	{
-		return from StatoController c in States where c.Player.Name.Equals(name) select c;
+		return from StatoController c in States where c.Player.Name == name select c;
 	}
 
 

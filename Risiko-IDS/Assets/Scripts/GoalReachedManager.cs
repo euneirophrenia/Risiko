@@ -105,7 +105,7 @@ public class GoalReachedManager : IManager
 		{
 			newname= this.randomPlayerName(0, 0);
 		}
-		while (newname.Equals(name));
+		while (newname == name);
 		name=newname;
 	}
 
@@ -154,7 +154,7 @@ public class GoalReachedManager : IManager
 
 	private string randomPlayerName(int min, int max)
 	{
-//		string[] names = {"tizio", "caio", "pipponio"};
+
 		string[] names =MainManager.GetInstance().PlayerNames.ToArray();
 
 		string res = names[UnityEngine.Random.Range(0, names.Length)];
