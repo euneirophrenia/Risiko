@@ -2,13 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class DiceManager
+public class DiceManager : IManager
 {
-    private Transform _attack;
-    private Transform _defense;
+    private GameObject _attack;
+    private GameObject _defense;
 	private float _speedUp;
-    private Transform [] _attackList;
-    private Transform [] _defenseList;
+    private GameObject [] _attackList;
+    private GameObject [] _defenseList;
 
 	private int[] _attackRes, _defenceRes;
 
@@ -20,8 +20,18 @@ public class DiceManager
 	public delegate void GetResult(int[] attackRes, int[] defenceRes);
 	public event GetResult ResultReady;
 	
-	
-	public DiceManager(Transform attack, Transform defence, GameObject environment, float speedup=2)
+
+	public DiceManager()
+	{
+		this._attack=(GameObject)Resources.Load("AttackDice");
+		this._defense=(GameObject)Resources.Load("DefenseDice");
+		this._envPrefab=(GameObject)Resources.Load("Environment");
+		this._speedUp=2;
+		if (this._attack == null || this._defense == null || this._envPrefab==null)
+			throw new MissingComponentException("Missing resources");
+	}
+
+	public DiceManager(GameObject attack, GameObject defence, GameObject environment, float speedup=2)
     {
 		this._attack=attack;
 		this._defense=defence;
@@ -59,8 +69,8 @@ public class DiceManager
 		if (attack<=0 || defence <=0 )
 			return;
 
-		this._attackList = new Transform[attack];
-		this._defenseList = new Transform[defence];
+		this._attackList = new GameObject[attack];
+		this._defenseList = new GameObject[defence];
 		_iAttack=0;
 		_iDefence=0;
 		total=attack+defence;
