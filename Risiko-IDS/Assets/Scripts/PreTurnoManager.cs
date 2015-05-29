@@ -73,4 +73,13 @@ public class PreTurnoManager : IRegistration, IManager
             //s.RightClicked -= this.Remove;
         }
     }
+
+
+    public string PhaseName
+    {
+        get 
+        {
+            return "Preturno";
+        }
+    }
 }

@@ -4,4 +4,6 @@
     void Register();
 
     void Unregister();
+
+    string PhaseName { get; }
 }
