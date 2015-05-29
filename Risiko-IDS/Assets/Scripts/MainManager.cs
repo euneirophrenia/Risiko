@@ -63,7 +63,7 @@ public class MainManager : MonoBehaviour
 		this._playerNames=playerNames;
         InitialPhaseManager init = new InitialPhaseManager();
         this.players = init.Create(playerNames, new List<StatoController>(this.States));
-        //DA CREARE PHASEMANAGER
+       	GetManagerInstance("PhaseManager");
     }
 
     public IEnumerable<StatoController> States
