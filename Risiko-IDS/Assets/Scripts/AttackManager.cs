@@ -47,10 +47,10 @@ namespace Assets.Scripts
             int numArmatiMax = _statoAttacco.TankNumber > 3 ? 3 : _statoAttacco.TankNumber; // Math.Min(statoAttacco.TankNumber, 3);
             List<int> valuesRange = Enumerable.Range(1, numArmatiMax).ToList<int>();
 
-            this.myIstantiatePopup(_choicePopup);
-            _choicePopup.GetComponent<ChoicePopupController>().initPopup("ATTACCO", "Scegli con quanti carri armati attaccare", valuesRange);
-            _choicePopup.GetComponent<ChoicePopupController>().AcceptPressed += handleChoicePopupAccepted;
-            _choicePopup.GetComponent<ChoicePopupController>().CancelPressed += handleChoicePopupCancelled;
+            GameObject popup = this.myIstantiatePopup(_choicePopup);
+            popup.GetComponent<ChoicePopupController>().initPopup("ATTACCO", "Scegli con quanti carri armati attaccare", valuesRange);
+            popup.GetComponent<ChoicePopupController>().AcceptPressed += handleChoicePopupAccepted;
+            popup.GetComponent<ChoicePopupController>().CancelPressed += handleChoicePopupCancelled;
         }
 
         private void handleChoicePopupCancelled()
@@ -74,9 +74,9 @@ namespace Assets.Scripts
             DiceManager diceManager = ((DiceManager)MainManager.GetManagerInstance("DiceManager"));
             diceManager.ResultReady -= handleDiceResult;
 
-            this.myIstantiatePopup(_diceResultPopup);
-            _diceResultPopup.GetComponent<DiceResultPopupController>().ClosePopup += end;
-            _diceResultPopup.GetComponent<DiceResultPopupController>().initPopup("Risultato lancio dadi", attack, defense, statoConquistato);
+            GameObject popup = this.myIstantiatePopup(_diceResultPopup);
+            popup.GetComponent<DiceResultPopupController>().ClosePopup += end;
+            popup.GetComponent<DiceResultPopupController>().initPopup("Risultato lancio dadi", attack, defense, statoConquistato);
         }
 
         private bool calculateResult(int[] attack, int[] defense)
@@ -127,11 +127,11 @@ namespace Assets.Scripts
             _statoDifesa = null;
         }
 
-        private void myIstantiatePopup(GameObject popup)
+        private GameObject myIstantiatePopup(GameObject popup)
         {
             GameObject popupIstance = GameObject.Instantiate(popup);
             popupIstance.GetComponent<Transform>().parent = _guiCanvas;
-
+            return popupIstance;
         }
     }
 }

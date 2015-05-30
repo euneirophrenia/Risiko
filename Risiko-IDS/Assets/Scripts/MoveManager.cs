@@ -45,10 +45,10 @@ namespace Assets.Scripts
 
             List<int> valuesRange = Enumerable.Range(1, _statoFrom.TankNumber - 1).ToList();
 
-            this.myIstantiatePopup(_choicePopup);
-            _choicePopup.GetComponent<ChoicePopupController>().initPopup("MUOVI(TI)", "Scegli quanti carri armati spostare", valuesRange);
-            _choicePopup.GetComponent<ChoicePopupController>().AcceptPressed += handleChoicePopupAccepted;
-            _choicePopup.GetComponent<ChoicePopupController>().CancelPressed += handleChoicePopupCancelled;
+            GameObject popup = this.myIstantiatePopup(_choicePopup);
+            popup.GetComponent<ChoicePopupController>().initPopup("MUOVI(TI)", "Scegli quanti carri armati spostare", valuesRange);
+            popup.GetComponent<ChoicePopupController>().AcceptPressed += handleChoicePopupAccepted;
+            popup.GetComponent<ChoicePopupController>().CancelPressed += handleChoicePopupCancelled;
 
         }
 
@@ -74,10 +74,11 @@ namespace Assets.Scripts
             _statoTo = null;
         }
 
-        private void myIstantiatePopup(GameObject popup)
+        private GameObject myIstantiatePopup(GameObject popup)
         {
             GameObject popupIstance = GameObject.Instantiate(popup); 
             popupIstance.GetComponent<Transform>().parent = _guiCanvas;
+            return popupIstance;
 
         }
     }
