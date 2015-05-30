@@ -23,9 +23,9 @@ public class ChoicePopupController : MonoBehaviour
         //#region debug-testing
         //_index = 0;
         //List<int> l = new List<int>();
-        //l.Add(11);l.Add(2);l.Add(4);l.Add(7);
-        
-        //initPopup("Choice Popup","Descrizione molto lunga di un popup che spero funzioni", l);
+        //l.Add(11); l.Add(2); l.Add(4); l.Add(7);
+
+        //initPopup("Choice Popup", "Descrizione molto lunga di un popup che spero funzioni", l);
         //#endregion
 
         this.AcceptPressed += hide;

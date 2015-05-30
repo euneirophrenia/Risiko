@@ -22,8 +22,8 @@ public class DiceResultPopupController : MonoBehaviour
 	void Start ()
     {
         //#region debug-test
-        //int[] attack = {6,5,3};
-        //int[] defense = {6,4};
+        //int[] attack = { 6, 5, 3 };
+        //int[] defense = { 6, 4 };
 
         //initPopup("Risultato lancio dadi", attack, defense, true);
         //#endregion
