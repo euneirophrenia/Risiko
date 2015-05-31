@@ -19,12 +19,13 @@ namespace Assets.Scripts
         #region IRegistration
         public void Register()
         {
+            ((SelectManager)MainManager.GetManagerInstance("SelectManager")).EndSelection += handleSelection; 
             ((SelectManager) MainManager.GetManagerInstance("SelectManager")).Register("AttackManager"); 
-            ((SelectManager) MainManager.GetManagerInstance("SelectManager")).EndSelection += handleSelection; 
         }
 
         public void Unregister()
         {
+            ((SelectManager)MainManager.GetManagerInstance("SelectManager")).EndSelection -= handleSelection; 
             ((SelectManager)MainManager.GetManagerInstance("SelectManager")).UnRegister("AttackManager");  
         }
 

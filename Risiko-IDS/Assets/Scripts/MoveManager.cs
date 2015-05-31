@@ -18,12 +18,13 @@ namespace Assets.Scripts
         #region IRegistration
         public void Register()
         {
-            ((SelectManager)MainManager.GetManagerInstance("SelectManager")).Register("MoveManager");
             ((SelectManager)MainManager.GetManagerInstance("SelectManager")).EndSelection += handleSelection;
+            ((SelectManager)MainManager.GetManagerInstance("SelectManager")).Register("MoveManager");
         }
 
         public void Unregister()
         {
+            ((SelectManager)MainManager.GetManagerInstance("SelectManager")).EndSelection -= handleSelection;
             ((SelectManager)MainManager.GetManagerInstance("SelectManager")).UnRegister("MoveManager");
         }
 
@@ -62,7 +63,8 @@ namespace Assets.Scripts
             _statoFrom.TankNumber -= value;
             _statoTo.TankNumber += value;
             this.removeSelection();
-            //se è possibile soltato spostare una volta le armate qui bisogna avanzare di fase....
+            //se è possibile soltato spostare una volta le armate qui bisogna avanzare di fase -> mi unregistro
+            this.Unregister(); 
         }
 
 
