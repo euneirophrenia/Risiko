@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
-    class AttackManager : IRegistration, IManager
+    class AttackManager : IPhase, IManager
     {
         private StatoController _statoAttacco, _statoDifesa;
         
@@ -16,7 +16,7 @@ namespace Assets.Scripts
         private static readonly GameObject _choicePopup = Resources.Load<GameObject>("ChoicePopup");
         private static readonly GameObject _diceResultPopup = Resources.Load<GameObject>("DiceResultPopup");
 
-        #region IRegistration
+        #region IPhase
         public void Register()
         {
             ((SelectManager)MainManager.GetManagerInstance("SelectManager")).EndSelection += handleSelection; 

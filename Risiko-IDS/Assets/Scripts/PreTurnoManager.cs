@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-public class PreTurnoManager : IRegistration, IManager
+public class PreTurnoManager : IPhase, IManager
 {
     private List<StatoController> currentChanges;
 

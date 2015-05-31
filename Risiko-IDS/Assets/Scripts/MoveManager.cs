@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
-    class MoveManager : IManager, IRegistration
+    class MoveManager : IManager, IPhase
     {
         private StatoController _statoFrom, _statoTo;
 
@@ -15,7 +15,7 @@ namespace Assets.Scripts
         private static readonly Transform _guiCanvas = GameObject.Find("GUI").GetComponent<Transform>();
         private static readonly GameObject _choicePopup = Resources.Load<GameObject>("ChoicePopup");
 
-        #region IRegistration
+        #region IPhase
         public void Register()
         {
             ((SelectManager)MainManager.GetManagerInstance("SelectManager")).EndSelection += handleSelection;

@@ -7,7 +7,7 @@ using System;
 public class PhaseManager : IManager
 {
     private Giocatore currentPlayer;
-    private IRegistration currentPhaseManager;
+    private IPhase currentPhaseManager;
     private IEnumerable<Giocatore> players;
 
     private int playerIndex = 0;                       //si può anche rendere casuale il giocatore iniziale
@@ -21,7 +21,7 @@ public class PhaseManager : IManager
     public PhaseManager()
     {
         this.players = MainManager.GetInstance().Players;
-        this.currentPhaseManager = (IRegistration) MainManager.GetManagerInstance(Settings.PhaseManagers.ElementAt(phaseIndex));
+        this.currentPhaseManager = (IPhase) MainManager.GetManagerInstance(Settings.PhaseManagers.ElementAt(phaseIndex));
         this.currentPlayer = this.players.ElementAt(playerIndex);
         
         if(this.phaseChanged != null)
@@ -50,7 +50,7 @@ public class PhaseManager : IManager
     {
         this.currentPhaseManager.Unregister();
         this.phaseIndex = (this.phaseIndex + 1) % Settings.PhaseManagers.Count();
-        this.currentPhaseManager = (IRegistration) MainManager.GetManagerInstance(Settings.PhaseManagers.ElementAt(phaseIndex));
+        this.currentPhaseManager = (IPhase) MainManager.GetManagerInstance(Settings.PhaseManagers.ElementAt(phaseIndex));
 
         if (this.phaseIndex == 0)
         {
