@@ -1,22 +1,33 @@
 using System.Collections.Generic;
 public class SelectManager : IManager
 {
-    private StatoController stateTemp;
-    private Giocatore currentPlayer;
+    private StatoController _stateTemp;
+    private Giocatore _currentPlayer;
 
     public delegate void statoSelect(StatoController stato1, StatoController stato2);       
     public event statoSelect EndSelection;                                      //evento a cui si registrano Attack/Move Manager 
+                        
                                                                                 //per sapere quando la selezione è finita con successo 
+
+    private void Init()
+    {
+        if (_stateTemp!= null)
+        {
+            this._stateTemp.Toggle(false);
+            this._stateTemp = null;
+        }
+        PhaseManager phase = (PhaseManager) MainManager.GetManagerInstance("PhaseManager");
+        _currentPlayer = phase.CurrentPlayer;
+    }
+
     public SelectManager()
     {
-        this.stateTemp = null;
-        PhaseManager phase = (PhaseManager) MainManager.GetManagerInstance("PhaseManager");
-        this.currentPlayer = phase.CurrentPlayer;
     }
 
     public void Register(string moveOrAttack)
     {
         // in base a chi lo ha chiamato registra su tutti i "Clicked" degli StatoController uno dei due metodi sotto
+        Init();
         StatoController.Action selectMethod = this.SelectMethod(moveOrAttack);
 
         if (selectMethod == null)
@@ -46,6 +57,7 @@ public class SelectManager : IManager
         {
             s.Clicked -= selectMethod;
         }
+
     }
 
     private StatoController.Action SelectMethod(string moveOrAttack)
@@ -87,26 +99,28 @@ public class SelectManager : IManager
     /// <param name="stato"></param>
     private void SelectionMove(StatoController stato)
     {
-        if (this.stateTemp == null && stato.Player.Equals(this.currentPlayer))
+        if (this._stateTemp == null && stato.Player.Equals(this._currentPlayer))
         {
-            this.stateTemp = stato;
-            this.stateTemp.Toggle(true);
+            this._stateTemp = stato;
+            this._stateTemp.Toggle(true);
+            return;
         }
-        else
+        if (_stateTemp!=null)
         {
             BorderManager border = (BorderManager) MainManager.GetManagerInstance("BorderManager");
             
-            if(border.areNeighbours(this.stateTemp, stato) && this.stateTemp.Player.Equals(stato.Player) && EndSelection != null)
+            if(border.areNeighbours(this._stateTemp, stato) && this._stateTemp.Player.Equals(stato.Player))
             {
                 stato.Toggle(true);
-                EndSelection(this.stateTemp, stato);
-	            this.stateTemp = null;
+                if (EndSelection != null)
+                    EndSelection(this._stateTemp, stato);
+                this._stateTemp = null;
             }
-            else if (stato.Player.Equals(currentPlayer))
+            else if (stato.Player.Equals(_currentPlayer))
             {
-                this.stateTemp.Toggle(false);
-                this.stateTemp = stato;
-                this.stateTemp.Toggle(true);
+                this._stateTemp.Toggle(false);
+                this._stateTemp = stato;
+                this._stateTemp.Toggle(true);
             }
         }
 
@@ -119,26 +133,28 @@ public class SelectManager : IManager
     /// <param name="stato"></param>
     private void SelectionAttack(StatoController stato)
     {
-        if (this.stateTemp == null && stato.Player.Equals(this.currentPlayer))
+        if (this._stateTemp == null && stato.Player.Equals(this._currentPlayer))
         {
-            this.stateTemp = stato;
-            this.stateTemp.Toggle(true);
+            this._stateTemp = stato;
+            this._stateTemp.Toggle(true);
+            return;
         }
-        else
+        if (this._stateTemp != null)
         {
             BorderManager border = (BorderManager)MainManager.GetManagerInstance("BorderManager");
 
-            if (border.areNeighbours(this.stateTemp, stato) && !this.stateTemp.Player.Equals(stato.Player) && EndSelection != null)
+            if (border.areNeighbours(this._stateTemp, stato) && !this._stateTemp.Player.Equals(stato.Player))
             {
                 stato.Toggle(true);
-                EndSelection(this.stateTemp, stato);
-                this.stateTemp = null;
+                if (EndSelection!=null)
+                    EndSelection(this._stateTemp, stato);
+                this._stateTemp = null;
             }
-            else if (stato.Player.Equals(currentPlayer))
+            else if (stato.Player.Equals(_currentPlayer))
             {
-                this.stateTemp.Toggle(false);
-                this.stateTemp = stato;
-                this.stateTemp.Toggle(true);
+                this._stateTemp.Toggle(false);
+                this._stateTemp = stato;
+                this._stateTemp.Toggle(true);
             }
         }
     }
