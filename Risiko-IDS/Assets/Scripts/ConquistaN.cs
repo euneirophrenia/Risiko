@@ -7,7 +7,7 @@ public class ConquistaN : SecretGoal
 	private readonly int _n;
 	private Giocatore _player;
 
-	[ConstructorArgumentsInfo("int", Min=24, Max=27, IsUnique=false)]
+	[ConstructorArgumentsInfo("int", Min=22, Max=22, IsUnique=false)]
 	public ConquistaN(object n)
 	{
 		this._n=(int)n;

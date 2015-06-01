@@ -13,8 +13,8 @@ public static class Settings
 	private static readonly string _borderFile="./Assets/Scripts/confini.txt";
 	private static readonly int _armateInizialiPerStato=3;
 	private static readonly string[] _phaseOrder= {"PreTurnoManager", "AttackManager", "MoveManager"};
-	private static readonly int[] _players= {2,4,3};
-	private static readonly Color[] _colors = { Color.red, Color.blue, Color.cyan, Color.green, Color.yellow};
+	private static readonly int[] _players= {2,3,6};
+	private static readonly Color[] _colors = { Color.red, Color.blue, Color.cyan, Color.green, Color.yellow, Color.black};
 	private static readonly int _minStati=24, _maxStati=27;
 
 	public static string BorderFile
