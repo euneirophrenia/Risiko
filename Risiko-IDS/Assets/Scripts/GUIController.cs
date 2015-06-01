@@ -11,37 +11,46 @@ public class GUIController : MonoBehaviour
     
     public GameObject borders;
     public GameObject labels;
-    public GameObject nameLabel, armateLabel, phaseLabel;
+    public GameObject nameLabel, armateLabel, phaseLabel,secretGoalText;
+
+    //GameObject-panelli per formazione GUI
     public GameObject cardPanel, textPanel, nextButton, resetButton;
-    public GameObject secretGoalText;
-    private Giocatore _giocatore;
-    private string _phase;
+
 
     public delegate void ButtonClicked();
     public event ButtonClicked resetClicked;
     public event ButtonClicked nextClicked;
-
+    
 	// Use this for initialization
 	void Start ()
     {
         #region testing
-        Giocatore = new Giocatore("MarzadureX",color,new EliminaGiocatore("VittoPirla"), 666);
+        Giocatore = new Giocatore("MarzadureX",color,new ConquistaN(666), 666);
         Phase = "PhaseDiDebug, Pirla";
         #endregion
-        //((PhaseManager) MainManager.GetManagerInstance("PhaseManager")).phaseChanged += onPhaseChanged;
-        //((PhaseManager) MainManager.GetManagerInstance("PhaseManager")).turnChanged += onTurnChanged;
+        ((PhaseManager) MainManager.GetManagerInstance("PhaseManager")).phaseChanged += onPhaseChanged;
+        ((PhaseManager) MainManager.GetManagerInstance("PhaseManager")).turnChanged += onTurnChanged;
         scalePanels();
+        Refresh();
     }
 	
     private void onPhaseChanged(string phase)
     {
-        this.Phase = phase; 
+        //this.Phase = phase; 
+        this.Refresh();
     }
 
     private void onTurnChanged(Giocatore g)
     {
-        
-        this.Giocatore = g;
+        //this.Giocatore = g;
+        this.Refresh();
+    }
+
+    public void Refresh()
+    {
+        Giocatore = ((PhaseManager)MainManager.GetManagerInstance("PhaseManager")).CurrentPlayer;
+        Phase = ((PhaseManager)MainManager.GetManagerInstance("PhaseManager")).CurrentPhaseName;
+        this.enabledReset = this.resetClicked != null;
     }
 
     private Giocatore Giocatore
@@ -50,12 +59,11 @@ public class GUIController : MonoBehaviour
         {
             if ( value != null )
             {
-                this._giocatore = value;
-                borders.GetComponent<Image>().color = _giocatore.Color;
-                labels.GetComponent<Image>().color = _giocatore.Color;
-                nameLabel.GetComponent<Text>().text = _giocatore.Name;
-                armateLabel.GetComponent<Text>().text = _giocatore.ArmateDaAssegnare.ToString();
-                secretGoalText.GetComponent<Text>().text = _giocatore.Goal.ToString();
+                borders.GetComponent<Image>().color = value.Color;
+                labels.GetComponent<Image>().color = value.Color;
+                nameLabel.GetComponent<Text>().text = value.Name;
+                armateLabel.GetComponent<Text>().text = value.ArmateDaAssegnare.ToString();
+                secretGoalText.GetComponent<Text>().text = value.Goal.ToString();
             }
         }
     }
@@ -75,7 +83,7 @@ public class GUIController : MonoBehaviour
     {
         scale(0.16f, 0.38f, "BottomRight", this.cardPanel);
         scale(0.12f, 0.19f, "BottomLeft", this.textPanel, marginX: 0.09f);
-        scale(0.16f, 0.10f, "TopRight", this.nextButton);
+        scale(0.13f, 0.09f, "TopRight", this.nextButton, marginX:-0.02f, marginY:-0.01f);
         scale(0.07f, 0.06f, "BottomLeft", this.resetButton, marginX: 0.21f, marginY:0.02f);    
             
             
@@ -116,7 +124,7 @@ public class GUIController : MonoBehaviour
             );
     }
 
-    public bool enabledReset
+    private bool enabledReset
     {
         set
         {
@@ -136,6 +144,7 @@ public class GUIController : MonoBehaviour
         {
             this.resetClicked();
         }
+        this.Refresh();
     }
 
     public void OnNextClicked()

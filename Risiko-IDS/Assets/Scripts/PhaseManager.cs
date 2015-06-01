@@ -30,12 +30,16 @@ public class PhaseManager : IManager
         if(this.turnChanged != null)
             this.turnChanged(this.currentPlayer);
 
-        this.currentPhaseManager.Register();
+        GameObject.Find("MainScene/GUI").GetComponent<GUIController>().nextClicked += ChangePhase;
+		
+		
+	}
 
-       //TODO - Registrazione evento bottone next GUI += ChangePhase;
-         
-        
-    }
+	public void Begin()
+	{
+		this.currentPhaseManager.Register ();
+	}
+
 
     public Giocatore CurrentPlayer
     {
@@ -71,5 +75,13 @@ public class PhaseManager : IManager
         if (this.turnChanged != null)
             this.turnChanged(this.currentPlayer);
      
+    }
+
+    public string CurrentPhaseName
+    {
+        get
+        {
+            return this.currentPhaseManager.PhaseName;
+        }
     }
 }

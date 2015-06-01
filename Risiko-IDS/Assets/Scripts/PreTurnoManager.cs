@@ -4,10 +4,11 @@ using UnityEngine;
 public class PreTurnoManager : IPhase, IManager
 {
     private List<StatoController> currentChanges;
-
+    private readonly GUIController _guiController;
     public PreTurnoManager ()
     {
         this.currentChanges = new List<StatoController>();
+        _guiController = GameObject.Find("MainScene/GUI").GetComponent<GUIController>();
     }
 
     [MethodImpl(MethodImplOptions.Synchronized)]
@@ -17,10 +18,11 @@ public class PreTurnoManager : IPhase, IManager
         
         if(s.Player.Equals(phaseman.CurrentPlayer) && s.Player.ArmateDaAssegnare > 0)
         {
-            s.AddTank();
+            s.TankNumber += 1;
             s.Player.ArmateDaAssegnare--;
             this.currentChanges.Add(s);
-            s.PlayAnimation("PlusOne");      
+            s.PlayAnimation("PlusOne");
+            _guiController.Refresh();
         }
     }
 
@@ -29,8 +31,8 @@ public class PreTurnoManager : IPhase, IManager
     {
        foreach (StatoController s in this.currentChanges)
        {
-            s.RemoveTank();
-            s.Player.ArmateDaAssegnare++;
+           s.TankNumber -= 1;
+           s.Player.ArmateDaAssegnare++;
         }
             
        this.currentChanges = new List<StatoController>();
@@ -44,12 +46,12 @@ public class PreTurnoManager : IPhase, IManager
 
         if (this.currentChanges.Contains(s) && s.Player.Equals(phaseman.CurrentPlayer))
         {
-            s.RemoveTank();
+            s.TankNumber -= 1;
             s.Player.ArmateDaAssegnare++;
             this.currentChanges.Remove(s);
         }
     }
-
+	
     public void Register()
     {
         MainManager main = MainManager.GetInstance();
@@ -60,6 +62,8 @@ public class PreTurnoManager : IPhase, IManager
                 s.Clicked += this.Add;
                 //s.RightClicked += this.Remove;
         }
+
+        _guiController.resetClicked += this.Rollback;
     }
 
     public void Unregister()
@@ -72,6 +76,8 @@ public class PreTurnoManager : IPhase, IManager
             s.Clicked -= this.Add;
             //s.RightClicked -= this.Remove;
         }
+
+        _guiController.resetClicked -= this.Rollback;
     }
 
 

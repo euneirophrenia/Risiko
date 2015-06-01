@@ -45,7 +45,7 @@ public class EliminaGiocatore : SecretGoal
 	{
 		if (!(obj is EliminaGiocatore))
 			return false;
-		return ((EliminaGiocatore) obj)._target.Equals(this._target);
+		return ((EliminaGiocatore) obj)._target == this._target;
 	}
 
 	public override int GetHashCode ()

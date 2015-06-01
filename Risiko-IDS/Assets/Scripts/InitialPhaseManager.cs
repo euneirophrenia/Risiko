@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
-public class InitialPhaseManager : IManager
+public class InitialPhaseManager
 {
     private System.Random random = new System.Random();
     private System.Random randomStates = new System.Random();
@@ -24,7 +25,7 @@ public class InitialPhaseManager : IManager
         this.armateIniziali = (armatePerStato-1) * states.Count / playerNames.Length;
         //Ne metto una in meno da assegnare perchè ne inserisco una direttamente per evitare inconsistenze
 
-        for(int i=0; i<playerNames.Length; i++)
+        for(int i=0; i<playerNames.Count(); i++)
         {
             Color color = colors[i];
             GoalReachedManager goalReachedManager = (GoalReachedManager) MainManager.GetManagerInstance("GoalReachedManager");
@@ -47,8 +48,8 @@ public class InitialPhaseManager : IManager
             {
                 temp.Add(num);
 
-                states[num].AddTank();
                 states[num].Player = players[j];
+                states[num].TankNumber += 1;
                 cont++;
 
                 if(cont == (states.Count/playerNames.Length))

@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 
 
-public class BorderManager 
+public class BorderManager : IManager
 {
 	//necessaria perché unity ha una storia di non supporto alle tuple, niente di speciale in realtà.
 	#region Confine 

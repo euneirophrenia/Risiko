@@ -17,11 +17,11 @@ public class MenuManager : MonoBehaviour
     private bool isPaused = false;
     private float timeScale;         
     private int playerNumber = 0;
-    private string[] playernames;
+    private List<string> playernames;
 	
     public void Start()
     {
-        playernames = new string[Mathf.Max(Settings.PlayersNumber)];
+        playernames = new List<string>();
         ShowMenu(currentMenu);
     }
 
@@ -138,25 +138,27 @@ public class MenuManager : MonoBehaviour
                     return;
                 }
                    
-                if (new List<string>(playernames).Contains(input.text))
+                if (playernames.Contains(input.text))
                 {
                     EditorUtility.DisplayDialog("Error", "Player names cannot be duplicated", "Ok", null);
-                    playernames = new string[Mathf.Max(Settings.PlayersNumber)];
+                    playernames = new List<string>();
                     return;
                 }
 
-                playernames[i - 1] = input.text.Trim();
+                playernames.Add(input.text.Trim());
             }
         }
 
         //Debug.Log(playernames[0] + " " + playernames[1]);
 
-        MainManager.GetInstance().Init(playernames);    
+		MainScene.SetActive(true);
+		GameObject.Find("InitialMenu").SetActive(false);
+        MainManager.GetInstance().Init(playernames.ToArray());    
 
-        MainScene.SetActive(true);
+     
 
                 
-        GameObject.Find("InitialMenu").SetActive(false);
+        
         
         currentMenu = null;                             
 	} 

@@ -50,7 +50,6 @@
      <Compile Include="Assets\Scripts\BorderManager.cs" />
      <Compile Include="Assets\Scripts\CameraMove.cs" />
      <Compile Include="Assets\Scripts\Card.cs" />
-     <Compile Include="Assets\Scripts\CardPanelAutoScale.cs" />
      <Compile Include="Assets\Scripts\ChoicePopupController.cs" />
      <Compile Include="Assets\Scripts\ConquistaContinenti.cs" />
      <Compile Include="Assets\Scripts\ConquistaN.cs" />
@@ -67,6 +66,7 @@
      <Compile Include="Assets\Scripts\Giocatore.cs" />
      <Compile Include="Assets\Scripts\GoalReachedManager.cs" />
      <Compile Include="Assets\Scripts\IManager.cs" />
+     <Compile Include="Assets\Scripts\IPhase.cs" />
      <Compile Include="Assets\Scripts\IRegistration.cs" />
      <Compile Include="Assets\Scripts\InitialPhaseManager.cs" />
      <Compile Include="Assets\Scripts\MainManager.cs" />
@@ -80,7 +80,6 @@
      <Compile Include="Assets\Scripts\SelectManager.cs" />
      <Compile Include="Assets\Scripts\Settings.cs" />
      <Compile Include="Assets\Scripts\StatoController.cs" />
-     <Compile Include="Assets\Scripts\TextPanelAutoScale.cs" />
      <Compile Include="Assets\Water (Pro Only)\Sources\Scripts\Water.cs" />
      <Compile Include="Assets\Water (Pro Only)\Water4\Sources\Scripts\Displace.cs" />
      <Compile Include="Assets\Water (Pro Only)\Water4\Sources\Scripts\GerstnerDisplace.cs" />

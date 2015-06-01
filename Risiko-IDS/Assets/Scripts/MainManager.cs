@@ -11,16 +11,18 @@ public class MainManager : MonoBehaviour
 	public GameObject world;
 
     private IEnumerable<Giocatore> players;
-    private static MainManager instance; 			//DA TESTARE
+    private static MainManager instance; 			
 
 	private string[] _playerNames;
+
+    private bool _clickenable=true;
 
 
 	// Use this for initialization
 	void Start () 
     {
         this.players = new List<Giocatore>();
-        instance = this; 							//DA TESTARE
+        instance = this; 							
 
 		foreach(Transform continent in this.world.transform)
 		{
@@ -55,7 +57,7 @@ public class MainManager : MonoBehaviour
 
     public static MainManager GetInstance()
     {
-        return instance;                            //DA TESTARE
+        return instance;                            
     }
 
     public void Init(string[] playerNames)
@@ -63,7 +65,7 @@ public class MainManager : MonoBehaviour
 		this._playerNames=playerNames;
         InitialPhaseManager init = new InitialPhaseManager();
         this.players = init.Create(playerNames, new List<StatoController>(this.States));
-       	GetManagerInstance("PhaseManager");
+       	((PhaseManager)GetManagerInstance("PhaseManager")).Begin();
     }
 
     public IEnumerable<StatoController> States
@@ -115,6 +117,18 @@ public class MainManager : MonoBehaviour
 			return this._playerNames;
 		}
 	}
+
+    public bool StateClickEnabled
+    {
+        get
+        {
+            return this._clickenable;
+        }
+        set
+        {
+            this._clickenable = value;
+        }
+    }
 
 
 }
