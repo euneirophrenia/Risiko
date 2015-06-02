@@ -17,6 +17,7 @@ public static class Settings
 	private static readonly int[] _players= {2,3,6};
 	private static readonly Color[] _colors = { Color.red, Color.blue, Color.cyan, Color.green, Color.yellow, Color.black};
 	private static readonly int _minStati=24, _maxStati=27;
+	private static readonly int _statiPerArmata=3;
     private static readonly Dictionary<string, int> _armatePerContinente = new Dictionary<string, int>()
     {
         {"North_America", 4},
@@ -83,12 +84,18 @@ public static class Settings
 		}
 	}
 
-    public static Dictionary<string, int> ArmatePerContinente
+    public static int ArmatePerContinente(string continent)
     {
-        get
-        {
-            return _armatePerContinente;
-        }
+        
+            return _armatePerContinente[continent];
     }
+
+	public static int StatiPerArmataBonus
+	{
+		get
+		{
+			return _statiPerArmata;
+		}
+	}
 	
 }

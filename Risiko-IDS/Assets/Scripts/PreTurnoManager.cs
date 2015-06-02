@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using System.Linq;
+
 public class PreTurnoManager : IPhase, IManager
 {
     private List<StatoController> currentChanges;
     private readonly GUIController _guiController;
     public PreTurnoManager ()
     {
-        this.currentChanges = new List<StatoController>();
         _guiController = GameObject.Find("MainScene/GUI").GetComponent<GUIController>();
     }
 
@@ -51,19 +52,43 @@ public class PreTurnoManager : IPhase, IManager
             this.currentChanges.Remove(s);
         }
     }
+
+	private void GiveBonus(MainManager main, PhaseManager phase, IEnumerable<StatoController> states)
+	{
+		phase.CurrentPlayer.ArmateDaAssegnare+=states.Count () / Settings.StatiPerArmataBonus;
+		IEnumerable<string> continents = main.Continents;
+		foreach(string c in continents)
+		{
+			bool bonus=true;
+			foreach (StatoController s in main.GetStatesByContinent(c))
+			{
+				bonus&=s.Player.Equals(phase.CurrentPlayer);
+				if (!bonus)
+					break;
+			}
+			if (bonus)
+				phase.CurrentPlayer.ArmateDaAssegnare+=Settings.ArmatePerContinente(c);
+		}
+		_guiController.Refresh(); //altrimenti non mostra sempre il risultato. Potrei forse girarci attorno con un ordine diverso delle istruzioni
+		//ma preferisco così
+	}
 	
     public void Register()
     {
         MainManager main = MainManager.GetInstance();
         PhaseManager phase = (PhaseManager) MainManager.GetManagerInstance("PhaseManager");
+		this.currentChanges = new List<StatoController>(); //importante! mancava e c'era un bug
 
-        foreach (StatoController s in main.GetStatesByPlayer(phase.CurrentPlayer))
+		IEnumerable<StatoController> states=main.GetStatesByPlayer(phase.CurrentPlayer);
+
+        foreach (StatoController s in states)
         {
                 s.Clicked += this.Add;
                 //s.RightClicked += this.Remove;
         }
 
         _guiController.resetClicked += this.Rollback;
+		GiveBonus(main, phase, states); //gli passo dei parametri anzi che void per ottimizzare e chiedere meno volte i vari manager
     }
 
     public void Unregister()
