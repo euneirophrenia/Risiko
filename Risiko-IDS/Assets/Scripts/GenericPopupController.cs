@@ -14,7 +14,7 @@ public class GenericPopupController : MonoBehaviour
 	void Start () 
     {
         #region debug-test
-        initPopup("Generic Popup", "Description", null);
+       //initPopup("Generic Popup", "Description", null);
         #endregion
 
         this.ClosePopup += hide;

@@ -20,6 +20,9 @@ public class GUIController : MonoBehaviour
     public delegate void ButtonClicked();
     public event ButtonClicked resetClicked;
     public event ButtonClicked nextClicked;
+
+    private GameObject chagePhasePopup;
+    private Giocatore currentPlayer;
     
 	// Use this for initialization
 	void Start ()
@@ -28,6 +31,10 @@ public class GUIController : MonoBehaviour
         Giocatore = new Giocatore("MarzadureX",color,new ConquistaN(666), 666);
         Phase = "PhaseDiDebug, Pirla";
         #endregion
+
+        this.chagePhasePopup = Resources.Load<GameObject>("GenericPopup");           
+        this.currentPlayer = ((PhaseManager)MainManager.GetManagerInstance("PhaseManager")).CurrentPlayer;
+
         ((PhaseManager) MainManager.GetManagerInstance("PhaseManager")).phaseChanged += onPhaseChanged;
         ((PhaseManager) MainManager.GetManagerInstance("PhaseManager")).turnChanged += onTurnChanged;
         scalePanels();
@@ -153,6 +160,38 @@ public class GUIController : MonoBehaviour
         if( this.nextClicked != null )
         {
             this.nextClicked();
+            this.ChangePhaseAlert();
         }
+    }
+
+    public void ChangePhaseAlert()
+    {
+        
+        StartCoroutine(this.Spawn());
+    }
+
+    private IEnumerator Spawn()
+    {
+        Transform trans = this.GetComponent<Transform>();
+        GameObject ob = GameObject.Instantiate(this.chagePhasePopup);
+
+        ob.GetComponent<Transform>().parent = trans.transform;
+        ob.GetComponent<Transform>().position = trans.transform.position;
+
+        PhaseManager man = ((PhaseManager) MainManager.GetManagerInstance("PhaseManager"));
+
+        if (!this.currentPlayer.Equals(man.CurrentPlayer))
+        {
+            ob.GetComponent<GenericPopupController>().initPopup("Cambio turno", "Turno del giocatore " + man.CurrentPlayer.Name);
+            this.currentPlayer = man.CurrentPlayer;
+        }
+        else
+        {
+            ob.GetComponent<GenericPopupController>().initPopup("Cambio fase", man.CurrentPhaseName);
+        }
+        
+        yield return new WaitForSeconds(1);
+        Destroy(ob);
+
     }
 }

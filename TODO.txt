@@ -1,9 +1,7 @@
-- Incrementare armate in base a territori/continenti del giovcatore di turno (preturno)
 - Preturno per tutti (phasemanager)
-- Popup cambio fase (phasemanager?)
 - Toggle (select/statocontroller)
-- Goal non viene raggiunto (attackmanager deve invocare GoalReachedManager.Check() e agganciarsi all'evento)
-
+- bug spazio reset camera
+- GameWin Quit e NewGame
 -----------------------------------------
 
 - Glossario
