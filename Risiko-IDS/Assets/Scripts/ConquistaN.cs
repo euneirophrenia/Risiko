@@ -21,7 +21,7 @@ public class ConquistaN : SecretGoal
 
 	public bool GoalReached()
 	{
-		return (new List<StatoController>(MainManager.GetInstance().GetStatesByPlayer(_player)).Count>_n);
+		return (new List<StatoController>(MainManager.GetInstance().GetStatesByPlayer(_player)).Count>=_n);
 	}
 
 	public Giocatore Player

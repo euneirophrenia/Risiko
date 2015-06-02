@@ -14,13 +14,17 @@ public class AttackManager : IPhase, IManager
     private readonly Transform _guiCanvas ;
     private readonly GameObject _choicePopup ;
     private readonly GameObject _diceResultPopup ;
+    private readonly GameObject _gameWinPopup;
 
     public AttackManager()
     {
         _guiCanvas = GameObject.Find("MainScene/GUI").GetComponent<Transform>();
         _choicePopup = Resources.Load<GameObject>("ChoicePopup");
         _diceResultPopup = Resources.Load<GameObject>("DiceResultPopup");
+        _gameWinPopup = Resources.Load<GameObject>("GameWinPopup");
+        ((GoalReachedManager)MainManager.GetManagerInstance("GoalReachedManager")).GoalReached += showWinDialog;
     }
+
 
 
     #region IPhase
@@ -127,7 +131,7 @@ public class AttackManager : IPhase, IManager
     private void end()
     {
         removeSelection();
-        
+        ((GoalReachedManager)MainManager.GetManagerInstance("GoalReachedManager")).Check();
     }
 
     private void removeSelection()
@@ -138,6 +142,25 @@ public class AttackManager : IPhase, IManager
         _statoDifesa = null;
         MainManager.GetInstance().StateClickEnabled = true;
     }
+
+
+
+    private void showWinDialog(IEnumerable<Giocatore> giocatori)
+    {
+        GameObject popup = this.myIstantiatePopup(_gameWinPopup);
+        //TODO newgame ... 
+        string descr;
+        if( giocatori.Count<Giocatore>() > 1)
+        {
+            descr = String.Format("Complimenti {0}, avete vinto!", String.Join(" ", (from g in giocatori select g.Name).ToArray() ));
+        }
+        else
+        {
+            descr = String.Format("Complimenti {0}, hai vinto!", giocatori.ToList()[0].Name);
+        }
+        popup.GetComponent<GameWinPopupController>().initPopup("VITTORIA!",descr);
+    }
+
 
     private GameObject myIstantiatePopup(GameObject popup)
     {
