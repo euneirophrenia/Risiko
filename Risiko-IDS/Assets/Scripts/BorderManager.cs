@@ -60,8 +60,11 @@ public class BorderManager : IManager
 
 	public BorderManager ()
 	{
-		string configFilePath=Settings.BorderFile;
-		StreamReader sr = new StreamReader(configFilePath);
+		//string configFilePath=Settings.BorderFile; 
+		//StreamReader sr = new StreamReader(configFilePath);
+		
+        TextAsset confini = (TextAsset) Resources.Load("confini", typeof(TextAsset));
+        StringReader sr = new StringReader(confini.text);
 		string line;
 		while ((line=sr.ReadLine())!=null)
 		{
