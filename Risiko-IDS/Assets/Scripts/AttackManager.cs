@@ -152,6 +152,8 @@ public class AttackManager : IPhase, IManager
     private void showWinDialog(IEnumerable<Giocatore> giocatori)
     {
         GameObject popup = this.myIstantiatePopup(_gameWinPopup);
+		MainManager.GetInstance().StateClickEnabled=false;
+		//TODO sulla falsa riga, si potrebbe mettere uno switch per disabilitare tutto il resto dell'interazione grafica.
         //TODO newgame ... 
         string descr;
         if( giocatori.Count<Giocatore>() > 1)

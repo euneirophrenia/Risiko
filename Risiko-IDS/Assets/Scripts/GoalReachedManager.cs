@@ -41,6 +41,7 @@ public class GoalReachedManager : IManager
 {
 	private readonly Type[] _tipi;
 	private readonly List<SecretGoal> _obiettivi;
+	private int _giocatoriAssegnati=0;
 
 	private delegate T random<T>(int min, int max);
 
@@ -76,36 +77,37 @@ public class GoalReachedManager : IManager
 			throw new TypeLoadException("Non sono state trovate classi che implementino SecretGoal. " +
 				"Assicurarsi che siano in questo stesso assembly.");
 
-		int _next=UnityEngine.Random.Range(0, _tipi.Length);
-		Type[] constructorParam = {typeof(object)};
-		Attribute[] attrs = (Attribute[]) _tipi[_next].GetConstructor(constructorParam).GetCustomAttributes(typeof(ConstructorArgumentsInfo), false);
-		SecretGoal g;
-		if (attrs.Length<1)
-		{
 
-			 g= (SecretGoal) Activator.CreateInstance(_tipi[_next]);
-			_obiettivi.Add(g);
-			return g;
-		}
-		ConstructorArgumentsInfo attr = (ConstructorArgumentsInfo) attrs[0];
-		object[] param={_randomGetter[attr.Tipo](attr.Min, attr.Max)};
+		Type[] constructorParam = {typeof(object)};
+		int _next;
+		Attribute[] attrs;
+		SecretGoal g;
+		ConstructorArgumentsInfo attr; 
+		object[] param=new object[1];
 		do
-		{
-	    	g = (SecretGoal )Activator.CreateInstance(_tipi[_next], param);
+		{	
+			g=null;
+			_next=UnityEngine.Random.Range(0, _tipi.Length);
+			attrs=(Attribute[]) _tipi[_next].GetConstructor(constructorParam).GetCustomAttributes(typeof(ConstructorArgumentsInfo), false);
+			attr=(ConstructorArgumentsInfo) attrs[0];
+			param[0]=_randomGetter[attr.Tipo](attr.Min, attr.Max);
+			if (param[0]!=null)
+	    		g = (SecretGoal )Activator.CreateInstance(_tipi[_next], param);
 		}
-		while (attr.IsUnique && _obiettivi.Contains(g));
+		while (g==null || (attr.IsUnique && _obiettivi.Contains(g)));
 		_obiettivi.Add(g);
 		return g;
     }
 
-	public void RebindPlayer(ref string name)
+	public void RebindPlayer(Type t, ref string name)
 	{
 		string newname;
 		do
 		{
 			newname= this.randomPlayerName(0, 0);
+
 		}
-		while (newname == name);
+		while (newname == name || this._obiettivi.Contains((SecretGoal)Activator.CreateInstance(t, newname)));
 		name=newname;
 	}
 
@@ -154,6 +156,16 @@ public class GoalReachedManager : IManager
 
 	private string randomPlayerName(int min, int max)
 	{
+		Type[] constr_param={typeof(object)};
+
+		_giocatoriAssegnati=(from s in _obiettivi 
+		                     where ((ConstructorArgumentsInfo)s.GetType().
+		       						GetConstructor(constr_param).GetCustomAttributes(typeof(ConstructorArgumentsInfo), false)[0])
+		                     		.Tipo=="player"
+							select s).Count(); //conta quanti obiettivi creati con successo hanno avuto bisogno di un playername
+
+		if (_giocatoriAssegnati==MainManager.GetInstance().PlayerNames.Count()-1) //per evitare situazioni di deadlock
+			return null;
 
 		string[] names =MainManager.GetInstance().PlayerNames.ToArray();
 
