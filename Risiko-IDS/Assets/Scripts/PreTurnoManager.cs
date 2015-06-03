@@ -10,6 +10,7 @@ public class PreTurnoManager : IPhase, IManager
     public PreTurnoManager ()
     {
         _guiController = GameObject.Find("MainScene/GUI").GetComponent<GUIController>();
+        this.currentChanges = new List<StatoController>(); 
     }
 
     [MethodImpl(MethodImplOptions.Synchronized)]
@@ -36,7 +37,7 @@ public class PreTurnoManager : IPhase, IManager
            s.Player.ArmateDaAssegnare++;
         }
             
-       this.currentChanges = new List<StatoController>();
+       this.currentChanges.Clear();
     }
 
     //Metodo fatto se vogliamo implementare anche il remove manuale e non solo con Reset completo
@@ -77,7 +78,7 @@ public class PreTurnoManager : IPhase, IManager
     {
         MainManager main = MainManager.GetInstance();
         PhaseManager phase = (PhaseManager) MainManager.GetManagerInstance("PhaseManager");
-		this.currentChanges = new List<StatoController>(); //importante! mancava e c'era un bug
+		
 
 		IEnumerable<StatoController> states=main.GetStatesByPlayer(phase.CurrentPlayer);
 
@@ -103,6 +104,7 @@ public class PreTurnoManager : IPhase, IManager
         }
 
         _guiController.resetClicked -= this.Rollback;
+        this.currentChanges.Clear();
     }
 
 

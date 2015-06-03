@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnityEditor;
 using System.Collections.Generic;
 
 public class MenuManager : MonoBehaviour 
@@ -18,10 +17,14 @@ public class MenuManager : MonoBehaviour
     private float timeScale;         
     private int playerNumber = 0;
     private List<string> playernames;
+    private GameObject canvas;
+    private GameObject errorPopup;
 	
     public void Start()
     {
         playernames = new List<string>();
+        this.canvas = GameObject.Find("InitialMenu/Menu");
+         this.errorPopup = Resources.Load<GameObject>("GenericPopup");
         ShowMenu(currentMenu);
     }
 
@@ -134,19 +137,48 @@ public class MenuManager : MonoBehaviour
 
                 if (string.IsNullOrEmpty(input.text))
                 {
-                    EditorUtility.DisplayDialog("Error", "Player names are not valid", "Ok", null);
+                    //EditorUtility.DisplayDialog("Error", "Player names are not valid", "Ok", null);
+                    
+                    GameObject ob = GameObject.Instantiate(this.errorPopup);
+
+                    ob.GetComponent<Transform>().parent = this.canvas.transform;
+                    ob.GetComponent<Transform>().position = this.canvas.transform.position;
+
+                    ob.GetComponent<GenericPopupController>().initPopup("Error", "Player names are not valid");
                     return;
                 }
                    
                 if (playernames.Contains(input.text))
                 {
-                    EditorUtility.DisplayDialog("Error", "Player names cannot be duplicated", "Ok", null);
+                    //EditorUtility.DisplayDialog("Error", "Player names cannot be duplicated", "Ok", null);
+                    GameObject ob = GameObject.Instantiate(this.errorPopup);
+
+                    ob.GetComponent<Transform>().parent = this.canvas.transform;
+                    ob.GetComponent<Transform>().position = this.canvas.transform.position;
+
+                    ob.GetComponent<GenericPopupController>().initPopup("Error", "Player names cannot be duplicated");
                     playernames = new List<string>();
                     return;
                 }
 
                 playernames.Add(input.text.Trim());
             }
+
+        }
+
+        InputField inp = GameObject.Find("InitialMenu/Menu/SelectMenu/Panel/Buttons/Input1").GetComponent<InputField>();
+
+        if (!inp.isActiveAndEnabled)
+        {
+            //EditorUtility.DisplayDialog("Error", "Decide how many players", "Ok", null);
+
+            GameObject ob = GameObject.Instantiate(this.errorPopup);
+
+            ob.GetComponent<Transform>().parent = this.canvas.transform;
+            ob.GetComponent<Transform>().position = this.canvas.transform.position;
+
+            ob.GetComponent<GenericPopupController>().initPopup("Error", "Decide how many players");
+            return;
         }
 
         //Debug.Log(playernames[0] + " " + playernames[1]);

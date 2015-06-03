@@ -52,6 +52,12 @@ public class MoveManager : IManager, IPhase
 
         List<int> valuesRange = Enumerable.Range(1, _statoFrom.TankNumber - 1).ToList();
 
+        if (statoFrom.TankNumber == 1)
+        {
+            this.removeSelection();
+            return;
+        }
+
         GameObject popup = this.myIstantiatePopup(_choicePopup);
         popup.GetComponent<ChoicePopupController>().initPopup("MUOVI(TI)", "Scegli quanti carri armati spostare", valuesRange);
         popup.GetComponent<ChoicePopupController>().AcceptPressed += handleChoicePopupAccepted;
@@ -76,8 +82,8 @@ public class MoveManager : IManager, IPhase
 
     private void removeSelection()
     {
-        //_statoFrom.Toggle(false);
-        //_statoTo.Toggle(false);
+        _statoFrom.Toggle(false);
+        _statoTo.Toggle(false);
         _statoFrom = null;
         _statoTo = null;
         MainManager.GetInstance().StateClickEnabled = true;

@@ -18,6 +18,7 @@ public class StatoController : MonoBehaviour
 
 	private Color _startColor;
 	private bool _displayObjectName;
+    private bool toggled = false;
 
     public delegate void Action(StatoController stato);
     public event Action Clicked;
@@ -38,20 +39,21 @@ public class StatoController : MonoBehaviour
 
 	void OnMouseEnter()
 	{
-        if (MainManager.GetInstance().StateClickEnabled)
+        if (MainManager.GetInstance().StateClickEnabled && !this.toggled)
         {
-            this.Toggle(true);
-            _displayObjectName = true;
+            this.Toggle(true, false);
         }
+        _displayObjectName = true;
 	}
 
 	void OnMouseExit()
 	{
-        if (MainManager.GetInstance().StateClickEnabled)
+        if (MainManager.GetInstance().StateClickEnabled && !this.toggled)
         {
-            this.Toggle(false);
-		    _displayObjectName = false;
+            this.Toggle(false, false);
         }
+
+        _displayObjectName = false;
 	}
 
     void OnMouseDown()
@@ -128,16 +130,20 @@ public class StatoController : MonoBehaviour
     /// Metodo per selezionare visivamente lo stato 
     /// </summary>
     /// <param name="selected">true per selezionare, false per deselezionare</param>
-    public void Toggle(bool selected)       
+    public void Toggle(bool selected, bool permanent = true)       
     {
         if (selected)
         {
             Color col = new Color(1f - _startColor.r, 1f - _startColor.g, 1f - _startColor.b);
             GetComponent<Renderer>().material.color = col;
+            if(permanent)
+                this.toggled = true;
         }
         else
         {
             GetComponent<Renderer>().material.color = _startColor;
+            if(permanent)
+                this.toggled = false;
         }
     }
 
@@ -157,7 +163,6 @@ public class StatoController : MonoBehaviour
         ob.GetComponent<Animator>().Play(animationName);
         yield return new WaitForSeconds(1);
         Destroy(ob);
-
     }
 
 }

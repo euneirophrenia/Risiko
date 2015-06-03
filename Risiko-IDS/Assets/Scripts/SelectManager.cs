@@ -114,8 +114,8 @@ public class SelectManager : IManager
                 stato.Toggle(true);
                 if (EndSelection != null)
                     EndSelection(this._stateTemp, stato);
-                this._stateTemp.Toggle(false);
-                stato.Toggle(false);
+                //this._stateTemp.Toggle(false);
+                //stato.Toggle(false);
                 this._stateTemp = null;
             }
             else if (stato.Player.Equals(_currentPlayer))

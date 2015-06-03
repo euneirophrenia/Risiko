@@ -58,7 +58,11 @@ public class AttackManager : IPhase, IManager
 
         int numArmatiMax = _statoAttacco.TankNumber > 3 ? 3 : _statoAttacco.TankNumber - 1 ; // Math.Min(statoAttacco.TankNumber, 3);
         if (numArmatiMax == 0)
+        {
+            this.removeSelection();
             return;
+        }
+            
         List<int> valuesRange = Enumerable.Range(1, numArmatiMax).ToList<int>();
 
         GameObject popup = this.myIstantiatePopup(_choicePopup);
