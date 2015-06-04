@@ -1,7 +1,6 @@
 - Preturno per tutti (phasemanager)
-- GameWin Quit e NewGame
 - Gioco si impalla su play 
-- Tab tra input fields
+
 -----------------------------------------
 
 - Glossario

@@ -39,11 +39,16 @@ public class StatoController : MonoBehaviour
 
 	void OnMouseEnter()
 	{
-        if (MainManager.GetInstance().StateClickEnabled && !this.toggled)
+        if (MainManager.GetInstance().StateClickEnabled)
         {
-            this.Toggle(true, false);
+            if (!this.toggled)
+                this.Toggle(true, false);
+
+            _displayObjectName = true;
         }
-        _displayObjectName = true;
+
+        
+        
 	}
 
 	void OnMouseExit()
@@ -142,6 +147,7 @@ public class StatoController : MonoBehaviour
         else
         {
             GetComponent<Renderer>().material.color = _startColor;
+            _displayObjectName = false;
             if(permanent)
                 this.toggled = false;
         }

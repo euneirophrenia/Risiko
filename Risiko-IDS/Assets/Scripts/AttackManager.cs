@@ -164,6 +164,8 @@ public class AttackManager : IPhase, IManager
         {
             descr = String.Format("Complimenti {0}, hai vinto!", giocatori.ToList()[0].Name);
         }
+        popup.GetComponent<GameWinPopupController>().NewGamePressed += MainManager.GetInstance().NewGame;
+        popup.GetComponent<GameWinPopupController>().QuitGamePressed += MainManager.GetInstance().Quit;
         popup.GetComponent<GameWinPopupController>().initPopup("VITTORIA!",descr);
     }
 

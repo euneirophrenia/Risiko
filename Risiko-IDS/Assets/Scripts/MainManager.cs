@@ -130,5 +130,14 @@ public class MainManager : MonoBehaviour
         }
     }
 
+    public void NewGame()
+    {
+        _factory.Clear();
+        Application.LoadLevel(0);
+    }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }

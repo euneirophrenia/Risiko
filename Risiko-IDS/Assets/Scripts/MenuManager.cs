@@ -24,7 +24,7 @@ public class MenuManager : MonoBehaviour
     {
         playernames = new List<string>();
         this.canvas = GameObject.Find("InitialMenu/Menu");
-         this.errorPopup = Resources.Load<GameObject>("GenericPopup");
+        this.errorPopup = Resources.Load<GameObject>("GenericPopup");
         ShowMenu(currentMenu);
     }
 
@@ -37,7 +37,7 @@ public class MenuManager : MonoBehaviour
         {
             this.isPaused = false;
             Time.timeScale = this.timeScale;
-           // GameObject.Find("MainScene/Menu/PausePlane").SetActive(false);              //PLANE 
+            MainManager.GetInstance().StateClickEnabled = true;
         }
 
         if (menu != null)
@@ -93,7 +93,7 @@ public class MenuManager : MonoBehaviour
 
     public void Quit()
     {
-        Application.Quit();
+        MainManager.GetInstance().Quit();
     }
 
     public void UnPause()
@@ -109,18 +109,20 @@ public class MenuManager : MonoBehaviour
        {
             if (!this.isPaused)
             {
-                //this.ShowMenu(GameObject.Find("MainScene/Menu/MainMenu").GetComponent<Menu>());
                 this.ShowMenu(GameObject.Find("MainScene/GUI/Menu/MainMenu").GetComponent<Menu>());
-
-                //GameObject.Find("MainScene/Menu/PausePlane").SetActive(true);                   //PLANE 
                 this.timeScale = Time.timeScale;
                 Time.timeScale = 0;
-                this.isPaused = true;                                  
+                this.isPaused = true;
+                MainManager.GetInstance().StateClickEnabled = false;
+
+                foreach (StatoController s in MainManager.GetInstance().States)
+                {
+                    s.Toggle(false);
+                }
             }
             else
             {
                 this.ShowMenu(null);
-
             }
         }
         
