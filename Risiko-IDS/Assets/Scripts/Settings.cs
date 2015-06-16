@@ -11,7 +11,7 @@ public static class Settings
 	 Aggiungete a piacimento tutti i "numeri magici" che trovate nel codice.
 	 */
 
-	private static readonly string _borderFile="./Assets/Scripts/confini.txt";
+	private static readonly string _borderFile="confini";
 	private static readonly int _armateInizialiPerStato=3;
 	private static readonly string[] _phaseOrder= {"PreTurnoManager", "AttackManager", "MoveManager"};
 	private static readonly int[] _players= {2,3,6};

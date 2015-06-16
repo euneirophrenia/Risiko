@@ -187,12 +187,7 @@ public class MenuManager : MonoBehaviour
 
 		MainScene.SetActive(true);
 		GameObject.Find("InitialMenu").SetActive(false);
-        MainManager.GetInstance().Init(playernames.ToArray());    
-
-     
-
-                
-        
+        MainManager.GetInstance().Init(playernames.ToArray());                
         
         currentMenu = null;                             
 	} 

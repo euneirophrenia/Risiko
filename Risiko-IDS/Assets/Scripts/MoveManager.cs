@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class MoveManager : IManager, IPhase
+public class MoveManager : IPhase
 {
     private StatoController _statoFrom, _statoTo;
 

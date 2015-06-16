@@ -68,8 +68,9 @@ public class BorderManager
 
 	private BorderManager ()
 	{
-		string configFilePath=Settings.BorderFile;
-		StreamReader sr = new StreamReader(configFilePath);
+		string configFile=Settings.BorderFile;
+        TextAsset data = Resources.Load(configFile) as TextAsset;
+		StringReader sr = new StringReader(data.text);
 		string line;
 		while ((line=sr.ReadLine())!=null)
 		{

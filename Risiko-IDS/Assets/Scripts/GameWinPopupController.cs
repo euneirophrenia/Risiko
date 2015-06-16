@@ -19,7 +19,9 @@ public class GameWinPopupController : MonoBehaviour {
         #endregion
 
         this.NewGamePressed += hide;
+        this.NewGamePressed += MainManager.GetInstance().NewGame;
         this.QuitGamePressed += hide;
+        this.QuitGamePressed += MainManager.GetInstance().Quit;
     }
 
     public void hide()
