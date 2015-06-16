@@ -3,11 +3,21 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using System.Linq;
 
-public class PreTurnoManager : IPhase, IManager
+public class PreTurnoManager : IPhase
 {
+    private static PreTurnoManager _instance = null;
+
     private List<StatoController> currentChanges;
     private readonly GUIController _guiController;
-    public PreTurnoManager ()
+
+    public static PreTurnoManager GetInstance()
+    {
+        if (_instance == null)
+            _instance = new PreTurnoManager();
+        return _instance;
+    }
+
+    private PreTurnoManager ()
     {
         _guiController = GameObject.Find("MainScene/GUI").GetComponent<GUIController>();
         this.currentChanges = new List<StatoController>(); 
@@ -16,7 +26,7 @@ public class PreTurnoManager : IPhase, IManager
     [MethodImpl(MethodImplOptions.Synchronized)]
     public void Add(StatoController s)
     {
-        PhaseManager phaseman = (PhaseManager) MainManager.GetManagerInstance("PhaseManager");
+        PhaseManager phaseman = PhaseManager.GetInstance();
         
         if(s.Player.Equals(phaseman.CurrentPlayer) && s.Player.ArmateDaAssegnare > 0)
         {
@@ -40,6 +50,7 @@ public class PreTurnoManager : IPhase, IManager
        this.currentChanges.Clear();
     }
 
+    #region Remove (inutile per ora)
     //Metodo fatto se vogliamo implementare anche il remove manuale e non solo con Reset completo
     [MethodImpl(MethodImplOptions.Synchronized)]
     public void Remove(StatoController s)
@@ -53,8 +64,9 @@ public class PreTurnoManager : IPhase, IManager
             this.currentChanges.Remove(s);
         }
     }
+    #endregion
 
-	private void GiveBonus(MainManager main, PhaseManager phase, IEnumerable<StatoController> states)
+    private void GiveBonus(MainManager main, PhaseManager phase, IEnumerable<StatoController> states)
 	{
 		phase.CurrentPlayer.ArmateDaAssegnare+=states.Count () / Settings.StatiPerArmataBonus;
 		IEnumerable<string> continents = main.Continents;
@@ -77,7 +89,7 @@ public class PreTurnoManager : IPhase, IManager
     public void Register()
     {
         MainManager main = MainManager.GetInstance();
-        PhaseManager phase = (PhaseManager) MainManager.GetManagerInstance("PhaseManager");
+        PhaseManager phase = PhaseManager.GetInstance();
 		
 
 		IEnumerable<StatoController> states=main.GetStatesByPlayer(phase.CurrentPlayer);
@@ -89,13 +101,15 @@ public class PreTurnoManager : IPhase, IManager
         }
 
         _guiController.resetClicked += this.Rollback;
-		GiveBonus(main, phase, states); //gli passo dei parametri anzi che void per ottimizzare e chiedere meno volte i vari manager
+        
+        if (!phase.PreturnoPerTutti)
+		    GiveBonus(main, phase, states); //gli passo dei parametri anzi che void per ottimizzare e chiedere meno volte i vari manager
     }
 
     public void Unregister()
     {
         MainManager main = MainManager.GetInstance();
-        PhaseManager phase = (PhaseManager)MainManager.GetManagerInstance("PhaseManager");
+        PhaseManager phase = PhaseManager.GetInstance();
 
         foreach (StatoController s in main.GetStatesByPlayer(phase.CurrentPlayer))
         {
