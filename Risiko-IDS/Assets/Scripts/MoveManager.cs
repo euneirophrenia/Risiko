@@ -14,7 +14,16 @@ public class MoveManager : IManager, IPhase
     private readonly Transform _guiCanvas;
     private readonly GameObject _choicePopup ;
 
-    public MoveManager()
+	private static MoveManager _instance=null;
+
+	public static MoveManager GetInstance()
+	{
+		if (_instance==null)
+			_instance=new MoveManager();
+		return _instance;
+	}
+
+    private MoveManager()
     {
         _guiCanvas = GameObject.Find("MainScene/GUI").GetComponent<Transform>();
         _choicePopup = Resources.Load<GameObject>("ChoicePopup");
@@ -24,14 +33,14 @@ public class MoveManager : IManager, IPhase
     #region IPhase
     public void Register()
     {
-        ((SelectManager)MainManager.GetManagerInstance("SelectManager")).EndSelection += handleSelection;
-        ((SelectManager)MainManager.GetManagerInstance("SelectManager")).Register("MoveManager");
+        SelectManager.GetInstance().EndSelection += handleSelection;
+		SelectManager.GetInstance().Register("MoveManager");
     }
 
     public void Unregister()
     {
-        ((SelectManager)MainManager.GetManagerInstance("SelectManager")).EndSelection -= handleSelection;
-        ((SelectManager)MainManager.GetManagerInstance("SelectManager")).UnRegister("MoveManager");
+		SelectManager.GetInstance().EndSelection -= handleSelection;
+		SelectManager.GetInstance().UnRegister("MoveManager");
     }
 
     public string PhaseName

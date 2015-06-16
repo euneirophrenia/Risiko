@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 
 
-public class BorderManager : IManager
+public class BorderManager
 {
 	//necessaria perché unity ha una storia di non supporto alle tuple, niente di speciale in realtà.
 	#region Confine 
@@ -57,14 +57,19 @@ public class BorderManager : IManager
 
 
 	private static readonly List<Confine> _borders = new List<Confine>();
+	private static BorderManager _instance=null;
 
-	public BorderManager ()
+	public static BorderManager GetInstance()
 	{
-		//string configFilePath=Settings.BorderFile; 
-		//StreamReader sr = new StreamReader(configFilePath);
-		
-        TextAsset confini = (TextAsset) Resources.Load("confini", typeof(TextAsset));
-        StringReader sr = new StringReader(confini.text);
+		if (_instance==null)
+			_instance=new BorderManager();
+		return _instance;
+	}
+
+	private BorderManager ()
+	{
+		string configFilePath=Settings.BorderFile;
+		StreamReader sr = new StreamReader(configFilePath);
 		string line;
 		while ((line=sr.ReadLine())!=null)
 		{

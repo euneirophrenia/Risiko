@@ -1,13 +1,24 @@
 using System.Collections.Generic;
-public class SelectManager : IManager
+
+public class SelectManager
 {
     private StatoController _stateTemp;
     private Giocatore _currentPlayer;
+
+	private static SelectManager _instance;
 
     public delegate void statoSelect(StatoController stato1, StatoController stato2);       
     public event statoSelect EndSelection;                                      //evento a cui si registrano Attack/Move Manager 
                         
                                                                                 //per sapere quando la selezione è finita con successo 
+
+
+	public static SelectManager GetInstance()
+	{
+		if (_instance==null)
+			_instance=new SelectManager();
+		return _instance;
+	}
 
     private void Init()
     {
@@ -16,11 +27,11 @@ public class SelectManager : IManager
             this._stateTemp.Toggle(false);
             this._stateTemp = null;
         }
-        PhaseManager phase = (PhaseManager) MainManager.GetManagerInstance("PhaseManager");
+        PhaseManager phase = PhaseManager.GetInstance();
         _currentPlayer = phase.CurrentPlayer;
     }
 
-    public SelectManager()
+    private SelectManager()
     {
     }
 
@@ -107,7 +118,7 @@ public class SelectManager : IManager
         }
         if (_stateTemp!=null)
         {
-            BorderManager border = (BorderManager) MainManager.GetManagerInstance("BorderManager");
+            BorderManager border = BorderManager.GetInstance();
             
             if(border.areNeighbours(this._stateTemp, stato) && this._stateTemp.Player.Equals(stato.Player))
             {
@@ -143,7 +154,7 @@ public class SelectManager : IManager
         }
         if (this._stateTemp != null)
         {
-            BorderManager border = (BorderManager)MainManager.GetManagerInstance("BorderManager");
+            BorderManager border = BorderManager.GetInstance();
 
             if (border.areNeighbours(this._stateTemp, stato) && !this._stateTemp.Player.Equals(stato.Player))
             {

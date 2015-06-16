@@ -6,13 +6,16 @@ public class ConquistaN : SecretGoal
 {
 	private readonly int _n;
 	private Giocatore _player;
-
-	[ConstructorArgumentsInfo("int", Min=22, Max=22, IsUnique=false)]
-	public ConquistaN(object n)
+	
+	public ConquistaN(int n)
 	{
-		this._n=(int)n;
+		this._n=n;
 	}
 
+	public ConquistaN()
+	{
+		this._n=UnityEngine.Random.Range(Settings.MinGoalStatesNumber, Settings.MaxGoalStatesNumber);
+	}
 
 	public override string ToString ()
 	{

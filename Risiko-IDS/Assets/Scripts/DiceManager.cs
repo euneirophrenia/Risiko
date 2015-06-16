@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class DiceManager : IManager
+public class DiceManager
 {
     private GameObject _attack;
     private GameObject _defense;
@@ -19,9 +19,17 @@ public class DiceManager : IManager
 
 	public delegate void GetResult(int[] attackRes, int[] defenceRes);
 	public event GetResult ResultReady;
-	
 
-	public DiceManager()
+	private static DiceManager _instance=null;
+
+	public static DiceManager GetInstance()
+	{
+		if (_instance==null)
+			_instance=new DiceManager();
+		return _instance;
+	}
+
+	private DiceManager()
 	{
 		this._attack=(GameObject)Resources.Load("AttackDice");
 		this._defense=(GameObject)Resources.Load("DefenseDice");

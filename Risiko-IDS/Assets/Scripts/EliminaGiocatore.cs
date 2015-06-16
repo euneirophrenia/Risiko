@@ -1,19 +1,57 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
+[Unique]
 public class EliminaGiocatore : SecretGoal
 {
 	private string _target;
 	private Giocatore _player;
-	
-	[ConstructorArgumentsInfo("player", IsUnique=true)]
-	public EliminaGiocatore(object t)
+
+	#region target generator
+	private class TargetGenerator
 	{
-		_target=(string)t;
+		private static TargetGenerator _instance=null;
+		private readonly List<string> _names;
+
+		private TargetGenerator()
+		{
+			List<string> original = MainManager.GetInstance().PlayerNames.ToList();
+			_names=new List<string>();
+			while (original.Count >0)
+			{
+				int n=UnityEngine.Random.Range(0, original.Count);
+				_names.Add(original[n]);
+				original.RemoveAt(n);
+			}
+		}
+
+		public string TargetOf(string name)
+		{
+			return _names[(_names.IndexOf(name)+1)%_names.Count];
+		}
+
+		public static TargetGenerator GetInstance()
+		{
+			if (_instance==null)
+				 _instance=new TargetGenerator();
+			return _instance;
+		}
+	}
+	#endregion
+
+	public EliminaGiocatore()
+	{
+		_target=null;
+	}
+
+	public EliminaGiocatore(string t)
+	{
+		_target=t;
 	}
 	
-	
+
 	public override string ToString ()
 	{
 		return string.Format ("Elimina "+ _target+ " dalla faccia della terra.");
@@ -32,12 +70,14 @@ public class EliminaGiocatore : SecretGoal
 		}
 		set
 		{
-			if (value.Name == _target)
-			{
-				GoalReachedManager gm = (GoalReachedManager)MainManager.GetManagerInstance("GoalReachedManager");
-				gm.RebindPlayer(this.GetType(), ref _target);
-			}
 			_player=value;
+			_target=TargetGenerator.GetInstance().TargetOf(_player.Name);
+			/*late binding del target in modo da evitare a priori in un colpo solo:
+			-deadlock
+			-obiettivi EliminaGiocatore duplicati
+			-che un giocatore debba eliminare sé stesso
+			*/
+
 		}
 	}	
 

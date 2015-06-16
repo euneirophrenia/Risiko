@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/*Più che un singleton lui dovrebbe essere una classe accessibile solo dal main manager*/
+
 public class InitialPhaseManager
 {
     private System.Random random = new System.Random();
@@ -28,7 +30,7 @@ public class InitialPhaseManager
         for(int i=0; i<playerNames.Count(); i++)
         {
             Color color = colors[i];
-            GoalReachedManager goalReachedManager = (GoalReachedManager) MainManager.GetManagerInstance("GoalReachedManager");
+            GoalReachedManager goalReachedManager = GoalReachedManager.GetInstance();
 
             SecretGoal secret = goalReachedManager.GenerateGoal();
             Giocatore giocatore = new Giocatore(playerNames[i], color, secret, this.armateIniziali);

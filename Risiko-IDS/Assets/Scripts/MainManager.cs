@@ -7,7 +7,7 @@ using System;
 public class MainManager : MonoBehaviour 
 {
 	private readonly Dictionary<string, List<StatoController>> _world = new Dictionary<string, List<StatoController>>();
-	private static readonly Dictionary<string, IManager> _factory=new Dictionary<string,IManager>();
+	private static readonly Dictionary<string, IPhase> _factory=new Dictionary<string,IPhase>();
 	public GameObject world;
 
     private IEnumerable<Giocatore> players;
@@ -36,22 +36,17 @@ public class MainManager : MonoBehaviour
 	}
 
 
-    public static IManager GetManagerInstance(string manager)
+    public static IPhase GetManagerInstance(string manager)
     {
         if (_factory.ContainsKey(manager))
 			return _factory[manager];
 
 		Type managerType = Type.GetType(manager);
 
-		if (! (typeof(IManager).IsAssignableFrom(managerType)) || managerType.IsInterface)
+		if (! (typeof(IPhase).IsAssignableFrom(managerType)) || managerType.IsInterface)
 			throw new ArgumentException("Manager ignoto");
 
-		_factory[manager]= (IManager) Activator.CreateInstance(managerType); 
-		//buono se ogni manager espone il costruttore di default
-		/* una cosa molto tranquilla che potremmo fare è: ogni manager ha il costruttore di default e se ha bisogno di altre info le chiede 
-		 * a qualche altro manager, come d'altronde abbiamo sempre fatto fin'ora, si può continuare così e questo codice funziona.
-		 Alternativa -> il mainmanager si tiene una mappa manager-argomenti opportuni, e poi si usano quelli. Possiamo scegliere*/
-
+		_factory[manager]= (IPhase) managerType.GetMethod("GetInstance").Invoke(null, null); 
 		return _factory[manager];
 	}
 
@@ -65,7 +60,7 @@ public class MainManager : MonoBehaviour
 		this._playerNames=playerNames;
         InitialPhaseManager init = new InitialPhaseManager();
         this.players = init.Create(playerNames, new List<StatoController>(this.States));
-       	((PhaseManager)GetManagerInstance("PhaseManager")).Begin();
+       	PhaseManager.GetInstance().Begin();
     }
 
     public IEnumerable<StatoController> States

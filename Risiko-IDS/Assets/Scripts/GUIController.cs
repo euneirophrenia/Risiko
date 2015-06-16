@@ -28,15 +28,15 @@ public class GUIController : MonoBehaviour
 	void Start ()
     {
         #region testing
-        Giocatore = new Giocatore("MarzadureX",color,new ConquistaN(666), 666);
-        Phase = "PhaseDiDebug, Pirla";
+//        Giocatore = new Giocatore("MarzadureX",color,new ConquistaN(666), 666);
+//        Phase = "PhaseDiDebug, Pirla";
         #endregion
 
         this.chagePhasePopup = Resources.Load<GameObject>("GenericPopup");           
-        this.currentPlayer = ((PhaseManager)MainManager.GetManagerInstance("PhaseManager")).CurrentPlayer;
+        this.currentPlayer = PhaseManager.GetInstance().CurrentPlayer;
 
-        ((PhaseManager) MainManager.GetManagerInstance("PhaseManager")).phaseChanged += onPhaseChanged;
-        ((PhaseManager) MainManager.GetManagerInstance("PhaseManager")).turnChanged += onTurnChanged;
+        PhaseManager.GetInstance().phaseChanged += onPhaseChanged;
+		PhaseManager.GetInstance().turnChanged += onTurnChanged;
         scalePanels();
         Refresh();
     }
@@ -55,8 +55,8 @@ public class GUIController : MonoBehaviour
 
     public void Refresh()
     {
-        Giocatore = ((PhaseManager)MainManager.GetManagerInstance("PhaseManager")).CurrentPlayer;
-        Phase = ((PhaseManager)MainManager.GetManagerInstance("PhaseManager")).CurrentPhaseName;
+		Giocatore = PhaseManager.GetInstance().CurrentPlayer;
+		Phase = PhaseManager.GetInstance().CurrentPhaseName;
         this.enabledReset = this.resetClicked != null;
     }
 
@@ -178,7 +178,7 @@ public class GUIController : MonoBehaviour
         ob.GetComponent<Transform>().parent = trans.transform;
         ob.GetComponent<Transform>().position = trans.transform.position;
 
-        PhaseManager man = ((PhaseManager) MainManager.GetManagerInstance("PhaseManager"));
+		PhaseManager man = PhaseManager.GetInstance();
 
         if (!this.currentPlayer.Equals(man.CurrentPlayer))
         {

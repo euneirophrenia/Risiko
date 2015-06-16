@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class AttackManager : IPhase, IManager
+public class AttackManager : IPhase
 {
     private StatoController _statoAttacco, _statoDifesa;
         
@@ -16,13 +16,22 @@ public class AttackManager : IPhase, IManager
     private readonly GameObject _diceResultPopup ;
     private readonly GameObject _gameWinPopup;
 
-    public AttackManager()
+	private static AttackManager _instance=null;
+
+	public static AttackManager GetInstance()
+	{
+		if (_instance==null)
+			_instance=new AttackManager();
+		return _instance;
+	}
+
+    private AttackManager()
     {
         _guiCanvas = GameObject.Find("MainScene/GUI").GetComponent<Transform>();
         _choicePopup = Resources.Load<GameObject>("ChoicePopup");
         _diceResultPopup = Resources.Load<GameObject>("DiceResultPopup");
         _gameWinPopup = Resources.Load<GameObject>("GameWinPopup");
-        ((GoalReachedManager)MainManager.GetManagerInstance("GoalReachedManager")).GoalReached += showWinDialog;
+        GoalReachedManager.GetInstance().GoalReached += showWinDialog;
     }
 
 
@@ -30,14 +39,14 @@ public class AttackManager : IPhase, IManager
     #region IPhase
     public void Register()
     {
-        ((SelectManager)MainManager.GetManagerInstance("SelectManager")).EndSelection += handleSelection; 
-        ((SelectManager) MainManager.GetManagerInstance("SelectManager")).Register("AttackManager"); 
+        SelectManager.GetInstance().EndSelection += handleSelection; 
+        SelectManager.GetInstance().Register("AttackManager"); 
     }
 
     public void Unregister()
     {
-        ((SelectManager)MainManager.GetManagerInstance("SelectManager")).EndSelection -= handleSelection; 
-        ((SelectManager)MainManager.GetManagerInstance("SelectManager")).UnRegister("AttackManager");  
+        SelectManager.GetInstance().EndSelection -= handleSelection; 
+        SelectManager.GetInstance().UnRegister("AttackManager");  
     }
 
     public string PhaseName
@@ -79,7 +88,7 @@ public class AttackManager : IPhase, IManager
     private void handleChoicePopupAccepted(int n)
     {
         //non c'è bisogno di de-registrarsi dal popup
-        DiceManager diceManager = ((DiceManager)MainManager.GetManagerInstance("DiceManager"));
+        DiceManager diceManager = DiceManager.GetInstance();
             
         diceManager.ResultReady += handleDiceResult;
         diceManager.Roll(n, _statoDifesa.TankNumber > n ? n : _statoDifesa.TankNumber); //Math.Min(n, _statoDifesa.TankNumber)
@@ -89,7 +98,7 @@ public class AttackManager : IPhase, IManager
     {
         bool statoConquistato = calculateResult(attack, defense);
 
-        DiceManager diceManager = ((DiceManager)MainManager.GetManagerInstance("DiceManager"));
+        DiceManager diceManager = DiceManager.GetInstance();
         diceManager.ResultReady -= handleDiceResult;
 
         GameObject popup = this.myIstantiatePopup(_diceResultPopup);
@@ -135,7 +144,7 @@ public class AttackManager : IPhase, IManager
     private void end()
     {
         removeSelection();
-        ((GoalReachedManager)MainManager.GetManagerInstance("GoalReachedManager")).Check();
+        GoalReachedManager.GetInstance().Check();
     }
 
     private void removeSelection()
@@ -164,8 +173,6 @@ public class AttackManager : IPhase, IManager
         {
             descr = String.Format("Complimenti {0}, hai vinto!", giocatori.ToList()[0].Name);
         }
-        popup.GetComponent<GameWinPopupController>().NewGamePressed += MainManager.GetInstance().NewGame;
-        popup.GetComponent<GameWinPopupController>().QuitGamePressed += MainManager.GetInstance().Quit;
         popup.GetComponent<GameWinPopupController>().initPopup("VITTORIA!",descr);
     }
 

@@ -1,19 +1,39 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
+[Unique]
 public class ConquistaContinenti : SecretGoal
 {
 	private readonly string[] _targets;
 	private Giocatore _player;
-	
-	[ConstructorArgumentsInfo("continents", Min=2, Max=2, IsUnique=true)]
-	public ConquistaContinenti(object t)
+
+	public ConquistaContinenti(string[] t)
 	{
-		this._targets=(string[])t;
+		this._targets=t;
 	}
-	
-	
+
+	public ConquistaContinenti()
+	{
+		string[] continents = MainManager.GetInstance().Continents.ToArray();
+		
+		List<string> res = new List<string>();
+		
+		int n=2; // magari recuperato dalle settings? è il numero di continenti da conquistare. 2 direi che è buono
+		for (int i=0; i<n;i++)
+		{
+			string c;
+			do
+			{
+				c=continents[UnityEngine.Random.Range(0, continents.Length)];
+			}
+			while (res.Contains(c));
+			res.Add(c);
+		}
+		this._targets=res.ToArray();
+	}
+
 	public override string ToString ()
 	{
 		string s="Conquista ";
