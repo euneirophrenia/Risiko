@@ -25,7 +25,7 @@ public static class Settings
         {"Asia", 7},
         {"Africa", 5},
         {"Oceania", 2},
-        {"Europa", 4}
+        {"Europe", 4}
     };
 
 	public static string BorderFile
