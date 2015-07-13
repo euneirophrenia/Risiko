@@ -1,9 +1,23 @@
-- Preturno per tutti (phasemanager)
-- Gioco si impalla su play 
+
+Modifiche del codice:
+
+- Bug nel SelectionMove (se si seleziona il primo stato e si fa “next”  lo stato rimane selezionato visivamente, rimane il toggle dello stato)
+- Dopo la conversione dei vari manager in singleton, è rimasta la vecchia struttura del tipo: ogni volta che mi serve un manager -> Manager.GetInstance.
+Per alcune classi, l’associazione è talmente logica e stretta, che direi di salvare il riferimento direttamente all’interno della classe, così da fare una sola “getInstance”.
+(Es: AttackManager avrà sempre bisogno del DiceManager, tanto vale che se lo salvi come campo privato all’interno)
 
 -----------------------------------------
+Documentazione:
 
 - Glossario
 - PowerPoint
 - Diagramma sequenza/stato
-- Sistemare UML e tabella casi d'uso
+- Sistemare documento requisiti. In particolare, diciamo che ogni giocatore ha un obiettivo univoco, ma in realtà non è l’obiettivo a essere univoco (es, 2 giocatori possono avere “conquista 24 territori”); sarebbe più corretto dire “ogni giocatore ha un obiettivo segreto assegnato in modo tale che 2 giocatori non possano raggiungere lo stesso obiettivo contemporaneamente).
+- Sistemare UML progettazione
+- Check generale 
+
+———————————————————————————————
+Proposte:
+-stavo riflettendo se non fosse il caso di rivedere un attimo la struttura del SelectManager. Mi stavo chiedendo se non fosse più sensato trasformarlo in un’interfaccia/classe astratta implementata da 2 Manager concreti (SelectManagerAttack/Move) ciascuno con la propria logica di selezione. Chi li usa (Move/AttackManager) potrebbe a quel punto usare solo l’interfaccia e una mini-factory alla quale chiedere di istanziare il SelectManager più opportuno (magari senza andare di reflection, accontentandosi di un enum?) e su quello invocare Register() (anziché Register(“selectAttack”)..
+vantaggi: un po’ meglio dal punto di vista “design principles” (stavo pensando al principio della singola responsabilità) e probabilmente più estendibile… caso mai servisse un altro criterio di selezione, ecco cosa che comunque non credo.
+svantaggi: un po’ di codice da scrivere, ma in realtà davvero poco.. per lo più un po’ di copia-incolla.
