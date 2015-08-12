@@ -65,7 +65,6 @@ public class StatoController : MonoBehaviour
     {
         if (Clicked != null && MainManager.GetInstance().StateClickEnabled)
             Clicked(this);
- 
         _displayObjectName = false;
 
     }

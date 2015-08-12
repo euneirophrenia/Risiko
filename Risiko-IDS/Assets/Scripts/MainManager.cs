@@ -16,7 +16,7 @@ public class MainManager : MonoBehaviour
 	private string[] _playerNames;
 
     private bool _clickenable=true;
-
+	private bool _guienable=true;
 
 	// Use this for initialization
 	void Start () 
@@ -124,6 +124,18 @@ public class MainManager : MonoBehaviour
             this._clickenable = value;
         }
     }
+
+	public bool GUIEnabled
+	{
+		get
+		{
+			return this._guienable;
+		}
+		set
+		{
+			this._guienable=value;
+		}
+	}
 
     public void NewGame()
     {

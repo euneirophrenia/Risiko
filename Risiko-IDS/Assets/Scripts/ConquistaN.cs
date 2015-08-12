@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class ConquistaN : SecretGoal
 {
@@ -24,7 +25,7 @@ public class ConquistaN : SecretGoal
 
 	public bool GoalReached()
 	{
-		return (new List<StatoController>(MainManager.GetInstance().GetStatesByPlayer(_player)).Count>=_n);
+		return (MainManager.GetInstance().GetStatesByPlayer(_player)).Count()>=_n;
 	}
 
 	public Giocatore Player

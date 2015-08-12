@@ -16,6 +16,9 @@ public class AttackManager : IPhase
     private readonly GameObject _diceResultPopup ;
     private readonly GameObject _gameWinPopup;
 
+	public delegate void State(StatoController s);
+	public static event State Conquered;
+
 	private static AttackManager _instance=null;
 
 	public static AttackManager GetInstance()
@@ -39,14 +42,14 @@ public class AttackManager : IPhase
     #region IPhase
     public void Register()
     {
-        SelectManager.GetInstance().EndSelection += handleSelection; 
-        SelectManager.GetInstance().Register("AttackManager"); 
+        SelectManager.EndSelection += handleSelection; 
+        SelectManager.Register(); 
     }
 
     public void Unregister()
     {
-        SelectManager.GetInstance().EndSelection -= handleSelection; 
-        SelectManager.GetInstance().UnRegister("AttackManager");  
+        SelectManager.UnRegister();  
+		SelectManager.EndSelection -= handleSelection; 
     }
 
     public string PhaseName
@@ -100,10 +103,12 @@ public class AttackManager : IPhase
 
         DiceManager diceManager = DiceManager.GetInstance();
         diceManager.ResultReady -= handleDiceResult;
-
-        GameObject popup = this.myIstantiatePopup(_diceResultPopup);
-        popup.GetComponent<DiceResultPopupController>().ClosePopup += end;
-        popup.GetComponent<DiceResultPopupController>().initPopup("Risultato lancio dadi", attack, defense, statoConquistato);
+		if (MainManager.GetInstance().GUIEnabled)
+		{
+	        GameObject popup = this.myIstantiatePopup(_diceResultPopup);
+	        popup.GetComponent<DiceResultPopupController>().ClosePopup += end;
+	        popup.GetComponent<DiceResultPopupController>().initPopup("Risultato lancio dadi", attack, defense, statoConquistato);
+		}
     }
 
     private bool calculateResult(int[] attack, int[] defense)
@@ -136,6 +141,8 @@ public class AttackManager : IPhase
 
             _statoDifesa.TankNumber = attack.Length - defenseWins;
             _statoAttacco.TankNumber -= attack.Length - defenseWins;
+			if (Conquered!=null)
+				Conquered(_statoDifesa);
         }
               
         return territorioConquistato; 
@@ -144,7 +151,6 @@ public class AttackManager : IPhase
     private void end()
     {
         removeSelection();
-        GoalReachedManager.GetInstance().Check();
     }
 
     private void removeSelection()
@@ -163,7 +169,6 @@ public class AttackManager : IPhase
         GameObject popup = this.myIstantiatePopup(_gameWinPopup);
 		MainManager.GetInstance().StateClickEnabled=false;
 		//TODO sulla falsa riga, si potrebbe mettere uno switch per disabilitare tutto il resto dell'interazione grafica.
-        //TODO newgame ... 
         string descr;
         if( giocatori.Count<Giocatore>() > 1)
         {

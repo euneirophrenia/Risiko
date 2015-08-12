@@ -1,135 +1,106 @@
 using System.Collections.Generic;
+using System;
 
-public class SelectManager
+/* Aggiungere un criterio di selezione significa:
+ * -creare la classe che estenda il selectManager
+ * -renderla singleton
+ * -istruire la factory
+ * 
+ * Abbastanza tristemente, questo select manager è pensato solo per gestire input binari,
+ * ossia che la selezione sia conclusa appena si hanno 2 stati validi.
+ * Inoltre, per generalizzare rispetto ai tipi (StatoController e delegato) occorrerebbe aggiungere un livello di astrazione
+ * che però al momento mi pare un po' eccessivo e non richiesto. 
+ * Esempio: generalizzare StatoController a SelectedElement, interfaccia contenente qualche funzione per il rendering grafico della selezione
+ * e l'evento "ehy m'han cliccato". 
+ * */
+
+public abstract class SelectManager
 {
-    private StatoController _stateTemp;
-    private Giocatore _currentPlayer;
-
-	private static SelectManager _instance;
+    protected StatoController _stateTemp;
+    protected Giocatore _currentPlayer;
 
     public delegate void statoSelect(StatoController stato1, StatoController stato2);       
-    public event statoSelect EndSelection;                                      //evento a cui si registrano Attack/Move Manager 
-                        
-                                                                                //per sapere quando la selezione � finita con successo 
+    public static event statoSelect EndSelection;                                      
 
+	private delegate void toggle(StatoController c, StatoController.Action f);
+	private static toggle _register = (s, funzione)=>s.Clicked += funzione;
+	private static toggle _unregister= (s, funzione)=>s.Clicked -= funzione;
 
-	public static SelectManager GetInstance()
+	private static SelectManager GetSelectManager(string phase)
 	{
-		if (_instance==null)
-			_instance=new SelectManager();
-		return _instance;
+		switch (phase)
+		{
+			case "Attacco": 
+				return SelectAttack.GetInstance(); 
+			case "Sposta Armate": 
+				return SelectMove.GetInstance(); 
+			
+			default: 
+				return SelectDefault.GetInstance(); //default deny, potremmo se no lanciare eccezione
+		}
 	}
 
-    private void Init()
+	protected abstract bool IsAValidSecond(StatoController s1 , StatoController s2);
+	protected abstract bool IsAValidFirst(StatoController s);
+
+	protected void UnToggle()
+	{
+		if (_stateTemp!= null)
+		{
+			this._stateTemp.Toggle(false);
+			this._stateTemp = null;
+		}
+	}
+    protected void Init()
     {
-        if (_stateTemp!= null)
-        {
-            this._stateTemp.Toggle(false);
-            this._stateTemp = null;
-        }
+		UnToggle ();
         PhaseManager phase = PhaseManager.GetInstance();
         _currentPlayer = phase.CurrentPlayer;
     }
 
-    private SelectManager()
+	private static void DoRegistration(bool doit)
+	{
+		MainManager main = MainManager.GetInstance();
+		IEnumerable<StatoController> states = main.States;
+		SelectManager sm = SelectManager.GetSelectManager(PhaseManager.GetInstance().CurrentPhaseName);
+		sm.Init();
+		toggle t= doit? _register: _unregister;
+
+		//Debug.Log (sm.GetType().Name+" "+doit);
+		foreach (StatoController s in states)
+		{
+			t(s, sm.Select);
+		}
+	}
+
+	public static void Register()
+	{
+		DoRegistration(true);
+	}
+
+    public static void UnRegister()
     {
+		DoRegistration(false);
     }
-
-    public void Register(string moveOrAttack)
+	
+    protected  void Select(StatoController stato)
     {
-        // in base a chi lo ha chiamato registra su tutti i "Clicked" degli StatoController uno dei due metodi sotto
-        Init();
-        StatoController.Action selectMethod = this.SelectMethod(moveOrAttack);
-
-        if (selectMethod == null)
-            return;
-
-        MainManager main = MainManager.GetInstance();
-        IEnumerable<StatoController> states = main.States;
-
-        foreach (StatoController s in states)
-        {
-            s.Clicked += selectMethod;
-        }
-    }
-
-    public void UnRegister(string moveOrAttack)
-    {
-        // in base a chi lo ha chiamato DEregistra su tutti i "Clicked" degli StatoController uno dei due metodi sotto
-        StatoController.Action selectMethod = this.SelectMethod(moveOrAttack);
-
-        if (selectMethod == null)
-            return;
-
-        MainManager main = MainManager.GetInstance();
-        IEnumerable<StatoController> states = main.States;
-
-        foreach (StatoController s in states)
-        {
-            s.Clicked -= selectMethod;
-        }
-
-    }
-
-    private StatoController.Action SelectMethod(string moveOrAttack)
-    {
-         
-        switch (moveOrAttack)
-        {
-            case "AttackManager":
-            {
-                return this.SelectionAttack;
-            }
-
-            case "MoveManager":
-            {
-                return this.SelectionMove;
-            }
-
-            default :
-            {
-                return null;
-            }
-        }
-    }
-
-
-
-    //ATTACK E MOVE MANAGER SI DOVRANNO OCCUPARE, DOPO AVER SPAWNATO LA BOX DI SELEZIONE E FINITA LA LORO BUSINESS LOGIC, DI TOGLIERE IL TOGGLE
-    //AI DUE STATI INTERESSATI
-
-
-
-
-
-
-    /// <summary>
-    /// Metodo sollevato dall'evento Clicked di StatoController (generato con OnMouseDown)
-    /// Gestione della selezione grafica dello StatoController e logica pura di selezione
-    /// </summary>
-    /// <param name="stato"></param>
-    private void SelectionMove(StatoController stato)
-    {
-        if (this._stateTemp == null && stato.Player.Equals(this._currentPlayer))
+        if (this._stateTemp == null && this.IsAValidFirst(stato))
         {
             this._stateTemp = stato;
             this._stateTemp.Toggle(true);
             return;
         }
         if (_stateTemp!=null)
-        {
-            BorderManager border = BorderManager.GetInstance();
-            
-            if(border.areNeighbours(this._stateTemp, stato) && this._stateTemp.Player.Equals(stato.Player))
+        {   
+            if(this.IsAValidSecond(_stateTemp, stato))
             {
                 stato.Toggle(true);
                 if (EndSelection != null)
                     EndSelection(this._stateTemp, stato);
-                //this._stateTemp.Toggle(false);
-                //stato.Toggle(false);
                 this._stateTemp = null;
             }
-            else if (stato.Player.Equals(_currentPlayer))
+            else if (this.IsAValidFirst(stato))
             {
                 this._stateTemp.Toggle(false);
                 this._stateTemp = stato;
@@ -138,37 +109,5 @@ public class SelectManager
         }
 
     }
-
-    /// <summary>
-    /// Metodo sollevato dall'evento Clicked di StatoController (generato con OnMouseDown)
-    /// Gestione della selezione grafica dello StatoController e logica pura di selezione
-    /// </summary>
-    /// <param name="stato"></param>
-    private void SelectionAttack(StatoController stato)
-    {
-        if (this._stateTemp == null && stato.Player.Equals(this._currentPlayer))
-        {
-            this._stateTemp = stato;
-            this._stateTemp.Toggle(true);
-            return;
-        }
-        if (this._stateTemp != null)
-        {
-            BorderManager border = BorderManager.GetInstance();
-
-            if (border.areNeighbours(this._stateTemp, stato) && !this._stateTemp.Player.Equals(stato.Player))
-            {
-                stato.Toggle(true);
-                if (EndSelection!=null)
-                    EndSelection(this._stateTemp, stato);
-                this._stateTemp = null;
-            }
-            else if (stato.Player.Equals(_currentPlayer))
-            {
-                this._stateTemp.Toggle(false);
-                this._stateTemp = stato;
-                this._stateTemp.Toggle(true);
-            }
-        }
-    }
+    
 }

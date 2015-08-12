@@ -59,7 +59,7 @@ public class EliminaGiocatore : SecretGoal
 	
 	public bool GoalReached()
 	{
-		return (new List<StatoController>(MainManager.GetInstance().GetStatesByPlayer(_target)).Count==0);
+		return (MainManager.GetInstance().GetStatesByPlayer(_target)).Count()==0;
 	}
 	
 	public Giocatore Player

@@ -4,24 +4,24 @@ using System.Collections.Generic;
 
 public class Giocatore 
 {
-    private readonly string name;
-    private readonly Color color;
-    private readonly SecretGoal goal;
-    private int armateDaAssegnare;
+    private readonly string _name;
+    private readonly Color _color;
+    private readonly SecretGoal _goal;
+    private int _armateDaAssegnare;
 
     public Giocatore(string name, Color color, SecretGoal goal, int armateDaAssegnare)
     {
-        this.name = name;
-        this.color = color;
-        this.goal = goal;
-        this.armateDaAssegnare = armateDaAssegnare;
+        this._name = name;
+        this._color = color;
+        this._goal = goal;
+        this._armateDaAssegnare = armateDaAssegnare;
     }
 
     public string Name
     {
         get
         {
-            return this.name;
+            return this._name;
         }
     }
 
@@ -29,7 +29,7 @@ public class Giocatore
     {
         get
         {
-            return this.color;
+            return this._color;
         }
     }
 
@@ -37,7 +37,7 @@ public class Giocatore
     {
         get
         {
-            return this.goal;
+            return this._goal;
         }
     }
 
@@ -45,12 +45,12 @@ public class Giocatore
     {
         get
         {
-            return this.armateDaAssegnare;
+            return this._armateDaAssegnare;
         }
 
         set
         {
-            this.armateDaAssegnare = value;
+            this._armateDaAssegnare = value;
         }
     }
 

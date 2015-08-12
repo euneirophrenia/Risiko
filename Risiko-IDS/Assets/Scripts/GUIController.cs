@@ -157,7 +157,7 @@ public class GUIController : MonoBehaviour
     public void OnNextClicked()
     {
         Debug.Log("NextClicked");
-        if( this.nextClicked != null )
+        if( this.nextClicked != null && MainManager.GetInstance().GUIEnabled)
         {
             this.nextClicked();
             this.ChangePhaseAlert();

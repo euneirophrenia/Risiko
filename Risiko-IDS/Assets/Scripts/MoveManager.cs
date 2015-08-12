@@ -33,14 +33,14 @@ public class MoveManager : IPhase
     #region IPhase
     public void Register()
     {
-        SelectManager.GetInstance().EndSelection += handleSelection;
-		SelectManager.GetInstance().Register("MoveManager");
+        SelectManager.EndSelection += handleSelection;
+		SelectManager.Register();
     }
 
     public void Unregister()
     {
-		SelectManager.GetInstance().EndSelection -= handleSelection;
-		SelectManager.GetInstance().UnRegister("MoveManager");
+		SelectManager.EndSelection -= handleSelection;
+		SelectManager.UnRegister();
     }
 
     public string PhaseName

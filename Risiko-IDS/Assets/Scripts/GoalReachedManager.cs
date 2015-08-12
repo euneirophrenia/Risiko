@@ -22,7 +22,7 @@ public class GoalReachedManager
 		         ).ToList();
 
 		_obiettivi= new List<SecretGoal>();
-
+		AttackManager.Conquered+=HandleConquered;
 	}
 
 
@@ -50,9 +50,13 @@ public class GoalReachedManager
 		_obiettivi.Add(g);
 		return g;
     }
-	
 
-	public void Check()
+	private void HandleConquered(StatoController s)
+	{
+		Check ();
+	}
+
+	private void Check()
 	{
 		bool gameover=false;
 		List<Giocatore> winners=new List<Giocatore>();
@@ -64,7 +68,10 @@ public class GoalReachedManager
 		}
 
 		if (gameover && GoalReached != null)
+		{
+			MainManager.GetInstance().GUIEnabled=false;
 			GoalReached(winners);
+		}
 
 	}
 
