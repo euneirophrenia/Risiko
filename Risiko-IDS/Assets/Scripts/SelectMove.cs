@@ -21,10 +21,10 @@
 		return s.Player.Equals(PhaseManager.GetInstance().CurrentPlayer);
 	}
 	
-	protected override bool IsAValidSecond(StatoController s1, StatoController s2)
+	protected override bool IsAValidSecond(StatoController s2)
 	{
 		BorderManager border=BorderManager.GetInstance();
-		return border.areNeighbours(s1, s2) && s1.Player.Equals(s2.Player);
+		return border.areNeighbours(_stateTemp, s2) && _stateTemp.Player.Equals(s2.Player);
 	}
 }
 

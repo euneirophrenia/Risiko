@@ -16,7 +16,7 @@ public class SelectDefault : SelectManager
 		return false;
 	}
 	
-	protected override bool IsAValidSecond(StatoController s1, StatoController s2)
+	protected override bool IsAValidSecond(StatoController s2)
 	{
 		return false;
 	}

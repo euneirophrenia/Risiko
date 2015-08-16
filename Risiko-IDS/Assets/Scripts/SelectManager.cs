@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 /* Aggiungere un criterio di selezione significa:
  * -creare la classe che estenda il selectManager
@@ -19,6 +20,8 @@ public abstract class SelectManager
     protected StatoController _stateTemp;
     protected Giocatore _currentPlayer;
 
+	private static Dictionary<string, SelectManager> _map=new Dictionary<string, SelectManager>();
+
     public delegate void statoSelect(StatoController stato1, StatoController stato2);       
     public static event statoSelect EndSelection;                                      
 
@@ -26,21 +29,30 @@ public abstract class SelectManager
 	private static toggle _register = (s, funzione)=>s.Clicked += funzione;
 	private static toggle _unregister= (s, funzione)=>s.Clicked -= funzione;
 
-	private static SelectManager GetSelectManager(string phase)
+	protected static void InitMap()
 	{
-		switch (phase)
-		{
-			case "Attacco": 
-				return SelectAttack.GetInstance(); 
-			case "Sposta Armate": 
-				return SelectMove.GetInstance(); 
-			
-			default: 
-				return SelectDefault.GetInstance(); //default deny, potremmo se no lanciare eccezione
-		}
+		_map[AttackManager.GetInstance().PhaseName]=SelectAttack.GetInstance();
+		_map[MoveManager.GetInstance().PhaseName]=SelectMove.GetInstance();
 	}
 
-	protected abstract bool IsAValidSecond(StatoController s1 , StatoController s2);
+	private static SelectManager GetSelectManager(string phase)
+	{
+		//Questa soluzione anzi che il case perché il case, come era prima, funzionava solo con costanti.
+		//Non volevo lasciare scritte delle costanti del tipo "Attacco" per dire il nome della fase dell'attackManager.
+		//Altra soluzione poteva essere una cascata di if oppure scegliere una convenzione di nomi e andare di reflection.
+		//La mappa mi sembrava il compromesso migliore tra l'efficienza del case e la flessibilità degli if.
+		//La pecca più grande è questo primo if che serve ad inizializzare la mappa ed evita corse critiche
+		//Al momento mi sembra comunque un prezzo accettabile.
+		//Aggiungere alla factory dei manager => modificare initMap istruendola con la coppia (fase,Manager)
+
+		if (_map.Keys.Count==0)
+			InitMap();
+		if (_map.ContainsKey(phase))
+			return _map[phase];
+		return SelectDefault.GetInstance();
+	}
+
+	protected abstract bool IsAValidSecond(StatoController s2);
 	protected abstract bool IsAValidFirst(StatoController s);
 
 	protected void UnToggle()
@@ -93,7 +105,7 @@ public abstract class SelectManager
         }
         if (_stateTemp!=null)
         {   
-            if(this.IsAValidSecond(_stateTemp, stato))
+            if(this.IsAValidSecond(stato))
             {
                 stato.Toggle(true);
                 if (EndSelection != null)
