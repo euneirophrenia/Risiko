@@ -46,9 +46,6 @@ public class StatoController : MonoBehaviour
 
             _displayObjectName = true;
         }
-
-        
-        
 	}
 
 	void OnMouseExit()

@@ -27,11 +27,6 @@ public class GUIController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        #region testing
-//        Giocatore = new Giocatore("MarzadureX",color,new ConquistaN(666), 666);
-//        Phase = "PhaseDiDebug, Pirla";
-        #endregion
-
         this.chagePhasePopup = Resources.Load<GameObject>("GenericPopup");           
         this.currentPlayer = PhaseManager.GetInstance().CurrentPlayer;
 

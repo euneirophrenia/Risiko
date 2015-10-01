@@ -78,7 +78,7 @@ public class AttackManager : IPhase
         List<int> valuesRange = Enumerable.Range(1, numArmatiMax).ToList<int>();
 
         GameObject popup = this.myIstantiatePopup(_choicePopup);
-        popup.GetComponent<ChoicePopupController>().initPopup("ATTACCO", "Scegli con quanti carri armati attaccare", valuesRange);
+        popup.GetComponent<ChoicePopupController>().initPopup("ATTACCO", "Scegli con quante armate attaccare", valuesRange);
         popup.GetComponent<ChoicePopupController>().AcceptPressed += handleChoicePopupAccepted;
         popup.GetComponent<ChoicePopupController>().CancelPressed += handleChoicePopupCancelled;
     }

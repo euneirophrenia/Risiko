@@ -1,0 +1,16 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GoalReachedManager.cs">
+    <Files>
+      <File FileName="Assets/Scripts/SelectManager.cs" Line="5" Column="1" />
+      <File FileName="Assets/Scripts/SelectMove.cs" Line="33" Column="1" />
+      <File FileName="Assets/Scripts/SelectAttack.cs" Line="21" Column="86" />
+      <File FileName="Assets/Scripts/MainManager.cs" Line="39" Column="31" />
+      <File FileName="Assets/Scripts/GoalReachedManager.cs" Line="54" Column="27" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -15,7 +15,7 @@ public class GameWinPopupController : MonoBehaviour {
 	void Start ()
     {
         #region debug-test
-        //initPopup("VITTORIA!!", "Complimenti PIPPONIO, hai vinto!");
+        //initPopup("VITTORIA!!", "Complimenti, hai vinto!");
         #endregion
 
         this.NewGamePressed += hide;

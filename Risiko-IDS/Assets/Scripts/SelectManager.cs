@@ -15,7 +15,8 @@ using System.Linq;
  * e l'evento "ehy m'han cliccato". 
  * */
 
-public abstract class SelectManager
+
+public abstract partial class SelectManager
 {
     protected StatoController _stateTemp;
     protected Giocatore _currentPlayer;

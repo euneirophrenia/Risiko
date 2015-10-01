@@ -26,17 +26,15 @@ public class InitialPhaseManager
     {
         this.armateIniziali = (armatePerStato-1) * states.Count / playerNames.Length;
         //Ne metto una in meno da assegnare perchè ne inserisco una direttamente per evitare inconsistenze
+		GoalReachedManager goalReachedManager = GoalReachedManager.GetInstance();
 
         for(int i=0; i<playerNames.Count(); i++)
         {
             Color color = colors[i];
-            GoalReachedManager goalReachedManager = GoalReachedManager.GetInstance();
-
             SecretGoal secret = goalReachedManager.GenerateGoal();
             Giocatore giocatore = new Giocatore(playerNames[i], color, secret, this.armateIniziali);
             secret.Player = giocatore;
-            
-
+       
             players.Add(giocatore);
         }
 

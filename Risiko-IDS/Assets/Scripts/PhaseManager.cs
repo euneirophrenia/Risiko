@@ -67,7 +67,7 @@ public class PhaseManager
         }
     }
 
-    //funzione chiamata dall'OnClick del bottono next o registrata nel costruttore all'evento relativo
+    //funzione chiamata dall'OnClick del bottone next o registrata nel costruttore all'evento relativo
     public void ChangePhase()
     {
         this.currentPhaseManager.Unregister();

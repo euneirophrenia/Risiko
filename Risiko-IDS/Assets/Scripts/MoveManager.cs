@@ -68,7 +68,7 @@ public class MoveManager : IPhase
         }
 
         GameObject popup = this.myIstantiatePopup(_choicePopup);
-        popup.GetComponent<ChoicePopupController>().initPopup("MUOVI(TI)", "Scegli quanti carri armati spostare", valuesRange);
+        popup.GetComponent<ChoicePopupController>().initPopup("Sposta armate", "Scegli quante armate spostare", valuesRange);
         popup.GetComponent<ChoicePopupController>().AcceptPressed += handleChoicePopupAccepted;
         popup.GetComponent<ChoicePopupController>().CancelPressed += handleChoicePopupCancelled;
 
