@@ -1,0 +1,9 @@
+1- Observer di brutto
+2- Flyweight -- MainManager rispetto ad IPhase
+3- Strategy -- SecretGoal
+3- Strategy -- SelectManager/Attack/Move
+
+
+Al fine di garantire flessibilità nella realizzazione degli obiettivi segreti, è stato applicato il pattern Strategy realizzando un'interfaccia SecretGoal. Quest'ultima è implementata da tutte le classi che rappresentano un tipo di obiettivo segreto, permettendo così una facile estensione a nuove tipologie in caso di necessità, pur rispettando il design principle Open/Closed. Per ovviare a simili problemi incontrati nella concretizzazione del SelectManager, è stato nuovamente applicato il pattern Strategy al fine di implementare diverse logiche di selezione dei territori. 
+Un ulteriore pattern utilizzato è stato il pattern Flyweight, al fine di gestire i manager delle fasi del gioco. In tale maniera qualsiasi cliente che necessiti di un riferimento ad un manager di fase (AttackManager, MoveManager, PreturnoManager), lo ottiene tramite la FlyweightFactory, implementata dal MainManager, evitando così inconsistenze. 
+Infine, essendo il progetto fortemente basato sugli eventi, è stato applicato numerose volte il pattern Observer per permettere agli oggetti Observer di essere aggiornati sullo stato di oggetti Observed ai quali si è registrato. Un esempio è il cambiamento di fase innescato dalla pressione del tasto Next da parte del giocatore la quale scatena OnNextClicked() della classe GUIController, che a sua volta invoca l'evento nextClicked(). A quest'ultimo si è precedentemente registrato il PhaseManager, il quale decide con la funzione ChangePhase() quale manager di fase far registrare agli eventi generati dagli input del giocatore.
