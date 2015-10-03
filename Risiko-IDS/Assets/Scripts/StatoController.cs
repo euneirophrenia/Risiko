@@ -6,19 +6,19 @@ public class StatoController : MonoBehaviour
 	public GUISkin GameSkin;
     public GameObject tank;
 
-    private GameObject animationObject;
+    private GameObject _animationObject;
 
     //variabili da visualizzare
-	private string stateName;
-    private int tankNumber = 0;
-    private GameObject tk;
-    private string stringToDisplay;
-    private Giocatore player = null;
+	private string _stateName;
+    private int _tankNumber = 0;
+    private GameObject _tk;
+    private string _stringToDisplay;
+    private Giocatore _player = null;
    
 
 	private Color _startColor;
 	private bool _displayObjectName;
-    private bool toggled = false;
+    private bool _toggled = false;
 
     public delegate void Action(StatoController stato);
     public event Action Clicked;
@@ -27,7 +27,7 @@ public class StatoController : MonoBehaviour
     //Funzioni UNITY
 	void Start()
 	{
-        stateName = this.gameObject.name;
+        _stateName = this.gameObject.name;
         _startColor = GetComponent<Renderer>().material.color;
       
 	}
@@ -41,7 +41,7 @@ public class StatoController : MonoBehaviour
 	{
         if (MainManager.GetInstance().StateClickEnabled)
         {
-            if (!this.toggled)
+            if (!this._toggled)
                 this.Toggle(true, false);
 
             _displayObjectName = true;
@@ -50,7 +50,7 @@ public class StatoController : MonoBehaviour
 
 	void OnMouseExit()
 	{
-        if (MainManager.GetInstance().StateClickEnabled && !this.toggled)
+        if (MainManager.GetInstance().StateClickEnabled && !this._toggled)
         {
             this.Toggle(false, false);
         }
@@ -72,18 +72,18 @@ public class StatoController : MonoBehaviour
     {
         get
         {
-            return this.player;
+            return this._player;
         }
 
         set
         {
-            this.player = value;
-            if (this.tk == null)
+            this._player = value;
+            if (this._tk == null)
             {
-                tk = Instantiate(tank);
+                _tk = Instantiate(tank);
                 Material myNewMaterial = new Material(Shader.Find("Diffuse"));
-                tk.GetComponentInChildren<Renderer>().material = myNewMaterial;
-                tk.GetComponent<Transform>().position = new Vector3(this.gameObject.GetComponent<Transform>().position.x, this.gameObject.GetComponent<Transform>().position.y + 2.5f, this.gameObject.GetComponent<Transform>().position.z);
+                _tk.GetComponentInChildren<Renderer>().material = myNewMaterial;
+                _tk.GetComponent<Transform>().position = new Vector3(this.gameObject.GetComponent<Transform>().position.x, this.gameObject.GetComponent<Transform>().position.y + 2.5f, this.gameObject.GetComponent<Transform>().position.z);
             }
             this.setTankColor(value.Color);
         }
@@ -93,7 +93,7 @@ public class StatoController : MonoBehaviour
     {
         get
         {
-            return this.stateName;
+            return this._stateName;
         }
     }
 
@@ -101,12 +101,12 @@ public class StatoController : MonoBehaviour
     {
         get
         {
-            return this.tankNumber;
+            return this._tankNumber;
         }
 
         set                                 
         {
-            this.tankNumber = value > 0 ? value : 0;
+            this._tankNumber = value > 0 ? value : 0;
         }
     }
 
@@ -114,8 +114,8 @@ public class StatoController : MonoBehaviour
     {
         if (_displayObjectName)
         {
-            stringToDisplay = "Name: " + stateName + "\nTank number: " + tankNumber;
-            GUI.Box(new Rect(Event.current.mousePosition.x - 170, Event.current.mousePosition.y, 170, 40), stringToDisplay, "BoxGUI");
+            _stringToDisplay = "Name: " + _stateName + "\nTank number: " + _tankNumber;
+            GUI.Box(new Rect(Event.current.mousePosition.x - 170, Event.current.mousePosition.y, 170, 40), _stringToDisplay, "BoxGUI");
             
         }  
     }
@@ -124,7 +124,7 @@ public class StatoController : MonoBehaviour
 
     private void setTankColor(Color color)
     {
-        tk.GetComponentInChildren<Renderer>().material.color = color;
+        _tk.GetComponentInChildren<Renderer>().material.color = color;
     }
 
     /// <summary>
@@ -138,14 +138,14 @@ public class StatoController : MonoBehaviour
             Color col = new Color(1f - _startColor.r, 1f - _startColor.g, 1f - _startColor.b);
             GetComponent<Renderer>().material.color = col;
             if(permanent)
-                this.toggled = true;
+                this._toggled = true;
         }
         else
         {
             GetComponent<Renderer>().material.color = _startColor;
             _displayObjectName = false;
             if(permanent)
-                this.toggled = false;
+                this._toggled = false;
         }
     }
 
@@ -157,8 +157,8 @@ public class StatoController : MonoBehaviour
     private IEnumerator Spawn(string animationName)
     {
         Transform trans = this.GetComponent<Transform>();
-        animationObject = Resources.Load<GameObject>(animationName);
-        GameObject ob = Instantiate(animationObject);
+        _animationObject = Resources.Load<GameObject>(animationName);
+        GameObject ob = Instantiate(_animationObject);
         ob.GetComponent<Transform>().rotation = Camera.main.GetComponent<Transform>().rotation;
         ob.GetComponent<Transform>().position = new Vector3(trans.position.x, trans.position.y + 10, trans.position.z);
         //ob.GetComponent<Transform>().parent = GameObject.Find("MainScene/GUI").transform;

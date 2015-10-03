@@ -20,7 +20,7 @@ public class ConquistaContinenti : SecretGoal
 		
 		List<string> res = new List<string>();
 		
-		int n=2; // magari recuperato dalle settings? è il numero di continenti da conquistare. 2 direi che è buono
+		int n=2; // magari recuperato dalle settings?
 		for (int i=0; i<n;i++)
 		{
 			string c;
@@ -39,7 +39,7 @@ public class ConquistaContinenti : SecretGoal
 		string s="Conquista ";
 		foreach(string x in _targets)
 			s+=x+", ";
-		return string.Format (s);
+		return s.Substring(0,  s.Length-2);
 	}
 	
 	public bool GoalReached()

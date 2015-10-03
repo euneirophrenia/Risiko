@@ -54,7 +54,7 @@ public class EliminaGiocatore : SecretGoal
 
 	public override string ToString ()
 	{
-		return string.Format ("Elimina "+ _target+ " dalla faccia della terra.");
+		return "Elimina "+ _target+ " dalla faccia della terra.";
 	}
 	
 	public bool GoalReached()

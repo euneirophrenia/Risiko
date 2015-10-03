@@ -18,7 +18,7 @@
 
 		protected override bool IsAValidFirst(StatoController s)
 		{
-			return s.Player.Equals(PhaseManager.GetInstance().CurrentPlayer) && s.TankNumber>1;
+			return s.Player.Equals(this._currentPlayer) && s.TankNumber>1;
 		}
 
 		protected override bool IsAValidSecond(StatoController s2)

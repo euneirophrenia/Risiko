@@ -20,7 +20,7 @@ public class ConquistaN : SecretGoal
 
 	public override string ToString ()
 	{
-		return string.Format ("Conquista "+ _n+ " Territori ");
+		return "Conquista "+ _n+ " Territori ";
 	}
 
 	public bool GoalReached()

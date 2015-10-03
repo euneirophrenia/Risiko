@@ -168,7 +168,7 @@ public class AttackManager : IPhase
     {
         GameObject popup = this.myIstantiatePopup(_gameWinPopup);
 		MainManager.GetInstance().StateClickEnabled=false;
-		//TODO sulla falsa riga, si potrebbe mettere uno switch per disabilitare tutto il resto dell'interazione grafica.
+
         string descr;
         if( giocatori.Count<Giocatore>() > 1)
         {

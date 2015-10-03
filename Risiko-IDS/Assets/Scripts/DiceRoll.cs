@@ -16,6 +16,7 @@ public class DiceRoll : MonoBehaviour
 		float z=(Camera.main.transform.position - this.transform.position).magnitude; 
 		Vector3 refer = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, z));
 		refer.y=0;
+		refer.z*=1.5f;
 		this.gameObject.transform.position=refer;
         this.gameObject.GetComponent<Transform>().position+= new Vector3(Random.Range(-50, 50), Random.Range(20, 50), Random.Range(20, 30));
         this.gameObject.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(20, 50), Random.Range(20, 50), Random.Range(20, 50)));
