@@ -2463,7 +2463,7 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             <coveredLifelines>
               <lifelineMoniker
                 Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
-                LastKnownName="SelectManager"
+                LastKnownName="SelectAttack"
                 LastKnownLocation="RisikoSequence.uml" />
             </coveredLifelines>
             <finish>
@@ -2484,20 +2484,28 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
                 LastKnownName="MessageOccurrenceSpecification11"
                 LastKnownLocation="RisikoSequence.uml" />
               <messageOccurrenceSpecificationMoniker
-                Id="d67e9774-ddb2-4eda-9b71-f61c9d9db8b1"
-                LastKnownName="MessageOccurrenceSpecification14"
+                Id="3708ef82-a7f1-4e5f-94b7-b70ca8f70021"
+                LastKnownName="MessageOccurrenceSpecification28"
+                LastKnownLocation="RisikoSequence.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="f2452470-ffdc-47ea-b1f0-10001cc0a7b6"
+                LastKnownName="ExecutionOccurrenceSpecification27"
+                LastKnownLocation="RisikoSequence.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="c2012560-797a-4ca6-bb4b-a86c642f00be"
+                LastKnownName="ExecutionOccurrenceSpecification28"
                 LastKnownLocation="RisikoSequence.uml" />
               <messageOccurrenceSpecificationMoniker
-                Id="5aed9051-d8b0-4add-b155-e94971166bdb"
-                LastKnownName="MessageOccurrenceSpecification17"
+                Id="faaf6765-45b0-4eff-94a4-8b7f7512b31c"
+                LastKnownName="MessageOccurrenceSpecification32"
                 LastKnownLocation="RisikoSequence.uml" />
-              <messageOccurrenceSpecificationMoniker
-                Id="3fcf318a-a052-45ad-af8e-1ed809f577e4"
-                LastKnownName="MessageOccurrenceSpecification18"
+              <executionOccurrenceSpecificationMoniker
+                Id="d5d4dabc-49e8-400f-9226-d8c769fca8e6"
+                LastKnownName="ExecutionOccurrenceSpecification31"
                 LastKnownLocation="RisikoSequence.uml" />
-              <messageOccurrenceSpecificationMoniker
-                Id="6d148c61-417f-48eb-aa2a-18891ace0fd1"
-                LastKnownName="MessageOccurrenceSpecification21"
+              <executionOccurrenceSpecificationMoniker
+                Id="c18662fa-b732-487e-91aa-9c485ac81060"
+                LastKnownName="ExecutionOccurrenceSpecification32"
                 LastKnownLocation="RisikoSequence.uml" />
               <operandOccurrenceSpecificationMoniker
                 Id="c48568f9-1fd1-4298-9d5d-b2dc971f1046"
@@ -2535,7 +2543,7 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             <covered>
               <lifelineMoniker
                 Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
-                LastKnownName="SelectManager"
+                LastKnownName="SelectAttack"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -2555,7 +2563,7 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             <covered>
               <lifelineMoniker
                 Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
-                LastKnownName="SelectManager"
+                LastKnownName="SelectAttack"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -2577,218 +2585,170 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="3708ef82-a7f1-4e5f-94b7-b70ca8f70021"
+            name="MessageOccurrenceSpecification28">
+            <covered>
+              <lifelineMoniker
+                Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
+                LastKnownName="SelectAttack"
+                LastKnownLocation="RisikoSequence.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
           <behaviorExecutionSpecification
-            Id="88f9f6b4-17ab-4282-a0c2-2501a52278c9"
-            name="BehaviorExecutionSpecification9">
+            Id="155d8985-4f5a-473d-9cc2-1902fbd310ae"
+            name="BehaviorExecutionSpecification14">
             <coveredLifelines>
               <lifelineMoniker
-                Id="a73b5659-feda-4460-a0b4-cb062b853527"
+                Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
                 LastKnownName="SelectAttack"
                 LastKnownLocation="RisikoSequence.uml" />
             </coveredLifelines>
             <finish>
               <executionOccurrenceSpecificationMoniker
-                Id="ffd30e5a-9259-4a44-804a-11e03f56fc70"
-                LastKnownName="ExecutionOccurrenceSpecification18"
+                Id="c2012560-797a-4ca6-bb4b-a86c642f00be"
+                LastKnownName="ExecutionOccurrenceSpecification28"
                 LastKnownLocation="RisikoSequence.uml" />
             </finish>
             <start>
               <executionOccurrenceSpecificationMoniker
-                Id="8f7a1926-0fda-40aa-ba19-808ded718f47"
-                LastKnownName="ExecutionOccurrenceSpecification17"
+                Id="f2452470-ffdc-47ea-b1f0-10001cc0a7b6"
+                LastKnownName="ExecutionOccurrenceSpecification27"
                 LastKnownLocation="RisikoSequence.uml" />
             </start>
             <nestedOccurrences>
               <messageOccurrenceSpecificationMoniker
-                Id="15ee356e-8f4e-4182-9815-5e85471a39de"
-                LastKnownName="MessageOccurrenceSpecification15"
-                LastKnownLocation="RisikoSequence.uml" />
-              <messageOccurrenceSpecificationMoniker
-                Id="3f5c5430-55e3-40ac-9c10-4cdf88f15c94"
-                LastKnownName="MessageOccurrenceSpecification16"
+                Id="9914cf32-56be-4003-855f-552d8b5dd2c2"
+                LastKnownName="MessageOccurrenceSpecification29"
                 LastKnownLocation="RisikoSequence.uml" />
             </nestedOccurrences>
           </behaviorExecutionSpecification>
           <executionOccurrenceSpecification
-            Id="8f7a1926-0fda-40aa-ba19-808ded718f47"
-            name="ExecutionOccurrenceSpecification17">
+            Id="f2452470-ffdc-47ea-b1f0-10001cc0a7b6"
+            name="ExecutionOccurrenceSpecification27">
             <event>
               <executionOccurrenceSpecificationReferencesEvent>
                 <executionEventMoniker
-                  Id="7e2dbee6-30a0-4655-8a8a-a673ced69359"
+                  Id="53ff68a1-0fb2-42ff-9a1c-e3ad3291c03b"
                   LastKnownName="ExecutionEvent"
                   LastKnownLocation="RisikoSequence.uml" />
               </executionOccurrenceSpecificationReferencesEvent>
             </event>
             <covered>
               <lifelineMoniker
-                Id="a73b5659-feda-4460-a0b4-cb062b853527"
+                Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
                 LastKnownName="SelectAttack"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="15ee356e-8f4e-4182-9815-5e85471a39de"
-            name="MessageOccurrenceSpecification15">
-            <covered>
-              <lifelineMoniker
-                Id="a73b5659-feda-4460-a0b4-cb062b853527"
-                LastKnownName="SelectAttack"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="d67e9774-ddb2-4eda-9b71-f61c9d9db8b1"
-            name="MessageOccurrenceSpecification14">
+            Id="9914cf32-56be-4003-855f-552d8b5dd2c2"
+            name="MessageOccurrenceSpecification29">
             <covered>
               <lifelineMoniker
                 Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
-                LastKnownName="SelectManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="5aed9051-d8b0-4add-b155-e94971166bdb"
-            name="MessageOccurrenceSpecification17">
-            <covered>
-              <lifelineMoniker
-                Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
-                LastKnownName="SelectManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="3f5c5430-55e3-40ac-9c10-4cdf88f15c94"
-            name="MessageOccurrenceSpecification16">
-            <covered>
-              <lifelineMoniker
-                Id="a73b5659-feda-4460-a0b4-cb062b853527"
                 LastKnownName="SelectAttack"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </messageOccurrenceSpecification>
           <executionOccurrenceSpecification
-            Id="ffd30e5a-9259-4a44-804a-11e03f56fc70"
-            name="ExecutionOccurrenceSpecification18">
+            Id="c2012560-797a-4ca6-bb4b-a86c642f00be"
+            name="ExecutionOccurrenceSpecification28">
             <event>
               <executionOccurrenceSpecificationReferencesEvent>
                 <executionEventMoniker
-                  Id="817e2654-6733-456e-b6ea-d6ca6ea3dace"
+                  Id="5562d523-fac7-4bdd-abb0-16a39f7a6d2d"
                   LastKnownName="ExecutionEvent"
                   LastKnownLocation="RisikoSequence.uml" />
               </executionOccurrenceSpecificationReferencesEvent>
             </event>
             <covered>
               <lifelineMoniker
-                Id="a73b5659-feda-4460-a0b4-cb062b853527"
+                Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
                 LastKnownName="SelectAttack"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="faaf6765-45b0-4eff-94a4-8b7f7512b31c"
+            name="MessageOccurrenceSpecification32">
+            <covered>
+              <lifelineMoniker
+                Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
+                LastKnownName="SelectAttack"
+                LastKnownLocation="RisikoSequence.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
           <behaviorExecutionSpecification
-            Id="6f20a6a1-2d99-48fc-a960-9c1b0d0ab315"
-            name="BehaviorExecutionSpecification10">
+            Id="7e3c87ef-e3b7-43e0-b5f0-da6728cb428b"
+            name="BehaviorExecutionSpecification16">
             <coveredLifelines>
               <lifelineMoniker
-                Id="a73b5659-feda-4460-a0b4-cb062b853527"
+                Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
                 LastKnownName="SelectAttack"
                 LastKnownLocation="RisikoSequence.uml" />
             </coveredLifelines>
             <finish>
               <executionOccurrenceSpecificationMoniker
-                Id="83ccc1ce-a781-4cc0-991b-e2798db4ca6e"
-                LastKnownName="ExecutionOccurrenceSpecification20"
+                Id="c18662fa-b732-487e-91aa-9c485ac81060"
+                LastKnownName="ExecutionOccurrenceSpecification32"
                 LastKnownLocation="RisikoSequence.uml" />
             </finish>
             <start>
               <executionOccurrenceSpecificationMoniker
-                Id="bf632b78-5483-42c6-8bed-ed10cef025d2"
-                LastKnownName="ExecutionOccurrenceSpecification19"
+                Id="d5d4dabc-49e8-400f-9226-d8c769fca8e6"
+                LastKnownName="ExecutionOccurrenceSpecification31"
                 LastKnownLocation="RisikoSequence.uml" />
             </start>
             <nestedOccurrences>
               <messageOccurrenceSpecificationMoniker
-                Id="0cf1b0b8-0e82-46a8-aff7-21d443764e26"
-                LastKnownName="MessageOccurrenceSpecification19"
-                LastKnownLocation="RisikoSequence.uml" />
-              <messageOccurrenceSpecificationMoniker
-                Id="42fc368c-182c-4d3b-8349-23ce0f8abddf"
-                LastKnownName="MessageOccurrenceSpecification20"
+                Id="5fa41e51-ee86-43c8-9ffc-8deace16a8ef"
+                LastKnownName="MessageOccurrenceSpecification33"
                 LastKnownLocation="RisikoSequence.uml" />
             </nestedOccurrences>
           </behaviorExecutionSpecification>
           <executionOccurrenceSpecification
-            Id="bf632b78-5483-42c6-8bed-ed10cef025d2"
-            name="ExecutionOccurrenceSpecification19">
+            Id="d5d4dabc-49e8-400f-9226-d8c769fca8e6"
+            name="ExecutionOccurrenceSpecification31">
             <event>
               <executionOccurrenceSpecificationReferencesEvent>
                 <executionEventMoniker
-                  Id="6f8993c2-f58d-4dde-8fea-1e142a23801a"
+                  Id="047c330d-1d9d-4c0e-9100-cf94cf8dbb1f"
                   LastKnownName="ExecutionEvent"
                   LastKnownLocation="RisikoSequence.uml" />
               </executionOccurrenceSpecificationReferencesEvent>
             </event>
             <covered>
               <lifelineMoniker
-                Id="a73b5659-feda-4460-a0b4-cb062b853527"
+                Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
                 LastKnownName="SelectAttack"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="3fcf318a-a052-45ad-af8e-1ed809f577e4"
-            name="MessageOccurrenceSpecification18">
+            Id="5fa41e51-ee86-43c8-9ffc-8deace16a8ef"
+            name="MessageOccurrenceSpecification33">
             <covered>
               <lifelineMoniker
                 Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
-                LastKnownName="SelectManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="0cf1b0b8-0e82-46a8-aff7-21d443764e26"
-            name="MessageOccurrenceSpecification19">
-            <covered>
-              <lifelineMoniker
-                Id="a73b5659-feda-4460-a0b4-cb062b853527"
-                LastKnownName="SelectAttack"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="6d148c61-417f-48eb-aa2a-18891ace0fd1"
-            name="MessageOccurrenceSpecification21">
-            <covered>
-              <lifelineMoniker
-                Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
-                LastKnownName="SelectManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="42fc368c-182c-4d3b-8349-23ce0f8abddf"
-            name="MessageOccurrenceSpecification20">
-            <covered>
-              <lifelineMoniker
-                Id="a73b5659-feda-4460-a0b4-cb062b853527"
                 LastKnownName="SelectAttack"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </messageOccurrenceSpecification>
           <executionOccurrenceSpecification
-            Id="83ccc1ce-a781-4cc0-991b-e2798db4ca6e"
-            name="ExecutionOccurrenceSpecification20">
+            Id="c18662fa-b732-487e-91aa-9c485ac81060"
+            name="ExecutionOccurrenceSpecification32">
             <event>
               <executionOccurrenceSpecificationReferencesEvent>
                 <executionEventMoniker
-                  Id="3a507c81-d59d-44a3-a2f4-bbf246cfad36"
+                  Id="f1816051-eca1-4051-8cce-ad778b280dd4"
                   LastKnownName="ExecutionEvent"
                   LastKnownLocation="RisikoSequence.uml" />
               </executionOccurrenceSpecificationReferencesEvent>
             </event>
             <covered>
               <lifelineMoniker
-                Id="a73b5659-feda-4460-a0b4-cb062b853527"
+                Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
                 LastKnownName="SelectAttack"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
@@ -2799,12 +2759,12 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             interactionOperator="Alt">
             <coveredLifelines>
               <lifelineMoniker
-                Id="7ad90618-435f-4787-b1b6-572ec82e45e8"
-                LastKnownName="AttackManager"
+                Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
+                LastKnownName="SelectAttack"
                 LastKnownLocation="RisikoSequence.uml" />
               <lifelineMoniker
-                Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
-                LastKnownName="SelectManager"
+                Id="7ad90618-435f-4787-b1b6-572ec82e45e8"
+                LastKnownName="AttackManager"
                 LastKnownLocation="RisikoSequence.uml" />
               <lifelineMoniker
                 Id="404c3a37-b665-4d2b-965e-7eebcf15cb0d"
@@ -2817,12 +2777,12 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
                 name="InteractionOperand1">
                 <coveredLifelines>
                   <lifelineMoniker
-                    Id="7ad90618-435f-4787-b1b6-572ec82e45e8"
-                    LastKnownName="AttackManager"
+                    Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
+                    LastKnownName="SelectAttack"
                     LastKnownLocation="RisikoSequence.uml" />
                   <lifelineMoniker
-                    Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
-                    LastKnownName="SelectManager"
+                    Id="7ad90618-435f-4787-b1b6-572ec82e45e8"
+                    LastKnownName="AttackManager"
                     LastKnownLocation="RisikoSequence.uml" />
                   <lifelineMoniker
                     Id="404c3a37-b665-4d2b-965e-7eebcf15cb0d"
@@ -2866,12 +2826,12 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
                 name="InteractionOperand2">
                 <coveredLifelines>
                   <lifelineMoniker
-                    Id="7ad90618-435f-4787-b1b6-572ec82e45e8"
-                    LastKnownName="AttackManager"
+                    Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
+                    LastKnownName="SelectAttack"
                     LastKnownLocation="RisikoSequence.uml" />
                   <lifelineMoniker
-                    Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
-                    LastKnownName="SelectManager"
+                    Id="7ad90618-435f-4787-b1b6-572ec82e45e8"
+                    LastKnownName="AttackManager"
                     LastKnownLocation="RisikoSequence.uml" />
                   <lifelineMoniker
                     Id="404c3a37-b665-4d2b-965e-7eebcf15cb0d"
@@ -2937,7 +2897,7 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             <covered>
               <lifelineMoniker
                 Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
-                LastKnownName="SelectManager"
+                LastKnownName="SelectAttack"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </operandOccurrenceSpecification>
@@ -2966,18 +2926,6 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
               <messageOccurrenceSpecificationMoniker
                 Id="141599e2-d518-4c9d-9b5b-47228a9bf672"
                 LastKnownName="MessageOccurrenceSpecification23"
-                LastKnownLocation="RisikoSequence.uml" />
-              <messageOccurrenceSpecificationMoniker
-                Id="4dc55e9c-03eb-43d1-9225-6ff19ac0fd6f"
-                LastKnownName="MessageOccurrenceSpecification24"
-                LastKnownLocation="RisikoSequence.uml" />
-              <executionOccurrenceSpecificationMoniker
-                Id="7f7e6e3d-c034-464f-ab1c-e3b9b3343fee"
-                LastKnownName="ExecutionOccurrenceSpecification23"
-                LastKnownLocation="RisikoSequence.uml" />
-              <executionOccurrenceSpecificationMoniker
-                Id="1dca4f4d-6399-4ea7-8989-42944b2d76f5"
-                LastKnownName="ExecutionOccurrenceSpecification24"
                 LastKnownLocation="RisikoSequence.uml" />
               <messageOccurrenceSpecificationMoniker
                 Id="f442c250-4276-45ca-9ac2-105111a20c0c"
@@ -3019,94 +2967,10 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             <covered>
               <lifelineMoniker
                 Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
-                LastKnownName="SelectManager"
+                LastKnownName="SelectAttack"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="4dc55e9c-03eb-43d1-9225-6ff19ac0fd6f"
-            name="MessageOccurrenceSpecification24">
-            <covered>
-              <lifelineMoniker
-                Id="7ad90618-435f-4787-b1b6-572ec82e45e8"
-                LastKnownName="AttackManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <behaviorExecutionSpecification
-            Id="253117fd-d06b-4310-9b40-47e709150063"
-            name="BehaviorExecutionSpecification12">
-            <coveredLifelines>
-              <lifelineMoniker
-                Id="7ad90618-435f-4787-b1b6-572ec82e45e8"
-                LastKnownName="AttackManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </coveredLifelines>
-            <finish>
-              <executionOccurrenceSpecificationMoniker
-                Id="1dca4f4d-6399-4ea7-8989-42944b2d76f5"
-                LastKnownName="ExecutionOccurrenceSpecification24"
-                LastKnownLocation="RisikoSequence.uml" />
-            </finish>
-            <start>
-              <executionOccurrenceSpecificationMoniker
-                Id="7f7e6e3d-c034-464f-ab1c-e3b9b3343fee"
-                LastKnownName="ExecutionOccurrenceSpecification23"
-                LastKnownLocation="RisikoSequence.uml" />
-            </start>
-            <nestedOccurrences>
-              <messageOccurrenceSpecificationMoniker
-                Id="afc07bc4-9d06-4676-915d-4a00616dc75d"
-                LastKnownName="MessageOccurrenceSpecification25"
-                LastKnownLocation="RisikoSequence.uml" />
-            </nestedOccurrences>
-          </behaviorExecutionSpecification>
-          <executionOccurrenceSpecification
-            Id="7f7e6e3d-c034-464f-ab1c-e3b9b3343fee"
-            name="ExecutionOccurrenceSpecification23">
-            <event>
-              <executionOccurrenceSpecificationReferencesEvent>
-                <executionEventMoniker
-                  Id="6a2968d2-500b-400a-870b-09ea63474511"
-                  LastKnownName="ExecutionEvent"
-                  LastKnownLocation="RisikoSequence.uml" />
-              </executionOccurrenceSpecificationReferencesEvent>
-            </event>
-            <covered>
-              <lifelineMoniker
-                Id="7ad90618-435f-4787-b1b6-572ec82e45e8"
-                LastKnownName="AttackManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="afc07bc4-9d06-4676-915d-4a00616dc75d"
-            name="MessageOccurrenceSpecification25">
-            <covered>
-              <lifelineMoniker
-                Id="7ad90618-435f-4787-b1b6-572ec82e45e8"
-                LastKnownName="AttackManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <executionOccurrenceSpecification
-            Id="1dca4f4d-6399-4ea7-8989-42944b2d76f5"
-            name="ExecutionOccurrenceSpecification24">
-            <event>
-              <executionOccurrenceSpecificationReferencesEvent>
-                <executionEventMoniker
-                  Id="46dcb2a5-ad0f-4c74-94ca-ea4b45e457a4"
-                  LastKnownName="ExecutionEvent"
-                  LastKnownLocation="RisikoSequence.uml" />
-              </executionOccurrenceSpecificationReferencesEvent>
-            </event>
-            <covered>
-              <lifelineMoniker
-                Id="7ad90618-435f-4787-b1b6-572ec82e45e8"
-                LastKnownName="AttackManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </executionOccurrenceSpecification>
           <behaviorExecutionSpecification
             Id="9ec866bb-111f-4183-ad12-97533e78af07"
             name="BehaviorExecutionSpecification3">
@@ -3254,22 +3118,22 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="b5fa0259-f5ff-46a2-ab6c-ccba2c9d7567"
-            name="MessageOccurrenceSpecification27">
-            <covered>
-              <lifelineMoniker
-                Id="7ad90618-435f-4787-b1b6-572ec82e45e8"
-                LastKnownName="AttackManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
             Id="b52e6b24-9835-4131-9315-d2b8a6b293ab"
             name="MessageOccurrenceSpecification26">
             <covered>
               <lifelineMoniker
                 Id="404c3a37-b665-4d2b-965e-7eebcf15cb0d"
                 LastKnownName="DiceManager"
+                LastKnownLocation="RisikoSequence.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="b5fa0259-f5ff-46a2-ab6c-ccba2c9d7567"
+            name="MessageOccurrenceSpecification27">
+            <covered>
+              <lifelineMoniker
+                Id="7ad90618-435f-4787-b1b6-572ec82e45e8"
+                LastKnownName="AttackManager"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -3394,12 +3258,12 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             </covered>
           </executionOccurrenceSpecification>
           <operandOccurrenceSpecification
-            Id="f286e423-46da-4025-ae1e-13a55c322cac"
-            name="OperandOccurrenceSpecification16">
+            Id="e6f131c7-759d-42ed-8819-199726ab3864"
+            name="OperandOccurrenceSpecification14">
             <covered>
               <lifelineMoniker
-                Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
-                LastKnownName="SelectManager"
+                Id="7ad90618-435f-4787-b1b6-572ec82e45e8"
+                LastKnownName="AttackManager"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </operandOccurrenceSpecification>
@@ -3414,12 +3278,12 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             </covered>
           </operandOccurrenceSpecification>
           <operandOccurrenceSpecification
-            Id="e6f131c7-759d-42ed-8819-199726ab3864"
-            name="OperandOccurrenceSpecification14">
+            Id="f286e423-46da-4025-ae1e-13a55c322cac"
+            name="OperandOccurrenceSpecification16">
             <covered>
               <lifelineMoniker
-                Id="7ad90618-435f-4787-b1b6-572ec82e45e8"
-                LastKnownName="AttackManager"
+                Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
+                LastKnownName="SelectAttack"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </operandOccurrenceSpecification>
@@ -3449,17 +3313,7 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             <covered>
               <lifelineMoniker
                 Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
-                LastKnownName="SelectManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </operandOccurrenceSpecification>
-          <operandOccurrenceSpecification
-            Id="bf7114c3-3c6b-4c5e-a2fe-3357ee1a8666"
-            name="OperandOccurrenceSpecification22">
-            <covered>
-              <lifelineMoniker
-                Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
-                LastKnownName="SelectManager"
+                LastKnownName="SelectAttack"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </operandOccurrenceSpecification>
@@ -3483,6 +3337,16 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="bf7114c3-3c6b-4c5e-a2fe-3357ee1a8666"
+            name="OperandOccurrenceSpecification22">
+            <covered>
+              <lifelineMoniker
+                Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
+                LastKnownName="SelectAttack"
+                LastKnownLocation="RisikoSequence.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
           <executionOccurrenceSpecification
             Id="f3667ec9-c297-4117-b6aa-0bc9587247a8"
             name="ExecutionOccurrenceSpecification14">
@@ -3497,7 +3361,7 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             <covered>
               <lifelineMoniker
                 Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
-                LastKnownName="SelectManager"
+                LastKnownName="SelectAttack"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -3521,9 +3385,9 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
           </lifeline>
           <lifeline
             Id="3fb2498a-c7fd-45da-9717-89c8c77873f2"
-            name="SelectManager"
+            name="SelectAttack"
             isActor="false"
-            lifelineDisplayName="SelectManager">
+            lifelineDisplayName="SelectAttack">
             <topLevelOccurrences>
               <executionOccurrenceSpecificationMoniker
                 Id="277d63ca-6004-47c3-ac5b-58a79d09524b"
@@ -3532,30 +3396,6 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
               <executionOccurrenceSpecificationMoniker
                 Id="f3667ec9-c297-4117-b6aa-0bc9587247a8"
                 LastKnownName="ExecutionOccurrenceSpecification14"
-                LastKnownLocation="RisikoSequence.uml" />
-            </topLevelOccurrences>
-          </lifeline>
-          <lifeline
-            Id="a73b5659-feda-4460-a0b4-cb062b853527"
-            name="SelectAttack"
-            isActor="false"
-            lifelineDisplayName="SelectAttack">
-            <topLevelOccurrences>
-              <executionOccurrenceSpecificationMoniker
-                Id="8f7a1926-0fda-40aa-ba19-808ded718f47"
-                LastKnownName="ExecutionOccurrenceSpecification17"
-                LastKnownLocation="RisikoSequence.uml" />
-              <executionOccurrenceSpecificationMoniker
-                Id="ffd30e5a-9259-4a44-804a-11e03f56fc70"
-                LastKnownName="ExecutionOccurrenceSpecification18"
-                LastKnownLocation="RisikoSequence.uml" />
-              <executionOccurrenceSpecificationMoniker
-                Id="bf632b78-5483-42c6-8bed-ed10cef025d2"
-                LastKnownName="ExecutionOccurrenceSpecification19"
-                LastKnownLocation="RisikoSequence.uml" />
-              <executionOccurrenceSpecificationMoniker
-                Id="83ccc1ce-a781-4cc0-991b-e2798db4ca6e"
-                LastKnownName="ExecutionOccurrenceSpecification20"
                 LastKnownLocation="RisikoSequence.uml" />
             </topLevelOccurrences>
           </lifeline>
@@ -3672,78 +3512,40 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             </receiveEvent>
           </message>
           <message
-            Id="d1a7f2ce-d6c1-4243-8e83-45ddc8ddaa83"
+            Id="7c8ad4bd-dc23-412f-8c61-6baa39fba814"
             name="IsAValidFirst(StatoController)"
             messageKind="Complete"
             messageSort="SynchCall"
-            createSelfMessage="false">
+            createSelfMessage="true">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker
-                Id="d67e9774-ddb2-4eda-9b71-f61c9d9db8b1"
-                LastKnownName="MessageOccurrenceSpecification14"
+                Id="3708ef82-a7f1-4e5f-94b7-b70ca8f70021"
+                LastKnownName="MessageOccurrenceSpecification28"
                 LastKnownLocation="RisikoSequence.uml" />
             </sendEvent>
             <receiveEvent>
               <messageOccurrenceSpecificationMoniker
-                Id="15ee356e-8f4e-4182-9815-5e85471a39de"
-                LastKnownName="MessageOccurrenceSpecification15"
+                Id="9914cf32-56be-4003-855f-552d8b5dd2c2"
+                LastKnownName="MessageOccurrenceSpecification29"
                 LastKnownLocation="RisikoSequence.uml" />
             </receiveEvent>
           </message>
           <message
-            Id="84582fe0-df66-4980-b573-d5819cdb851a"
-            name="&lt;&lt;bool&gt;&gt;"
-            messageKind="Complete"
-            messageSort="Reply"
-            createSelfMessage="false">
-            <sendEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="3f5c5430-55e3-40ac-9c10-4cdf88f15c94"
-                LastKnownName="MessageOccurrenceSpecification16"
-                LastKnownLocation="RisikoSequence.uml" />
-            </sendEvent>
-            <receiveEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="5aed9051-d8b0-4add-b155-e94971166bdb"
-                LastKnownName="MessageOccurrenceSpecification17"
-                LastKnownLocation="RisikoSequence.uml" />
-            </receiveEvent>
-          </message>
-          <message
-            Id="32527a24-3faf-4a1a-bcaa-ca2c0d2fe992"
+            Id="dee7b9a8-75e2-4fd5-bf46-55880d53e7fd"
             name="IsAValidSecond(StatoController)"
             messageKind="Complete"
             messageSort="SynchCall"
-            createSelfMessage="false">
+            createSelfMessage="true">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker
-                Id="3fcf318a-a052-45ad-af8e-1ed809f577e4"
-                LastKnownName="MessageOccurrenceSpecification18"
+                Id="faaf6765-45b0-4eff-94a4-8b7f7512b31c"
+                LastKnownName="MessageOccurrenceSpecification32"
                 LastKnownLocation="RisikoSequence.uml" />
             </sendEvent>
             <receiveEvent>
               <messageOccurrenceSpecificationMoniker
-                Id="0cf1b0b8-0e82-46a8-aff7-21d443764e26"
-                LastKnownName="MessageOccurrenceSpecification19"
-                LastKnownLocation="RisikoSequence.uml" />
-            </receiveEvent>
-          </message>
-          <message
-            Id="a124819a-a5de-4014-bba0-200a05ccaefd"
-            name="&lt;&lt;bool&gt;&gt;"
-            messageKind="Complete"
-            messageSort="Reply"
-            createSelfMessage="false">
-            <sendEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="42fc368c-182c-4d3b-8349-23ce0f8abddf"
-                LastKnownName="MessageOccurrenceSpecification20"
-                LastKnownLocation="RisikoSequence.uml" />
-            </sendEvent>
-            <receiveEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="6d148c61-417f-48eb-aa2a-18891ace0fd1"
-                LastKnownName="MessageOccurrenceSpecification21"
+                Id="5fa41e51-ee86-43c8-9ffc-8deace16a8ef"
+                LastKnownName="MessageOccurrenceSpecification33"
                 LastKnownLocation="RisikoSequence.uml" />
             </receiveEvent>
           </message>
@@ -3763,25 +3565,6 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
               <messageOccurrenceSpecificationMoniker
                 Id="141599e2-d518-4c9d-9b5b-47228a9bf672"
                 LastKnownName="MessageOccurrenceSpecification23"
-                LastKnownLocation="RisikoSequence.uml" />
-            </receiveEvent>
-          </message>
-          <message
-            Id="8fa563e7-051e-4a16-ada2-cd881c3e2a10"
-            name="handleChoicePopup"
-            messageKind="Complete"
-            messageSort="AsynchCall"
-            createSelfMessage="true">
-            <sendEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="4dc55e9c-03eb-43d1-9225-6ff19ac0fd6f"
-                LastKnownName="MessageOccurrenceSpecification24"
-                LastKnownLocation="RisikoSequence.uml" />
-            </sendEvent>
-            <receiveEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="afc07bc4-9d06-4676-915d-4a00616dc75d"
-                LastKnownName="MessageOccurrenceSpecification25"
                 LastKnownLocation="RisikoSequence.uml" />
             </receiveEvent>
           </message>
@@ -5020,26 +4803,6 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <executionEvent
-        Id="7e2dbee6-30a0-4655-8a8a-a673ced69359"
-        name="ExecutionEvent" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <executionEvent
-        Id="817e2654-6733-456e-b6ea-d6ca6ea3dace"
-        name="ExecutionEvent" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <executionEvent
-        Id="6f8993c2-f58d-4dde-8fea-1e142a23801a"
-        name="ExecutionEvent" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <executionEvent
-        Id="3a507c81-d59d-44a3-a2f4-bbf246cfad36"
-        name="ExecutionEvent" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <executionEvent
         Id="9cccd000-08b2-4d27-87f2-8704cdb84040"
         name="ExecutionEvent" />
     </packageHasNamedElement>
@@ -5207,7 +4970,7 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             <coveredLifelines>
               <lifelineMoniker
                 Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
-                LastKnownName="SelectManager"
+                LastKnownName="SelectMove"
                 LastKnownLocation="RisikoSequence.uml" />
             </coveredLifelines>
             <finish>
@@ -5228,20 +4991,28 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
                 LastKnownName="MessageOccurrenceSpecification11"
                 LastKnownLocation="RisikoSequence.uml" />
               <messageOccurrenceSpecificationMoniker
-                Id="17c3bfbf-6dbe-426c-afa8-20b0c63ac315"
-                LastKnownName="MessageOccurrenceSpecification14"
+                Id="83622d3a-518f-4bd3-bb71-6c13f977c295"
+                LastKnownName="MessageOccurrenceSpecification26"
+                LastKnownLocation="RisikoSequence.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="00cb8f7a-c633-464d-8c34-8686ced4fb6e"
+                LastKnownName="ExecutionOccurrenceSpecification25"
+                LastKnownLocation="RisikoSequence.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="374a8362-2bb4-403a-b16f-a7f917b416cc"
+                LastKnownName="ExecutionOccurrenceSpecification26"
                 LastKnownLocation="RisikoSequence.uml" />
               <messageOccurrenceSpecificationMoniker
-                Id="c59d4754-749d-400e-a8b3-ebf3bd17f6c2"
-                LastKnownName="MessageOccurrenceSpecification17"
+                Id="0effb545-1663-4878-984b-701d453febf1"
+                LastKnownName="MessageOccurrenceSpecification28"
                 LastKnownLocation="RisikoSequence.uml" />
-              <messageOccurrenceSpecificationMoniker
-                Id="4028c89f-54d0-428c-bdb1-1777e4733c63"
-                LastKnownName="MessageOccurrenceSpecification18"
+              <executionOccurrenceSpecificationMoniker
+                Id="714bcec7-9209-4480-b8cc-f48d16525f01"
+                LastKnownName="ExecutionOccurrenceSpecification27"
                 LastKnownLocation="RisikoSequence.uml" />
-              <messageOccurrenceSpecificationMoniker
-                Id="2a346764-f70d-4f45-88fe-06d012cb5779"
-                LastKnownName="MessageOccurrenceSpecification21"
+              <executionOccurrenceSpecificationMoniker
+                Id="9867687f-6b1e-47a1-bdce-a93e176b4b88"
+                LastKnownName="ExecutionOccurrenceSpecification28"
                 LastKnownLocation="RisikoSequence.uml" />
               <operandOccurrenceSpecificationMoniker
                 Id="e68b8aef-4129-4499-a45d-c2604ab86f6f"
@@ -5279,7 +5050,7 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             <covered>
               <lifelineMoniker
                 Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
-                LastKnownName="SelectManager"
+                LastKnownName="SelectMove"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -5299,60 +5070,10 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             <covered>
               <lifelineMoniker
                 Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
-                LastKnownName="SelectManager"
+                LastKnownName="SelectMove"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </messageOccurrenceSpecification>
-          <behaviorExecutionSpecification
-            Id="8118cb37-a19c-4d82-99a1-6c4279f03595"
-            name="BehaviorExecutionSpecification9">
-            <coveredLifelines>
-              <lifelineMoniker
-                Id="db4c860b-01c4-4d9f-baef-4caa631bc227"
-                LastKnownName="SelectMove"
-                LastKnownLocation="RisikoSequence.uml" />
-            </coveredLifelines>
-            <finish>
-              <executionOccurrenceSpecificationMoniker
-                Id="cb491457-34a0-487f-b996-18f61685996e"
-                LastKnownName="ExecutionOccurrenceSpecification18"
-                LastKnownLocation="RisikoSequence.uml" />
-            </finish>
-            <start>
-              <executionOccurrenceSpecificationMoniker
-                Id="e74d1508-2874-4a81-a9bd-6d513184b714"
-                LastKnownName="ExecutionOccurrenceSpecification17"
-                LastKnownLocation="RisikoSequence.uml" />
-            </start>
-            <nestedOccurrences>
-              <messageOccurrenceSpecificationMoniker
-                Id="dc680367-9af8-4abe-ba51-6adeee7cf25b"
-                LastKnownName="MessageOccurrenceSpecification15"
-                LastKnownLocation="RisikoSequence.uml" />
-              <messageOccurrenceSpecificationMoniker
-                Id="1e942953-3b2b-46ed-a69f-5b2150575d68"
-                LastKnownName="MessageOccurrenceSpecification16"
-                LastKnownLocation="RisikoSequence.uml" />
-            </nestedOccurrences>
-          </behaviorExecutionSpecification>
-          <executionOccurrenceSpecification
-            Id="e74d1508-2874-4a81-a9bd-6d513184b714"
-            name="ExecutionOccurrenceSpecification17">
-            <event>
-              <executionOccurrenceSpecificationReferencesEvent>
-                <executionEventMoniker
-                  Id="fc6aaeb3-c909-4684-8e2d-c27c8cc2f787"
-                  LastKnownName="ExecutionEvent"
-                  LastKnownLocation="RisikoSequence.uml" />
-              </executionOccurrenceSpecificationReferencesEvent>
-            </event>
-            <covered>
-              <lifelineMoniker
-                Id="db4c860b-01c4-4d9f-baef-4caa631bc227"
-                LastKnownName="SelectMove"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </executionOccurrenceSpecification>
           <executionOccurrenceSpecification
             Id="26d83bf8-eb8d-4b50-bcd0-077974f1df5f"
             name="ExecutionOccurrenceSpecification12">
@@ -5372,167 +5093,169 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="dc680367-9af8-4abe-ba51-6adeee7cf25b"
-            name="MessageOccurrenceSpecification15">
-            <covered>
-              <lifelineMoniker
-                Id="db4c860b-01c4-4d9f-baef-4caa631bc227"
-                LastKnownName="SelectMove"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="17c3bfbf-6dbe-426c-afa8-20b0c63ac315"
-            name="MessageOccurrenceSpecification14">
+            Id="83622d3a-518f-4bd3-bb71-6c13f977c295"
+            name="MessageOccurrenceSpecification26">
             <covered>
               <lifelineMoniker
                 Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
-                LastKnownName="SelectManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="1e942953-3b2b-46ed-a69f-5b2150575d68"
-            name="MessageOccurrenceSpecification16">
-            <covered>
-              <lifelineMoniker
-                Id="db4c860b-01c4-4d9f-baef-4caa631bc227"
                 LastKnownName="SelectMove"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="c59d4754-749d-400e-a8b3-ebf3bd17f6c2"
-            name="MessageOccurrenceSpecification17">
-            <covered>
-              <lifelineMoniker
-                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
-                LastKnownName="SelectManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <executionOccurrenceSpecification
-            Id="cb491457-34a0-487f-b996-18f61685996e"
-            name="ExecutionOccurrenceSpecification18">
-            <event>
-              <executionOccurrenceSpecificationReferencesEvent>
-                <executionEventMoniker
-                  Id="305c4416-e7c5-4aa6-a318-de88b1d1f5b3"
-                  LastKnownName="ExecutionEvent"
-                  LastKnownLocation="RisikoSequence.uml" />
-              </executionOccurrenceSpecificationReferencesEvent>
-            </event>
-            <covered>
-              <lifelineMoniker
-                Id="db4c860b-01c4-4d9f-baef-4caa631bc227"
-                LastKnownName="SelectMove"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </executionOccurrenceSpecification>
           <behaviorExecutionSpecification
-            Id="66b3ca7a-18c5-49cd-9c69-49b0d80946b9"
-            name="BehaviorExecutionSpecification10">
+            Id="be21ecb7-731e-4c52-8862-69dd9e77e6eb"
+            name="BehaviorExecutionSpecification13">
             <coveredLifelines>
               <lifelineMoniker
-                Id="db4c860b-01c4-4d9f-baef-4caa631bc227"
+                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
                 LastKnownName="SelectMove"
                 LastKnownLocation="RisikoSequence.uml" />
             </coveredLifelines>
             <finish>
               <executionOccurrenceSpecificationMoniker
-                Id="0584cfbc-092e-4c16-bb15-28c7a773b035"
-                LastKnownName="ExecutionOccurrenceSpecification20"
+                Id="374a8362-2bb4-403a-b16f-a7f917b416cc"
+                LastKnownName="ExecutionOccurrenceSpecification26"
                 LastKnownLocation="RisikoSequence.uml" />
             </finish>
             <start>
               <executionOccurrenceSpecificationMoniker
-                Id="7a393302-23cb-4172-a2c1-13ef4b883a2c"
-                LastKnownName="ExecutionOccurrenceSpecification19"
+                Id="00cb8f7a-c633-464d-8c34-8686ced4fb6e"
+                LastKnownName="ExecutionOccurrenceSpecification25"
                 LastKnownLocation="RisikoSequence.uml" />
             </start>
             <nestedOccurrences>
               <messageOccurrenceSpecificationMoniker
-                Id="6cd4dd8a-9009-4309-96f2-d8268a4ffc52"
-                LastKnownName="MessageOccurrenceSpecification19"
-                LastKnownLocation="RisikoSequence.uml" />
-              <messageOccurrenceSpecificationMoniker
-                Id="361f9441-4402-48cc-9147-2959660a3832"
-                LastKnownName="MessageOccurrenceSpecification20"
+                Id="90c99a9a-e0f0-4139-8c10-d32fdaf8053f"
+                LastKnownName="MessageOccurrenceSpecification27"
                 LastKnownLocation="RisikoSequence.uml" />
             </nestedOccurrences>
           </behaviorExecutionSpecification>
           <executionOccurrenceSpecification
-            Id="7a393302-23cb-4172-a2c1-13ef4b883a2c"
-            name="ExecutionOccurrenceSpecification19">
+            Id="00cb8f7a-c633-464d-8c34-8686ced4fb6e"
+            name="ExecutionOccurrenceSpecification25">
             <event>
               <executionOccurrenceSpecificationReferencesEvent>
                 <executionEventMoniker
-                  Id="9abc58d3-1963-4b14-b625-968af56269eb"
+                  Id="35387c67-70d7-4697-873d-39c87fabdd0a"
                   LastKnownName="ExecutionEvent"
                   LastKnownLocation="RisikoSequence.uml" />
               </executionOccurrenceSpecificationReferencesEvent>
             </event>
             <covered>
               <lifelineMoniker
-                Id="db4c860b-01c4-4d9f-baef-4caa631bc227"
+                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
                 LastKnownName="SelectMove"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="6cd4dd8a-9009-4309-96f2-d8268a4ffc52"
-            name="MessageOccurrenceSpecification19">
-            <covered>
-              <lifelineMoniker
-                Id="db4c860b-01c4-4d9f-baef-4caa631bc227"
-                LastKnownName="SelectMove"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="4028c89f-54d0-428c-bdb1-1777e4733c63"
-            name="MessageOccurrenceSpecification18">
+            Id="90c99a9a-e0f0-4139-8c10-d32fdaf8053f"
+            name="MessageOccurrenceSpecification27">
             <covered>
               <lifelineMoniker
                 Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
-                LastKnownName="SelectManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="361f9441-4402-48cc-9147-2959660a3832"
-            name="MessageOccurrenceSpecification20">
-            <covered>
-              <lifelineMoniker
-                Id="db4c860b-01c4-4d9f-baef-4caa631bc227"
                 LastKnownName="SelectMove"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="2a346764-f70d-4f45-88fe-06d012cb5779"
-            name="MessageOccurrenceSpecification21">
-            <covered>
-              <lifelineMoniker
-                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
-                LastKnownName="SelectManager"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </messageOccurrenceSpecification>
           <executionOccurrenceSpecification
-            Id="0584cfbc-092e-4c16-bb15-28c7a773b035"
-            name="ExecutionOccurrenceSpecification20">
+            Id="374a8362-2bb4-403a-b16f-a7f917b416cc"
+            name="ExecutionOccurrenceSpecification26">
             <event>
               <executionOccurrenceSpecificationReferencesEvent>
                 <executionEventMoniker
-                  Id="b44a628e-ffdd-4245-9df6-663f41adc8ee"
+                  Id="c65e85c8-5348-4f73-b5b8-1b38c00725b1"
                   LastKnownName="ExecutionEvent"
                   LastKnownLocation="RisikoSequence.uml" />
               </executionOccurrenceSpecificationReferencesEvent>
             </event>
             <covered>
               <lifelineMoniker
-                Id="db4c860b-01c4-4d9f-baef-4caa631bc227"
+                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
+                LastKnownName="SelectMove"
+                LastKnownLocation="RisikoSequence.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="0effb545-1663-4878-984b-701d453febf1"
+            name="MessageOccurrenceSpecification28">
+            <covered>
+              <lifelineMoniker
+                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
+                LastKnownName="SelectMove"
+                LastKnownLocation="RisikoSequence.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="f33c4020-14c9-43ed-8f81-a6db32930e37"
+            name="BehaviorExecutionSpecification14">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
+                LastKnownName="SelectMove"
+                LastKnownLocation="RisikoSequence.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="9867687f-6b1e-47a1-bdce-a93e176b4b88"
+                LastKnownName="ExecutionOccurrenceSpecification28"
+                LastKnownLocation="RisikoSequence.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="714bcec7-9209-4480-b8cc-f48d16525f01"
+                LastKnownName="ExecutionOccurrenceSpecification27"
+                LastKnownLocation="RisikoSequence.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="84c7d38b-70c6-43b3-add3-a17a6840c87f"
+                LastKnownName="MessageOccurrenceSpecification29"
+                LastKnownLocation="RisikoSequence.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="714bcec7-9209-4480-b8cc-f48d16525f01"
+            name="ExecutionOccurrenceSpecification27">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="5dc8f08d-b172-45a4-afad-d176d23c222c"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="RisikoSequence.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
+                LastKnownName="SelectMove"
+                LastKnownLocation="RisikoSequence.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="84c7d38b-70c6-43b3-add3-a17a6840c87f"
+            name="MessageOccurrenceSpecification29">
+            <covered>
+              <lifelineMoniker
+                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
+                LastKnownName="SelectMove"
+                LastKnownLocation="RisikoSequence.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="9867687f-6b1e-47a1-bdce-a93e176b4b88"
+            name="ExecutionOccurrenceSpecification28">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="8583f85e-f7be-40a1-9083-7c3470e73d09"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="RisikoSequence.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
                 LastKnownName="SelectMove"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
@@ -5543,12 +5266,12 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             interactionOperator="Alt">
             <coveredLifelines>
               <lifelineMoniker
-                Id="f3fd3093-914f-4141-8c8d-25fb8c3f6753"
-                LastKnownName="MoveManager"
+                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
+                LastKnownName="SelectMove"
                 LastKnownLocation="RisikoSequence.uml" />
               <lifelineMoniker
-                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
-                LastKnownName="SelectManager"
+                Id="f3fd3093-914f-4141-8c8d-25fb8c3f6753"
+                LastKnownName="MoveManager"
                 LastKnownLocation="RisikoSequence.uml" />
             </coveredLifelines>
             <operands>
@@ -5557,12 +5280,12 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
                 name="InteractionOperand1">
                 <coveredLifelines>
                   <lifelineMoniker
-                    Id="f3fd3093-914f-4141-8c8d-25fb8c3f6753"
-                    LastKnownName="MoveManager"
+                    Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
+                    LastKnownName="SelectMove"
                     LastKnownLocation="RisikoSequence.uml" />
                   <lifelineMoniker
-                    Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
-                    LastKnownName="SelectManager"
+                    Id="f3fd3093-914f-4141-8c8d-25fb8c3f6753"
+                    LastKnownName="MoveManager"
                     LastKnownLocation="RisikoSequence.uml" />
                 </coveredLifelines>
                 <guard>
@@ -5594,12 +5317,12 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
                 name="InteractionOperand2">
                 <coveredLifelines>
                   <lifelineMoniker
-                    Id="f3fd3093-914f-4141-8c8d-25fb8c3f6753"
-                    LastKnownName="MoveManager"
+                    Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
+                    LastKnownName="SelectMove"
                     LastKnownLocation="RisikoSequence.uml" />
                   <lifelineMoniker
-                    Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
-                    LastKnownName="SelectManager"
+                    Id="f3fd3093-914f-4141-8c8d-25fb8c3f6753"
+                    LastKnownName="MoveManager"
                     LastKnownLocation="RisikoSequence.uml" />
                 </coveredLifelines>
                 <guard>
@@ -5628,22 +5351,22 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             </operands>
           </combinedFragment>
           <operandOccurrenceSpecification
-            Id="e68b8aef-4129-4499-a45d-c2604ab86f6f"
-            name="OperandOccurrenceSpecification3">
-            <covered>
-              <lifelineMoniker
-                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
-                LastKnownName="SelectManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </operandOccurrenceSpecification>
-          <operandOccurrenceSpecification
             Id="8798fe09-7514-43ce-a411-e97d3208c180"
             name="OperandOccurrenceSpecification1">
             <covered>
               <lifelineMoniker
                 Id="f3fd3093-914f-4141-8c8d-25fb8c3f6753"
                 LastKnownName="MoveManager"
+                LastKnownLocation="RisikoSequence.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="e68b8aef-4129-4499-a45d-c2604ab86f6f"
+            name="OperandOccurrenceSpecification3">
+            <covered>
+              <lifelineMoniker
+                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
+                LastKnownName="SelectMove"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </operandOccurrenceSpecification>
@@ -5673,18 +5396,6 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
                 Id="4f222aa0-cae1-4d3f-b618-5f620ae543ed"
                 LastKnownName="MessageOccurrenceSpecification23"
                 LastKnownLocation="RisikoSequence.uml" />
-              <messageOccurrenceSpecificationMoniker
-                Id="15c34459-151f-4ebe-b6e3-1d62cc9f278b"
-                LastKnownName="MessageOccurrenceSpecification24"
-                LastKnownLocation="RisikoSequence.uml" />
-              <executionOccurrenceSpecificationMoniker
-                Id="628360e8-9e10-4a00-b9b8-d6fa6656957f"
-                LastKnownName="ExecutionOccurrenceSpecification23"
-                LastKnownLocation="RisikoSequence.uml" />
-              <executionOccurrenceSpecificationMoniker
-                Id="d1bcfd62-f2d2-40df-ab3f-608b3b20e08f"
-                LastKnownName="ExecutionOccurrenceSpecification24"
-                LastKnownLocation="RisikoSequence.uml" />
             </nestedOccurrences>
           </behaviorExecutionSpecification>
           <executionOccurrenceSpecification
@@ -5706,6 +5417,16 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification
+            Id="c92dbfb2-055c-4504-bcff-3bb0bb32dcaf"
+            name="MessageOccurrenceSpecification22">
+            <covered>
+              <lifelineMoniker
+                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
+                LastKnownName="SelectMove"
+                LastKnownLocation="RisikoSequence.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
             Id="4f222aa0-cae1-4d3f-b618-5f620ae543ed"
             name="MessageOccurrenceSpecification23">
             <covered>
@@ -5715,100 +5436,6 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="c92dbfb2-055c-4504-bcff-3bb0bb32dcaf"
-            name="MessageOccurrenceSpecification22">
-            <covered>
-              <lifelineMoniker
-                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
-                LastKnownName="SelectManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="15c34459-151f-4ebe-b6e3-1d62cc9f278b"
-            name="MessageOccurrenceSpecification24">
-            <covered>
-              <lifelineMoniker
-                Id="f3fd3093-914f-4141-8c8d-25fb8c3f6753"
-                LastKnownName="MoveManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <behaviorExecutionSpecification
-            Id="ca13aa08-3e3e-4040-aeb2-4340f5ec5279"
-            name="BehaviorExecutionSpecification12">
-            <coveredLifelines>
-              <lifelineMoniker
-                Id="f3fd3093-914f-4141-8c8d-25fb8c3f6753"
-                LastKnownName="MoveManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </coveredLifelines>
-            <finish>
-              <executionOccurrenceSpecificationMoniker
-                Id="d1bcfd62-f2d2-40df-ab3f-608b3b20e08f"
-                LastKnownName="ExecutionOccurrenceSpecification24"
-                LastKnownLocation="RisikoSequence.uml" />
-            </finish>
-            <start>
-              <executionOccurrenceSpecificationMoniker
-                Id="628360e8-9e10-4a00-b9b8-d6fa6656957f"
-                LastKnownName="ExecutionOccurrenceSpecification23"
-                LastKnownLocation="RisikoSequence.uml" />
-            </start>
-            <nestedOccurrences>
-              <messageOccurrenceSpecificationMoniker
-                Id="0c3cfa59-d63b-42ca-aa1a-fdd39c74d817"
-                LastKnownName="MessageOccurrenceSpecification25"
-                LastKnownLocation="RisikoSequence.uml" />
-            </nestedOccurrences>
-          </behaviorExecutionSpecification>
-          <executionOccurrenceSpecification
-            Id="628360e8-9e10-4a00-b9b8-d6fa6656957f"
-            name="ExecutionOccurrenceSpecification23">
-            <event>
-              <executionOccurrenceSpecificationReferencesEvent>
-                <executionEventMoniker
-                  Id="95f31042-05ec-4dd4-851a-796969979b9c"
-                  LastKnownName="ExecutionEvent"
-                  LastKnownLocation="RisikoSequence.uml" />
-              </executionOccurrenceSpecificationReferencesEvent>
-            </event>
-            <covered>
-              <lifelineMoniker
-                Id="f3fd3093-914f-4141-8c8d-25fb8c3f6753"
-                LastKnownName="MoveManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification
-            Id="0c3cfa59-d63b-42ca-aa1a-fdd39c74d817"
-            name="MessageOccurrenceSpecification25">
-            <covered>
-              <lifelineMoniker
-                Id="f3fd3093-914f-4141-8c8d-25fb8c3f6753"
-                LastKnownName="MoveManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <executionOccurrenceSpecification
-            Id="d1bcfd62-f2d2-40df-ab3f-608b3b20e08f"
-            name="ExecutionOccurrenceSpecification24">
-            <event>
-              <executionOccurrenceSpecificationReferencesEvent>
-                <executionEventMoniker
-                  Id="853dbddd-7d8b-4bb2-b7a8-f016ecc237ff"
-                  LastKnownName="ExecutionEvent"
-                  LastKnownLocation="RisikoSequence.uml" />
-              </executionOccurrenceSpecificationReferencesEvent>
-            </event>
-            <covered>
-              <lifelineMoniker
-                Id="f3fd3093-914f-4141-8c8d-25fb8c3f6753"
-                LastKnownName="MoveManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </executionOccurrenceSpecification>
           <executionOccurrenceSpecification
             Id="b4ed0a3f-eab5-4176-958b-b61342ab4232"
             name="ExecutionOccurrenceSpecification22">
@@ -5828,6 +5455,16 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             </covered>
           </executionOccurrenceSpecification>
           <operandOccurrenceSpecification
+            Id="d3628e99-f43e-44d5-beb7-5bfb1da7c773"
+            name="OperandOccurrenceSpecification4">
+            <covered>
+              <lifelineMoniker
+                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
+                LastKnownName="SelectMove"
+                LastKnownLocation="RisikoSequence.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
             Id="bc878264-54fd-432a-a81f-9c5051317bd5"
             name="OperandOccurrenceSpecification2">
             <covered>
@@ -5838,22 +5475,12 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             </covered>
           </operandOccurrenceSpecification>
           <operandOccurrenceSpecification
-            Id="d3628e99-f43e-44d5-beb7-5bfb1da7c773"
-            name="OperandOccurrenceSpecification4">
-            <covered>
-              <lifelineMoniker
-                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
-                LastKnownName="SelectManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </operandOccurrenceSpecification>
-          <operandOccurrenceSpecification
             Id="97029dc2-faee-4992-a8ee-3ae031c89b7f"
             name="OperandOccurrenceSpecification7">
             <covered>
               <lifelineMoniker
                 Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
-                LastKnownName="SelectManager"
+                LastKnownName="SelectMove"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </operandOccurrenceSpecification>
@@ -5868,22 +5495,22 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             </covered>
           </operandOccurrenceSpecification>
           <operandOccurrenceSpecification
-            Id="1e854bb0-5830-4db8-9872-191ff8328ed0"
-            name="OperandOccurrenceSpecification8">
-            <covered>
-              <lifelineMoniker
-                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
-                LastKnownName="SelectManager"
-                LastKnownLocation="RisikoSequence.uml" />
-            </covered>
-          </operandOccurrenceSpecification>
-          <operandOccurrenceSpecification
             Id="6b32cab7-55fd-4463-b92b-f487c6db2829"
             name="OperandOccurrenceSpecification6">
             <covered>
               <lifelineMoniker
                 Id="f3fd3093-914f-4141-8c8d-25fb8c3f6753"
                 LastKnownName="MoveManager"
+                LastKnownLocation="RisikoSequence.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="1e854bb0-5830-4db8-9872-191ff8328ed0"
+            name="OperandOccurrenceSpecification8">
+            <covered>
+              <lifelineMoniker
+                Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
+                LastKnownName="SelectMove"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </operandOccurrenceSpecification>
@@ -5901,7 +5528,7 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             <covered>
               <lifelineMoniker
                 Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
-                LastKnownName="SelectManager"
+                LastKnownName="SelectMove"
                 LastKnownLocation="RisikoSequence.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -5925,9 +5552,9 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
           </lifeline>
           <lifeline
             Id="abefbbc0-55c6-4a87-8122-fe1dbdd0e715"
-            name="SelectManager"
+            name="SelectMove"
             isActor="false"
-            lifelineDisplayName="SelectManager">
+            lifelineDisplayName="SelectMove">
             <topLevelOccurrences>
               <executionOccurrenceSpecificationMoniker
                 Id="ac51ab9b-bb34-44b5-a16c-14bee3b3358d"
@@ -5936,30 +5563,6 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
               <executionOccurrenceSpecificationMoniker
                 Id="040be0a0-55c1-4071-acdd-d06749991311"
                 LastKnownName="ExecutionOccurrenceSpecification14"
-                LastKnownLocation="RisikoSequence.uml" />
-            </topLevelOccurrences>
-          </lifeline>
-          <lifeline
-            Id="db4c860b-01c4-4d9f-baef-4caa631bc227"
-            name="SelectMove"
-            isActor="false"
-            lifelineDisplayName="SelectMove">
-            <topLevelOccurrences>
-              <executionOccurrenceSpecificationMoniker
-                Id="e74d1508-2874-4a81-a9bd-6d513184b714"
-                LastKnownName="ExecutionOccurrenceSpecification17"
-                LastKnownLocation="RisikoSequence.uml" />
-              <executionOccurrenceSpecificationMoniker
-                Id="cb491457-34a0-487f-b996-18f61685996e"
-                LastKnownName="ExecutionOccurrenceSpecification18"
-                LastKnownLocation="RisikoSequence.uml" />
-              <executionOccurrenceSpecificationMoniker
-                Id="7a393302-23cb-4172-a2c1-13ef4b883a2c"
-                LastKnownName="ExecutionOccurrenceSpecification19"
-                LastKnownLocation="RisikoSequence.uml" />
-              <executionOccurrenceSpecificationMoniker
-                Id="0584cfbc-092e-4c16-bb15-28c7a773b035"
-                LastKnownName="ExecutionOccurrenceSpecification20"
                 LastKnownLocation="RisikoSequence.uml" />
             </topLevelOccurrences>
           </lifeline>
@@ -6036,78 +5639,40 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
             </receiveEvent>
           </message>
           <message
-            Id="07ff0296-476c-4ab6-941f-d69ae890fcf0"
+            Id="8aaa1051-8896-4af4-90c1-9bc1f6363a88"
             name="IsAValidFirst(StatoController)"
             messageKind="Complete"
             messageSort="SynchCall"
-            createSelfMessage="false">
+            createSelfMessage="true">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker
-                Id="17c3bfbf-6dbe-426c-afa8-20b0c63ac315"
-                LastKnownName="MessageOccurrenceSpecification14"
+                Id="83622d3a-518f-4bd3-bb71-6c13f977c295"
+                LastKnownName="MessageOccurrenceSpecification26"
                 LastKnownLocation="RisikoSequence.uml" />
             </sendEvent>
             <receiveEvent>
               <messageOccurrenceSpecificationMoniker
-                Id="dc680367-9af8-4abe-ba51-6adeee7cf25b"
-                LastKnownName="MessageOccurrenceSpecification15"
+                Id="90c99a9a-e0f0-4139-8c10-d32fdaf8053f"
+                LastKnownName="MessageOccurrenceSpecification27"
                 LastKnownLocation="RisikoSequence.uml" />
             </receiveEvent>
           </message>
           <message
-            Id="443fd3d2-1e55-4478-886c-553ab3f246bb"
-            name="&lt;&lt;bool&gt;&gt;"
-            messageKind="Complete"
-            messageSort="Reply"
-            createSelfMessage="false">
-            <sendEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="1e942953-3b2b-46ed-a69f-5b2150575d68"
-                LastKnownName="MessageOccurrenceSpecification16"
-                LastKnownLocation="RisikoSequence.uml" />
-            </sendEvent>
-            <receiveEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="c59d4754-749d-400e-a8b3-ebf3bd17f6c2"
-                LastKnownName="MessageOccurrenceSpecification17"
-                LastKnownLocation="RisikoSequence.uml" />
-            </receiveEvent>
-          </message>
-          <message
-            Id="deef5518-7578-4e66-9d15-f3f91a7b6308"
+            Id="570f072a-dc2d-4416-b3eb-7b9e6fecdfd9"
             name="IsAValidSecond(StatoController)"
             messageKind="Complete"
             messageSort="SynchCall"
-            createSelfMessage="false">
+            createSelfMessage="true">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker
-                Id="4028c89f-54d0-428c-bdb1-1777e4733c63"
-                LastKnownName="MessageOccurrenceSpecification18"
+                Id="0effb545-1663-4878-984b-701d453febf1"
+                LastKnownName="MessageOccurrenceSpecification28"
                 LastKnownLocation="RisikoSequence.uml" />
             </sendEvent>
             <receiveEvent>
               <messageOccurrenceSpecificationMoniker
-                Id="6cd4dd8a-9009-4309-96f2-d8268a4ffc52"
-                LastKnownName="MessageOccurrenceSpecification19"
-                LastKnownLocation="RisikoSequence.uml" />
-            </receiveEvent>
-          </message>
-          <message
-            Id="a8acc4bf-8510-4eca-a6a9-349670b4cc10"
-            name="&lt;&lt;bool&gt;&gt;"
-            messageKind="Complete"
-            messageSort="Reply"
-            createSelfMessage="false">
-            <sendEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="361f9441-4402-48cc-9147-2959660a3832"
-                LastKnownName="MessageOccurrenceSpecification20"
-                LastKnownLocation="RisikoSequence.uml" />
-            </sendEvent>
-            <receiveEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="2a346764-f70d-4f45-88fe-06d012cb5779"
-                LastKnownName="MessageOccurrenceSpecification21"
+                Id="84c7d38b-70c6-43b3-add3-a17a6840c87f"
+                LastKnownName="MessageOccurrenceSpecification29"
                 LastKnownLocation="RisikoSequence.uml" />
             </receiveEvent>
           </message>
@@ -6127,25 +5692,6 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
               <messageOccurrenceSpecificationMoniker
                 Id="4f222aa0-cae1-4d3f-b618-5f620ae543ed"
                 LastKnownName="MessageOccurrenceSpecification23"
-                LastKnownLocation="RisikoSequence.uml" />
-            </receiveEvent>
-          </message>
-          <message
-            Id="782e0c86-4ed8-4b92-b3ee-a3ab5fdd468b"
-            name="handleChoicePopup"
-            messageKind="Complete"
-            messageSort="AsynchCall"
-            createSelfMessage="true">
-            <sendEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="15c34459-151f-4ebe-b6e3-1d62cc9f278b"
-                LastKnownName="MessageOccurrenceSpecification24"
-                LastKnownLocation="RisikoSequence.uml" />
-            </sendEvent>
-            <receiveEvent>
-              <messageOccurrenceSpecificationMoniker
-                Id="0c3cfa59-d63b-42ca-aa1a-fdd39c74d817"
-                LastKnownName="MessageOccurrenceSpecification25"
                 LastKnownLocation="RisikoSequence.uml" />
             </receiveEvent>
           </message>
@@ -6174,26 +5720,6 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <executionEvent
-        Id="fc6aaeb3-c909-4684-8e2d-c27c8cc2f787"
-        name="ExecutionEvent" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <executionEvent
-        Id="305c4416-e7c5-4aa6-a318-de88b1d1f5b3"
-        name="ExecutionEvent" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <executionEvent
-        Id="9abc58d3-1963-4b14-b625-968af56269eb"
-        name="ExecutionEvent" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <executionEvent
-        Id="b44a628e-ffdd-4245-9df6-663f41adc8ee"
-        name="ExecutionEvent" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <executionEvent
         Id="f69f87eb-33f2-46b7-b159-605edb42692b"
         name="ExecutionEvent" />
     </packageHasNamedElement>
@@ -6204,32 +5730,12 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <executionEvent
-        Id="95f31042-05ec-4dd4-851a-796969979b9c"
-        name="ExecutionEvent" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <executionEvent
-        Id="853dbddd-7d8b-4bb2-b7a8-f016ecc237ff"
-        name="ExecutionEvent" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <executionEvent
         Id="1e062679-6abb-4820-ae21-f064039bd8b3"
         name="ExecutionEvent" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <executionEvent
         Id="571b9fe0-9f01-4102-b765-2f6362bf2503"
-        name="ExecutionEvent" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <executionEvent
-        Id="6a2968d2-500b-400a-870b-09ea63474511"
-        name="ExecutionEvent" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <executionEvent
-        Id="46dcb2a5-ad0f-4c74-94ca-ea4b45e457a4"
         name="ExecutionEvent" />
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -6260,6 +5766,46 @@ s.Clicked += SelectMove.Select(StatoController stato)</body>
     <packageHasNamedElement>
       <executionEvent
         Id="c91f8905-517a-4ca0-9bb5-0b8340525817"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="53ff68a1-0fb2-42ff-9a1c-e3ad3291c03b"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="5562d523-fac7-4bdd-abb0-16a39f7a6d2d"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="047c330d-1d9d-4c0e-9100-cf94cf8dbb1f"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="f1816051-eca1-4051-8cce-ad778b280dd4"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="35387c67-70d7-4697-873d-39c87fabdd0a"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="c65e85c8-5348-4f73-b5b8-1b38c00725b1"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="5dc8f08d-b172-45a4-afad-d176d23c222c"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="8583f85e-f7be-40a1-9083-7c3470e73d09"
         name="ExecutionEvent" />
     </packageHasNamedElement>
   </packagedElements>
