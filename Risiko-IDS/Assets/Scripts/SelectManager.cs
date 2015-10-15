@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using UnityEngine;
 
 /* Aggiungere un criterio di selezione significa:
  * -creare la classe che estenda il selectManager
@@ -30,7 +31,7 @@ public abstract partial class SelectManager
 	private static toggle _register = (s, funzione)=>s.Clicked += funzione;
 	private static toggle _unregister= (s, funzione)=>s.Clicked -= funzione;
 
-	protected static void InitMap()
+	private static void InitMap()
 	{
 		_map[AttackManager.GetInstance().PhaseName]=SelectAttack.GetInstance();
 		_map[MoveManager.GetInstance().PhaseName]=SelectMove.GetInstance();
@@ -56,7 +57,7 @@ public abstract partial class SelectManager
 	protected abstract bool IsAValidSecond(StatoController s2);
 	protected abstract bool IsAValidFirst(StatoController s);
 
-	protected void UnToggle()
+	private void UnToggle()
 	{
 		if (_stateTemp!= null)
 		{
