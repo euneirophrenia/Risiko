@@ -1,0 +1,61 @@
+- Start Game
+- Click +1
+- Cambio fase (esempio attacco)
+- Attacco
+- Spostamento
+
+
+1) START GAME
+
+- MenuManager -> Play()
+=> MainManager -> MainManager.GetInstance().Init(playernames.ToArray());				CREAZIONE INITIAL PHASE MANAGER
+	=> InitialPhaseManager -> Create(playerNames, new List<StatoController>(this.States)) 
+		=> GoalReachedManager -> GenerateGoal() 						AGGIUNGERE GIOCATORI
+	=> PhaseManager -> PhaseManager.GetInstance().Begin();
+
+
+
+2) CLICK +1
+
+- StatoController -> OnMouseDown()
+[[=> MainManager => StateClickEnabled ]]
+	=> PreTurnoManager -> public void Add(StatoController s)
+
+
+
+3) CAMBIO FASE (ESEMPIO ATTACCO)
+
+- PhaseManager => public void ChangePhase()
+	=>AttackManager -> Register()
+		=>SelectManager -> Register();
+			=> s.Clicked += SelectAttack.Select(StatoController stato)
+
+
+4) ATTACCO
+
+- StatoController -> OnMouseDown()
+	=> SelectManager/SelectAttack -> void Select(StatoController stato)
+
+				X1						PARTIRE DA QUA
+			LANCIATO ENDSELECTION
+
+		=> AttackManager -> void handleSelection(StatoController statoAttacco, StatoController statoDifesa)
+
+				SCELTA DI QUANTI?!?					CHIAMATA A SE STESSO
+
+			=> DiceManager -> void Roll(int attack, int defence)
+				=> AttackManager -> void handleDiceResult( int[] attack, int[] defense)
+
+5) SPOSTAMENTO
+ 
+- StatoController -> OnMouseDown()
+	=> SelectManager/SelectMove -> void Select(StatoController stato)
+
+				X1
+			LANCIATO ENDSELECTION
+
+		=> MoveManager -> void handleSelection(StatoController statoFrom, StatoController statoTo)
+
+				SCELTA DI QUANTI?!?
+
+6) 
